@@ -101,70 +101,59 @@
       }
     }
 
-    .quote-banner::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: -16px;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 8px;
-      background: #d4af59;
-      border-radius: 50%;
-    }
-
     .quote-banner .quote-text {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 0;
-      font-style: italic;
+      color: #d4af59;
       letter-spacing: -0.5px;
+      line-height: 1.4;
     }
 
     .hub-header {
       text-align: center;
-      margin-bottom: 48px;
-      position: relative;
-    }
-
-    .hub-header .logo-icon {
-      font-size: 3.5rem;
-      color: #d4af59;
-      margin-bottom: 16px;
-      display: block;
-      animation: fadeInScale 0.8s ease-out;
-    }
-
-    @keyframes fadeInScale {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      margin-bottom: 32px;
+      animation: slideDown 0.6s ease-out;
     }
 
     .hub-header h1 {
-      font-size: 3.2rem;
+      font-size: 2.8rem;
+      font-weight: 900;
       margin-bottom: 8px;
       letter-spacing: -1px;
-      font-weight: 900;
     }
 
-    .hub-header h1 .ai-highlight {
+    .hub-header h1 span {
       color: #d4af59;
     }
 
     .hub-header p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #a0a0a0;
-      margin-bottom: 0;
-      letter-spacing: 1px;
+      font-weight: 400;
+    }
+
+    .fullscreen-btn {
+      background: linear-gradient(135deg, #d4af59 0%, #e8c547 100%);
+      color: #000;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      font-weight: 500;
+      letter-spacing: 0.8px;
+      box-shadow: 0 4px 15px rgba(212, 175, 89, 0.2);
+      margin-top: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fullscreen-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 25px rgba(212, 175, 89, 0.35);
     }
 
     .tools-grid {
@@ -313,82 +302,180 @@
       box-shadow: 0 8px 25px rgba(212, 175, 89, 0.35);
     }
 
-    .footer {
-      text-align: center;
-      padding: 32px 20px;
-      color: #606060;
-      font-size: 0.85rem;
-      border-top: 1px solid #1a1a1a;
-      margin-top: 48px;
+    .card {
+      background: linear-gradient(135deg, rgba(30, 30, 45, 0.8) 0%, rgba(15, 15, 25, 0.9) 100%);
+      border: 1px solid rgba(212, 175, 89, 0.15);
+      border-radius: 16px;
+      padding: 40px 32px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-btn {
+      background: transparent;
+      border: 1px solid #d4af59;
+      color: #d4af59;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-btn:hover {
+      background: rgba(212, 175, 89, 0.1);
+      transform: translateX(-4px);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #d4af59;
+      text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
-    .footer span {
-      color: #d4af59;
-      font-weight: 700;
-    }
-
-    .card {
-      background: rgba(15, 15, 25, 0.7);
-      backdrop-filter: blur(20px);
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(212, 175, 89, 0.2);
-      border-radius: 32px;
-      padding: 50px;
-      box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
+      color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
     }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(212, 175, 89, 0.03) 0%, transparent 70%);
-      animation: float 20s ease-in-out infinite;
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #d4af59;
+      background: rgba(212, 175, 89, 0.08);
+      box-shadow: 0 0 20px rgba(212, 175, 89, 0.15);
     }
 
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(20px, 20px); }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
     }
 
-    .card > * {
-      position: relative;
-      z-index: 1;
+    .chips-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
     }
 
-    .header {
-      margin-bottom: 40px;
-    }
-
-    .stage-badge {
-      display: inline-block;
+    .chip {
       background: rgba(212, 175, 89, 0.1);
       border: 1px solid rgba(212, 175, 89, 0.3);
       color: #d4af59;
-      padding: 8px 16px;
+      padding: 10px 16px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
       font-weight: 600;
-      margin-bottom: 16px;
+      font-size: 0.85rem;
     }
 
-    .title {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
+    .chip:hover {
+      background: rgba(212, 175, 89, 0.2);
+      border-color: #d4af59;
     }
 
-    .subtitle {
-      font-size: 1rem;
-      color: #a0a0a0;
-      margin-bottom: 0;
+    .chip.selected {
+      background: #d4af59;
+      color: #000;
+      border-color: #d4af59;
+      box-shadow: 0 0 20px rgba(212, 175, 89, 0.3);
+    }
+
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .color-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .color-box:hover {
+      transform: scale(1.1);
+    }
+
+    .color-box.selected {
+      border-color: #ffffff;
+      box-shadow: 0 0 15px rgba(212, 175, 89, 0.4);
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d4af59 0%, #e8c547 100%);
+      color: #000;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      box-shadow: 0 4px 15px rgba(212, 175, 89, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(212, 175, 89, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #d4af59;
+      color: #d4af59;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(212, 175, 89, 0.1);
+      transform: scale(1.05);
     }
 
     .progress-bar {
@@ -404,294 +491,105 @@
       height: 100%;
       background: linear-gradient(90deg, #d4af59 0%, #e8c547 100%);
       border-radius: 2px;
-      transition: width 0.4s ease;
+      transition: width 0.3s ease;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 24px;
-      margin-bottom: 24px;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .field label {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .field label i {
-      color: #d4af59;
-      font-size: 1rem;
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      background: rgba(255, 255, 255, 0.05);
+    .confirm-section {
+      background: rgba(212, 175, 89, 0.05);
       border: 1px solid rgba(212, 175, 89, 0.2);
       border-radius: 12px;
-      padding: 12px 16px;
-      color: #ffffff;
-      font-size: 0.95rem;
-      font-family: 'Inter', sans-serif;
-      transition: all 0.3s ease;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      outline: none;
-      border-color: #d4af59;
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 20px rgba(212, 175, 89, 0.15);
-    }
-
-    .field textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .section-divider {
-      height: 1px;
-      background: rgba(212, 175, 89, 0.1);
-      margin: 32px 0;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .chip {
-      background: rgba(212, 175, 89, 0.1);
-      border: 1px solid rgba(212, 175, 89, 0.3);
-      color: #a0a0a0;
-      padding: 10px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .chip:hover {
-      border-color: #d4af59;
-      color: #d4af59;
-    }
-
-    .chip.active {
-      background: #d4af59;
-      border-color: #d4af59;
-      color: #000;
-      font-weight: 700;
-    }
-
-    .colors {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
-
-    .color {
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 12px;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .color:hover {
-      transform: scale(1.1);
-      border-color: #ffffff;
-    }
-
-    .color.active {
-      border-color: #ffffff;
-      box-shadow: 0 0 20px rgba(212, 175, 89, 0.4);
-    }
-
-    .nav {
-      display: flex;
-      gap: 16px;
-      margin-top: 40px;
-    }
-
-    .btn {
-      padding: 14px 28px;
-      border: none;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #d4af59 0%, #e8c547 100%);
-      color: #000;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(212, 175, 89, 0.3);
-    }
-
-    .btn-secondary {
-      background: rgba(212, 175, 89, 0.1);
-      color: #d4af59;
-      border: 1px solid rgba(212, 175, 89, 0.3);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(212, 175, 89, 0.2);
-      border-color: rgba(212, 175, 89, 0.5);
-    }
-
-    .btn-fullscreen {
-      background: rgba(212, 175, 89, 0.1);
-      color: #d4af59;
-      border: 1px solid rgba(212, 175, 89, 0.3);
-      width: 100%;
-      margin-top: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
     }
 
     .confirm-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(212, 175, 89, 0.1);
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .confirm-row:last-child {
+      margin-bottom: 0;
     }
 
     .confirm-label {
       font-weight: 600;
       color: #d4af59;
+      font-size: 0.9rem;
     }
 
     .confirm-value {
-      color: #a0a0a0;
-      margin-left: 16px;
+      color: #ffffff;
+      text-align: right;
+      font-size: 0.9rem;
     }
 
     .prompt-box {
       background: rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(212, 175, 89, 0.2);
       border-radius: 12px;
-      padding: 24px;
-      margin: 24px 0;
+      padding: 20px;
+      margin-bottom: 24px;
       max-height: 300px;
       overflow-y: auto;
-      font-size: 0.85rem;
-      line-height: 1.6;
-      color: #a0a0a0;
       font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #d4af59;
     }
 
-    .copy-feedback {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
+    .copy-btn {
       background: #d4af59;
       color: #000;
-      padding: 16px 24px;
-      border-radius: 12px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      animation: slideInRight 0.4s ease-out;
-      z-index: 1000;
-    }
-
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translateX(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .hero .title {
-      font-size: 2.8rem;
-    }
-
-    .add-row-btn {
-      background: rgba(212, 175, 89, 0.1);
-      border: 1px dashed rgba(212, 175, 89, 0.5);
-      color: #d4af59;
+      border: none;
       padding: 12px 24px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      margin-top: 12px;
-    }
-
-    .add-row-btn:hover {
-      background: rgba(212, 175, 89, 0.2);
-      border-color: #d4af59;
-    }
-
-    .row-item {
-      background: rgba(212, 175, 89, 0.05);
-      border: 1px solid rgba(212, 175, 89, 0.2);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 12px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr auto;
-      gap: 12px;
-      align-items: end;
-    }
-
-    .row-item input {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(212, 175, 89, 0.2);
       border-radius: 8px;
-      padding: 10px 12px;
-      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
       font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 16px;
     }
 
-    .row-item button {
-      background: rgba(255, 0, 0, 0.2);
-      border: 1px solid rgba(255, 0, 0, 0.4);
-      color: #ff6b6b;
-      padding: 8px 12px;
+    .copy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(212, 175, 89, 0.35);
+    }
+
+    .ai-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .ai-btn {
+      background: linear-gradient(135deg, rgba(212, 175, 89, 0.2) 0%, rgba(212, 175, 89, 0.1) 100%);
+      border: 1px solid #d4af59;
+      color: #d4af59;
+      padding: 10px 20px;
       border-radius: 8px;
-      cursor: pointer;
       font-weight: 600;
+      cursor: pointer;
       transition: all 0.3s ease;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .row-item button:hover {
-      background: rgba(255, 0, 0, 0.3);
+    .ai-btn:hover {
+      background: linear-gradient(135deg, #d4af59 0%, #e8c547 100%);
+      color: #000;
+      transform: scale(1.05);
     }
 
     @media (max-width: 768px) {
@@ -701,24 +599,6 @@
 
       .grid {
         grid-template-columns: 1fr;
-      }
-
-      .colors {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      .nav {
-        flex-direction: column;
-      }
-
-      .confirm-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .confirm-value {
-        margin-left: 0;
-        margin-top: 8px;
       }
 
       .tools-grid {
@@ -748,925 +628,683 @@
         font-size: 1.3rem;
       }
 
-      .row-item {
-        grid-template-columns: 1fr;
+      .ai-buttons {
+        flex-direction: column;
+      }
+
+      .ai-btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <!-- PAGE 0: HUB DASHBOARD -->
-  <section class="page active" id="p-hub">
+  <!-- HOME PAGE -->
+  <div id="home" class="page active">
     <div class="hub-container">
-      <div class="quote-banner">
-        <div class="quote-text" id="quoteText">Seu sucesso começa com a ação de hoje.</div>
+      <div class="hub-header">
+        <h1><span>Design</span>AI</h1>
+        <p>Crie artes profissionais com IA.</p>
+        <button class="fullscreen-btn" onclick="toggleFullscreen()">
+          <i class="fas fa-expand"></i> Tela Cheia
+        </button>
       </div>
 
-      <div class="hub-header">
-        <i class="fas fa-sparkles logo-icon"></i>
-        <h1>DESIGN<span class="ai-highlight">AI</span></h1>
-        <p>Artes para Delivery, Rápido e Prático com IA</p>
+      <div class="quote-banner">
+        <div class="quote-text" id="quoteText">Seu sucesso começa com uma ideia criativa.</div>
       </div>
 
       <div class="tools-grid">
-        <div class="tool-card">
+        <div class="tool-card" onclick="goToTool('arts')">
           <i class="fas fa-palette icon"></i>
           <h3>Artes</h3>
-          <p>Prompts profissionais para suas artes</p>
-          <button class="btn" onclick="goToTool(1)">Começar</button>
+          <p>Crie artes profissionais para delivery</p>
+          <button class="btn">Começar</button>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card" onclick="goToTool('logo')">
           <i class="fas fa-trademark icon"></i>
           <h3>Logo</h3>
-          <p>Logos modernos e minimalistas</p>
-          <button class="btn" onclick="goToTool('logo')">Começar</button>
+          <p>Crie logos memoráveis e profissionais</p>
+          <button class="btn">Começar</button>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card" onclick="goToTool('carousel')">
           <i class="fas fa-images icon"></i>
           <h3>Carrossel</h3>
-          <p>Sequência de até 3 imagens</p>
-          <button class="btn" onclick="goToTool('carousel')">Começar</button>
+          <p>Sequência de 3 imagens envolventes</p>
+          <button class="btn">Começar</button>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card" onclick="goToTool('menu')">
           <i class="fas fa-utensils icon"></i>
           <h3>Cardápio</h3>
-          <p>Categorias, produtos e preços</p>
-          <button class="btn" onclick="goToTool('menu')">Começar</button>
+          <p>Cardápios visuais e organizados</p>
+          <button class="btn">Começar</button>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card" onclick="goToTool('info')">
           <i class="fas fa-bell icon"></i>
           <h3>Informativos</h3>
-          <p>Avisos e promoções</p>
-          <button class="btn" onclick="goToTool('infos')">Começar</button>
+          <p>Avisos e promoções impactantes</p>
+          <button class="btn">Começar</button>
         </div>
 
-        <div class="tool-card">
-          <i class="fas fa-face-grin-hearts icon"></i>
+        <div class="tool-card" onclick="goToTool('sticker')">
+          <i class="fas fa-face-grin-stars icon"></i>
           <h3>Figurinhas</h3>
           <p>Mascotes 2D para WhatsApp</p>
-          <button class="btn" onclick="goToTool('sticker')">Começar</button>
-        </div>
-      </div>
-
-      <div class="footer">
-        Desenvolvido por <span>@dhdesignerpro</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GERADOR DE ARTES ===== -->
-  <!-- PAGE 1: ART GENERATOR - HERO -->
-  <section class="page" id="p1">
-    <div class="container">
-      <div class="card hero">
-        <div class="header">
-          <h1 class="title">DESIGN<span style="color: #d4af59;">AI</span></h1>
-        </div>
-        <p class="subtitle">Gerador de Prompts para Artes Profissionais</p>
-        <p style="color: #808080; font-size: 0.95rem; margin-top: 16px;">Crie artes profissionais para delivery usando IA.</p>
-        <button class="btn btn-primary" onclick="go(2)" style="width: 100%; margin-top: 32px;">
-          <i class="fas fa-rocket"></i> Começar Agora
-        </button>
-        <button class="btn btn-fullscreen" onclick="toggleFullscreen()" id="fsBtn">
-          <i class="fas fa-expand"></i> Abrir em Tela Cheia
-        </button>
-        <button class="btn btn-secondary" onclick="goToHub()" style="width: 100%; margin-top: 16px;">
-          <i class="fas fa-arrow-left"></i> Voltar ao Hub
-        </button>
-        <div class="footer">
-          Desenvolvido por <span>@dhdesignerpro</span>
+          <button class="btn">Começar</button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- PAGE 2: ETAPA 01 - DADOS PRINCIPAIS -->
-  <section class="page" id="p2">
+  <!-- ARTS TOOL -->
+  <div id="arts" class="page">
     <div class="container">
+      <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Voltar</button>
+      
       <div class="card">
+        <h2 style="margin-bottom: 24px; text-align: center;">Gerador de Artes</h2>
         <div class="progress-bar">
-          <div class="progress-fill" style="width: 20%;"></div>
-        </div>
-        
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-circle-1"></i> Etapa 1 de 5
-          </div>
-          <h2 class="title">Dados Principais</h2>
-          <p class="subtitle">Informações sobre seu negócio e promoção</p>
+          <div class="progress-fill" id="artsProgress" style="width: 20%;"></div>
         </div>
 
-        <div class="grid grid-2">
-          <div class="field">
-            <label><i class="fas fa-image"></i> Tamanho da Arte</label>
-            <select id="tamanho">
-              <option value="Story 1080x1920">Story 1080x1920</option>
-              <option value="Feed 1080x1440">Feed 1080x1440</option>
-            </select>
+        <div id="artsStep1" class="step">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">📋 Dados do Negócio</h3>
+          <div class="form-group">
+            <label>Nome do Negócio</label>
+            <input type="text" id="artsBusinessName" placeholder="Ex: Pizzaria da Nonna">
           </div>
-
-          <div class="field">
-            <label><i class="fas fa-utensils"></i> Nicho do Negócio</label>
-            <select id="nicho">
-              <option value="">Selecione um nicho</option>
-              <option value="Hamburgueria">Hamburgueria</option>
-              <option value="Pizzaria">Pizzaria</option>
-              <option value="Sushi">Sushi</option>
-              <option value="Açaí">Açaí</option>
-              <option value="Lanchonete">Lanchonete</option>
-              <option value="Restaurante">Restaurante</option>
-              <option value="Marmitaria">Marmitaria</option>
-              <option value="Pastelaria">Pastelaria</option>
-              <option value="Hot Dogs">Hot Dogs</option>
-              <option value="Espetinho">Espetinho</option>
-              <option value="Frango Assado">Frango Assado</option>
-              <option value="Cafeteria">Cafeteria</option>
-              <option value="Confeitaria">Confeitaria</option>
-              <option value="Delivery">Delivery</option>
-              <option value="Fast Food">Fast Food</option>
-            </select>
+          <div class="form-group">
+            <label>Telefone</label>
+            <input type="tel" id="artsPhone" placeholder="(11) 99999-9999">
+          </div>
+          <div class="form-group">
+            <label>Instagram</label>
+            <input type="text" id="artsInstagram" placeholder="@seu_instagram">
+          </div>
+          <div class="form-group">
+            <label>Descrição do Produto/Serviço</label>
+            <textarea id="artsDescription" placeholder="Descreva o que você vende..."></textarea>
+          </div>
+          <div class="nav">
+            <button class="btn-primary" onclick="nextArtsStep()">Próximo</button>
           </div>
         </div>
 
-        <div class="grid">
-          <div class="field">
-            <label><i class="fas fa-store"></i> Nome do Estabelecimento</label>
-            <input type="text" id="nome" placeholder="Ex: Burger Premium">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-phone"></i> Telefone / WhatsApp</label>
-            <input type="text" id="telefone" placeholder="Ex: (11) 99999-9999">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-instagram"></i> Instagram</label>
-            <input type="text" id="instagram" placeholder="Ex: @burger_premium">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-map-marker-alt"></i> Endereço Físico</label>
-            <input type="text" id="endereco" placeholder="Ex: Rua Principal, 123">
-          </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <div class="field">
-          <label><i class="fas fa-tag"></i> Título da Promoção</label>
-          <input type="text" id="promo" placeholder="Ex: Combo Deluxe - 50% OFF">
-        </div>
-
-        <div class="field">
-          <label><i class="fas fa-align-left"></i> Descrição da Promoção</label>
-          <textarea id="descricao" placeholder="Ex: Dois burgers premium + batata + bebida. Válido até domingo."></textarea>
-        </div>
-
-        <div class="field">
-          <label><i class="fas fa-dollar-sign"></i> Preço / Valor da Promoção</label>
-          <input type="text" id="preco" placeholder="Ex: R$ 49,90">
-        </div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="goToHub()">
-            <i class="fas fa-arrow-left"></i> Voltar ao Hub
-          </button>
-          <button class="btn btn-primary" onclick="validarEtapa2() && go(3)">
-            Continuar <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAGE 3: ETAPA 02 - REFERÊNCIAS VISUAIS -->
-  <section class="page" id="p3">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 40%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-circle-2"></i> Etapa 2 de 5
-          </div>
-          <h2 class="title">Referências Visuais</h2>
-          <p class="subtitle">Logo e foto do produto para sua arte</p>
-        </div>
-
-        <div class="field">
-          <label><i class="fas fa-image"></i> Logo do Negócio</label>
-          <div class="chips" style="margin-top: 14px;">
-            <div class="chip" data-type="logo-choice" data-value="propria">
-              <i class="fas fa-upload"></i> Vou Enviar Minha Logo
-            </div>
-            <div class="chip" data-type="logo-choice" data-value="gerar">
-              <i class="fas fa-wand-magic-sparkles"></i> Gerar com IA
+        <div id="artsStep2" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🎨 Direção Criativa</h3>
+          <div class="form-group">
+            <label>Estilo Visual</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'artsStyle')">Moderno</div>
+              <div class="chip" onclick="selectChip(this, 'artsStyle')">Minimalista</div>
+              <div class="chip" onclick="selectChip(this, 'artsStyle')">Rústico</div>
+              <div class="chip" onclick="selectChip(this, 'artsStyle')">Luxuoso</div>
+              <div class="chip" onclick="selectChip(this, 'artsStyle')">Divertido</div>
             </div>
           </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <div class="field">
-          <label><i class="fas fa-image"></i> Foto do Produto</label>
-          <div class="chips" style="margin-top: 14px;">
-            <div class="chip" data-type="produto-choice" data-value="propria">
-              <i class="fas fa-upload"></i> Vou Enviar Minha Foto
-            </div>
-            <div class="chip" data-type="produto-choice" data-value="gerar">
-              <i class="fas fa-wand-magic-sparkles"></i> Gerar com IA
+          <div class="form-group">
+            <label>Paleta de Cores (Escolha até 3)</label>
+            <div class="color-palette">
+              <div class="color-box" style="background: #000000;" onclick="selectColor(this, 'artsColors')"></div>
+              <div class="color-box" style="background: #ffffff;" onclick="selectColor(this, 'artsColors')"></div>
+              <div class="color-box" style="background: #d4af59;" onclick="selectColor(this, 'artsColors')"></div>
+              <div class="color-box" style="background: #ff0000;" onclick="selectColor(this, 'artsColors')"></div>
+              <div class="color-box" style="background: #00ff00;" onclick="selectColor(this, 'artsColors')"></div>
+              <div class="color-box" style="background: #0000ff;" onclick="selectColor(this, 'artsColors')"></div>
             </div>
           </div>
-        </div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="go(2)">
-            <i class="fas fa-arrow-left"></i> Voltar
-          </button>
-          <button class="btn btn-primary" onclick="go(4)">
-            Continuar <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAGE 4: ETAPA 03 - DIREÇÃO CRIATIVA (PART 1) -->
-  <section class="page" id="p4">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 60%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-circle-3"></i> Etapa 3 de 5
-          </div>
-          <h2 class="title">Direção Criativa</h2>
-          <p class="subtitle">Escolha o estilo e a identidade visual</p>
-        </div>
-
-        <div class="field">
-          <label><i class="fas fa-palette"></i> Estilo de Fundo (Escolha 1)</label>
-          <div class="chips" style="margin-top: 14px;">
-            <div class="chip" data-type="background">Escuro elegante</div>
-            <div class="chip" data-type="background">Claro clean</div>
-            <div class="chip" data-type="background">Fundo urbano</div>
-            <div class="chip" data-type="background">Premium fosco</div>
-            <div class="chip" data-type="background">Iluminado moderno</div>
-            <div class="chip" data-type="background">Textura gastronômica</div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevArtsStep()">Voltar</button>
+            <button class="btn-primary" onclick="nextArtsStep()">Próximo</button>
           </div>
         </div>
 
-        <div class="section-divider"></div>
-
-        <div class="field">
-          <label><i class="fas fa-palette"></i> Paleta de Cores (Escolha até 3)</label>
-          <div class="colors" style="margin-top: 14px;">
-            <div class="color" style="background: #000000;"></div>
-            <div class="color" style="background: #ffffff;"></div>
-            <div class="color" style="background: #d4af59;"></div>
-            <div class="color" style="background: #ff0000;"></div>
-            <div class="color" style="background: #ff6600;"></div>
-            <div class="color" style="background: #ffff00;"></div>
-            <div class="color" style="background: #00ff00;"></div>
-            <div class="color" style="background: #00ffff;"></div>
-            <div class="color" style="background: #0000ff;"></div>
-            <div class="color" style="background: #ff00ff;"></div>
-            <div class="color" style="background: #c0c0c0;"></div>
-            <div class="color" style="background: #808080;"></div>
-            <div class="color" style="background: #800000;"></div>
-            <div class="color" style="background: #808000;"></div>
-            <div class="color" style="background: #008000;"></div>
+        <div id="artsStep3" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">✅ Confirmação</h3>
+          <div class="confirm-section">
+            <div class="confirm-row">
+              <span class="confirm-label">Negócio:</span>
+              <span class="confirm-value" id="confirmArtsName">-</span>
+            </div>
+            <div class="confirm-row">
+              <span class="confirm-label">Telefone:</span>
+              <span class="confirm-value" id="confirmArtsPhone">-</span>
+            </div>
+            <div class="confirm-row">
+              <span class="confirm-label">Instagram:</span>
+              <span class="confirm-value" id="confirmArtsInstagram">-</span>
+            </div>
+            <div class="confirm-row">
+              <span class="confirm-label">Estilo:</span>
+              <span class="confirm-value" id="confirmArtsStyle">-</span>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevArtsStep()">Voltar</button>
+            <button class="btn-primary" onclick="generateArtsPrompt()">Gerar Prompt</button>
           </div>
         </div>
 
-        <div class="section-divider"></div>
-
-        <div class="field">
-          <label><i class="fas fa-font"></i> Estilo de Fonte (Escolha até 2)</label>
-          <div class="chips" style="margin-top: 14px;">
-            <div class="chip" data-type="font">Forte moderna</div>
-            <div class="chip" data-type="font">Elegante fina</div>
-            <div class="chip" data-type="font">Impactante bold</div>
-            <div class="chip" data-type="font">Gourmet sofisticada</div>
-            <div class="chip" data-type="font">Compacta moderna</div>
-            <div class="chip" data-type="font">Instagram forte</div>
-            <div class="chip" data-type="font">Minimalista clean</div>
-            <div class="chip" data-type="font">Premium clássica</div>
-          </div>
-        </div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="go(3)">
-            <i class="fas fa-arrow-left"></i> Voltar
-          </button>
-          <button class="btn btn-primary" onclick="go(5)">
-            Continuar <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAGE 5: ETAPA 03 - DIREÇÃO CRIATIVA (PART 2) -->
-  <section class="page" id="p5">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 60%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-circle-3"></i> Etapa 3 de 5 (Continuação)
-          </div>
-          <h2 class="title">Objetivos e Intensidade</h2>
-          <p class="subtitle">O que você quer alcançar com essa arte?</p>
-        </div>
-
-        <div class="field">
-          <label><i class="fas fa-bullseye"></i> Objetivos da Arte (Escolha até 3)</label>
-          <div class="chips" style="margin-top: 14px;">
-            <div class="chip" data-type="objective">Vender mais</div>
-            <div class="chip" data-type="objective">Parecer premium</div>
-            <div class="chip" data-type="objective">Gerar urgência</div>
-            <div class="chip" data-type="objective">Destacar oferta</div>
-            <div class="chip" data-type="objective">Criar desejo</div>
-            <div class="chip" data-type="objective">Engajar seguidores</div>
-            <div class="chip" data-type="objective">Viralizar</div>
-          </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <div class="field">
-          <label><i class="fas fa-sliders-h"></i> Intensidade Visual (Escolha 1)</label>
-          <div class="chips intensity-chips" style="margin-top: 14px;">
-            <div class="chip" data-type="intensity">Minimalista</div>
-            <div class="chip" data-type="intensity">Equilibrada</div>
-            <div class="chip" data-type="intensity">Impactante</div>
-            <div class="chip" data-type="intensity">Explosiva</div>
-          </div>
-        </div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="go(4)">
-            <i class="fas fa-arrow-left"></i> Voltar
-          </button>
-          <button class="btn btn-primary" onclick="go(6)">
-            Continuar <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAGE 6: ETAPA 04 - CONFIRMAÇÃO -->
-  <section class="page" id="p6">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 80%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-circle-4"></i> Etapa 4 de 5
-          </div>
-          <h2 class="title">Confirmação dos Dados</h2>
-          <p class="subtitle">Revise tudo antes de gerar o prompt</p>
-        </div>
-
-        <div id="confirmBox" style="margin: 32px 0;"></div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="go(5)">
-            <i class="fas fa-arrow-left"></i> Voltar
-          </button>
-          <button class="btn btn-primary" onclick="go(7)">
-            Gerar Prompt <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAGE 7: ETAPA 05 - RESULTADO -->
-  <section class="page" id="p7">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 100%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-circle-5"></i> Etapa 5 de 5
-          </div>
-          <h2 class="title">Seu Prompt Está Pronto!</h2>
-          <p class="subtitle">Copie e cole no ChatGPT ou Gemini</p>
-        </div>
-
-        <div class="nav" style="margin-bottom: 24px;">
-          <button class="btn btn-primary" onclick="copiarPrompt()">
+        <div id="artsStep4" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🚀 Seu Prompt Está Pronto!</h3>
+          <button class="copy-btn" onclick="copyToClipboard('artsPrompt')">
             <i class="fas fa-copy"></i> Copiar Prompt
           </button>
-          <button class="btn btn-primary" onclick="window.open('https://chat.openai.com', '_blank')" style="background: linear-gradient(135deg, #10a37f 0%, #0d9b6f 100%);">
-            <i class="fas fa-external-link-alt"></i> ChatGPT
-          </button>
-          <button class="btn btn-primary" onclick="window.open('https://gemini.google.com', '_blank')" style="background: linear-gradient(135deg, #4285f4 0%, #1f6feb 100%);">
-            <i class="fas fa-external-link-alt"></i> Gemini
-          </button>
-        </div>
-
-        <div class="prompt-box" id="promptBox"></div>
-
-        <div style="background: rgba(212, 175, 89, 0.1); border: 1px solid rgba(212, 175, 89, 0.3); border-radius: 12px; padding: 20px; margin: 24px 0;">
-          <p style="font-size: 0.9rem; color: #a0a0a0; margin-bottom: 12px;"><strong>💡 Como usar:</strong></p>
-          <ol style="font-size: 0.9rem; color: #a0a0a0; margin-left: 20px;">
-            <li>Copie o prompt acima</li>
-            <li>Abra ChatGPT ou Gemini</li>
-            <li>Cole o prompt na conversa</li>
-            <li>Se escolheu enviar sua logo/foto, anexe os arquivos quando a IA solicitar</li>
-            <li>Aguarde a geração da arte</li>
-          </ol>
-        </div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="go(1)">
-            <i class="fas fa-redo"></i> Criar Novo
-          </button>
-          <button class="btn btn-secondary" onclick="goToHub()">
-            <i class="fas fa-arrow-left"></i> Voltar ao Hub
-          </button>
+          <div class="ai-buttons">
+            <button class="ai-btn" onclick="openAI('chatgpt')">
+              <i class="fas fa-robot"></i> ChatGPT
+            </button>
+            <button class="ai-btn" onclick="openAI('gemini')">
+              <i class="fas fa-sparkles"></i> Gemini
+            </button>
+          </div>
+          <div class="prompt-box" id="artsPrompt"></div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="goHome()"><i class="fas fa-home"></i> Voltar ao Hub</button>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ===== GERADOR DE LOGOS ===== -->
-  <section class="page" id="p-logo">
+  <!-- LOGO TOOL -->
+  <div id="logo" class="page">
     <div class="container">
+      <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Voltar</button>
+      
       <div class="card">
+        <h2 style="margin-bottom: 24px; text-align: center;">Gerador de Logo</h2>
         <div class="progress-bar">
-          <div class="progress-fill" style="width: 50%;"></div>
+          <div class="progress-fill" id="logoProgress" style="width: 25%;"></div>
         </div>
 
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-trademark"></i> Gerador de Logos
+        <div id="logoStep1" class="step">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">📋 Informações da Marca</h3>
+          <div class="form-group">
+            <label>Nome da Marca</label>
+            <input type="text" id="logoBrandName" placeholder="Ex: TechVision">
           </div>
-          <h2 class="title">Crie Sua Logo</h2>
-          <p class="subtitle">Logos modernas e profissionais para sua marca</p>
+          <div class="form-group">
+            <label>Nicho/Segmento</label>
+            <input type="text" id="logoNiche" placeholder="Ex: Tecnologia, Alimentos, Moda">
+          </div>
+          <div class="form-group">
+            <label>Descrição Breve</label>
+            <textarea id="logoDescription" placeholder="O que sua marca faz?"></textarea>
+          </div>
+          <div class="nav">
+            <button class="btn-primary" onclick="nextLogoStep()">Próximo</button>
+          </div>
         </div>
 
-        <div class="grid grid-2">
-          <div class="field">
-            <label><i class="fas fa-store"></i> Nome da Marca</label>
-            <input type="text" id="logo-brand" placeholder="Ex: Premium Burgers">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-utensils"></i> Nicho</label>
-            <select id="logo-nicho">
-              <option value="">Selecione um nicho</option>
-              <option value="Alimentos">Alimentos</option>
-              <option value="Tecnologia">Tecnologia</option>
-              <option value="Moda">Moda</option>
-              <option value="Beleza">Beleza</option>
-              <option value="Saúde">Saúde</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-palette"></i> Estilo (Escolha 1)</label>
-            <div class="chips" style="margin-top: 14px;">
-              <div class="chip" data-type="logo-style">Minimalista</div>
-              <div class="chip" data-type="logo-style">Moderno</div>
-              <div class="chip" data-type="logo-style">Vintage</div>
-              <div class="chip" data-type="logo-style">Geométrico</div>
-              <div class="chip" data-type="logo-style">Elegante</div>
+        <div id="logoStep2" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🎨 Estilo e Formato</h3>
+          <div class="form-group">
+            <label>Estilo de Design</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'logoStyle')">Minimalista</div>
+              <div class="chip" onclick="selectChip(this, 'logoStyle')">Moderno</div>
+              <div class="chip" onclick="selectChip(this, 'logoStyle')">Clássico</div>
+              <div class="chip" onclick="selectChip(this, 'logoStyle')">Geométrico</div>
+              <div class="chip" onclick="selectChip(this, 'logoStyle')">Ilustrativo</div>
             </div>
           </div>
-        </div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="goToHub()">
-            <i class="fas fa-arrow-left"></i> Voltar ao Hub
-          </button>
-          <button class="btn btn-primary" onclick="generateLogoPrompt()">
-            Gerar Prompt <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GERADOR DE CARROSSEL ===== -->
-  <section class="page" id="p-carousel">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 50%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-images"></i> Gerador de Carrossel
-          </div>
-          <h2 class="title">Crie um Carrossel</h2>
-          <p class="subtitle">Sequência de até 3 imagens com narrativa</p>
-        </div>
-
-        <div class="grid grid-2">
-          <div class="field">
-            <label><i class="fas fa-store"></i> Nome do Negócio</label>
-            <input type="text" id="carousel-brand" placeholder="Ex: Burger Premium">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-align-left"></i> Tema do Carrossel</label>
-            <input type="text" id="carousel-theme" placeholder="Ex: Novo Combo Especial">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-align-left"></i> Descrição</label>
-            <textarea id="carousel-desc" placeholder="Descreva o que quer mostrar em cada slide..."></textarea>
-          </div>
-        </div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="goToHub()">
-            <i class="fas fa-arrow-left"></i> Voltar ao Hub
-          </button>
-          <button class="btn btn-primary" onclick="generateCarouselPrompt()">
-            Gerar Prompt <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GERADOR DE CARDÁPIO ===== -->
-  <section class="page" id="p-menu">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 50%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-utensils"></i> Gerador de Cardápio
-          </div>
-          <h2 class="title">Organize Seu Cardápio</h2>
-          <p class="subtitle">Categorias, produtos e preços</p>
-        </div>
-
-        <div class="grid grid-2">
-          <div class="field">
-            <label><i class="fas fa-store"></i> Nome do Estabelecimento</label>
-            <input type="text" id="menu-brand" placeholder="Ex: Burger Premium">
-          </div>
-        </div>
-
-        <div id="menuItems"></div>
-        <button class="add-row-btn" onclick="addMenuItem()">
-          <i class="fas fa-plus"></i> Adicionar Categoria
-        </button>
-
-        <div class="nav" style="margin-top: 40px;">
-          <button class="btn btn-secondary" onclick="goToHub()">
-            <i class="fas fa-arrow-left"></i> Voltar ao Hub
-          </button>
-          <button class="btn btn-primary" onclick="generateMenuPrompt()">
-            Gerar Prompt <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GERADOR DE INFORMATIVOS ===== -->
-  <section class="page" id="p-infos">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 50%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-bell"></i> Gerador de Informativos
-          </div>
-          <h2 class="title">Crie um Informativo</h2>
-          <p class="subtitle">Avisos, promoções e comunicados</p>
-        </div>
-
-        <div class="grid grid-2">
-          <div class="field">
-            <label><i class="fas fa-store"></i> Nome do Negócio</label>
-            <input type="text" id="info-brand" placeholder="Ex: Burger Premium">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-tag"></i> Tipo de Informativo</label>
-            <select id="info-type">
-              <option value="">Selecione um tipo</option>
-              <option value="Feriado">Feriado/Fechamento</option>
-              <option value="Novo Horário">Novo Horário</option>
-              <option value="Promoção">Promoção Relâmpago</option>
-              <option value="Novo Produto">Novo Produto</option>
-              <option value="Aviso">Aviso Importante</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-align-left"></i> Mensagem</label>
-            <textarea id="info-message" placeholder="Descreva o informativo..."></textarea>
-          </div>
-        </div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="goToHub()">
-            <i class="fas fa-arrow-left"></i> Voltar ao Hub
-          </button>
-          <button class="btn btn-primary" onclick="generateInfoPrompt()">
-            Gerar Prompt <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GERADOR DE FIGURINHAS ===== -->
-  <section class="page" id="p-sticker">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 50%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">
-            <i class="fas fa-face-grin-hearts"></i> Gerador de Figurinhas
-          </div>
-          <h2 class="title">Crie Mascotes 2D</h2>
-          <p class="subtitle">Figurinhas para WhatsApp com sua marca</p>
-        </div>
-
-        <div class="grid grid-2">
-          <div class="field">
-            <label><i class="fas fa-store"></i> Nome da Marca</label>
-            <input type="text" id="sticker-brand" placeholder="Ex: Burger Premium">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-quote-left"></i> Frase/Palavra</label>
-            <input type="text" id="sticker-phrase" placeholder="Ex: Bom Dia, Boa Tarde, etc">
-          </div>
-
-          <div class="field">
-            <label><i class="fas fa-palette"></i> Paleta de Cores (Escolha até 3)</label>
-            <div class="colors" style="margin-top: 14px;">
-              <div class="color" style="background: #ff0000;"></div>
-              <div class="color" style="background: #ff6600;"></div>
-              <div class="color" style="background: #ffff00;"></div>
-              <div class="color" style="background: #00ff00;"></div>
-              <div class="color" style="background: #00ffff;"></div>
-              <div class="color" style="background: #0000ff;"></div>
-              <div class="color" style="background: #ff00ff;"></div>
-              <div class="color" style="background: #d4af59;"></div>
+          <div class="form-group">
+            <label>Tipo de Logo</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'logoType')">Apenas Símbolo</div>
+              <div class="chip" onclick="selectChip(this, 'logoType')">Apenas Texto</div>
+              <div class="chip" onclick="selectChip(this, 'logoType')">Símbolo + Texto</div>
             </div>
           </div>
-
-          <div class="field">
-            <label><i class="fas fa-smile"></i> Estilo do Mascote</label>
-            <select id="sticker-style">
-              <option value="">Selecione um estilo</option>
-              <option value="Fofo">Fofo e Amigável</option>
-              <option value="Moderno">Moderno e Geométrico</option>
-              <option value="Cartoon">Cartoon Divertido</option>
-              <option value="Minimalista">Minimalista</option>
-            </select>
+          <div class="form-group">
+            <label>Paleta de Cores</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'logoPalette')">Colorida</div>
+              <div class="chip" onclick="selectChip(this, 'logoPalette')">Monocromática</div>
+              <div class="chip" onclick="selectChip(this, 'logoPalette')">2 Cores</div>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevLogoStep()">Voltar</button>
+            <button class="btn-primary" onclick="nextLogoStep()">Próximo</button>
           </div>
         </div>
 
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="goToHub()">
-            <i class="fas fa-arrow-left"></i> Voltar ao Hub
-          </button>
-          <button class="btn btn-primary" onclick="generateStickerPrompt()">
-            Gerar Prompt <i class="fas fa-arrow-right"></i>
-          </button>
+        <div id="logoStep3" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">✅ Confirmação</h3>
+          <div class="confirm-section">
+            <div class="confirm-row">
+              <span class="confirm-label">Marca:</span>
+              <span class="confirm-value" id="confirmLogoName">-</span>
+            </div>
+            <div class="confirm-row">
+              <span class="confirm-label">Estilo:</span>
+              <span class="confirm-value" id="confirmLogoStyle">-</span>
+            </div>
+            <div class="confirm-row">
+              <span class="confirm-label">Tipo:</span>
+              <span class="confirm-value" id="confirmLogoType">-</span>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevLogoStep()">Voltar</button>
+            <button class="btn-primary" onclick="generateLogoPrompt()">Gerar Prompt</button>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- RESULTADO GENÉRICO -->
-  <section class="page" id="p-result">
-    <div class="container">
-      <div class="card">
-        <div class="header">
-          <h2 class="title">Seu Prompt Está Pronto!</h2>
-          <p class="subtitle">Copie e cole no ChatGPT ou Gemini</p>
-        </div>
-
-        <div class="nav" style="margin-bottom: 24px;">
-          <button class="btn btn-primary" onclick="copiarPrompt()">
+        <div id="logoStep4" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🚀 Seu Prompt Está Pronto!</h3>
+          <button class="copy-btn" onclick="copyToClipboard('logoPrompt')">
             <i class="fas fa-copy"></i> Copiar Prompt
           </button>
-          <button class="btn btn-primary" onclick="window.open('https://chat.openai.com', '_blank')" style="background: linear-gradient(135deg, #10a37f 0%, #0d9b6f 100%);">
-            <i class="fas fa-external-link-alt"></i> ChatGPT
-          </button>
-          <button class="btn btn-primary" onclick="window.open('https://gemini.google.com', '_blank')" style="background: linear-gradient(135deg, #4285f4 0%, #1f6feb 100%);">
-            <i class="fas fa-external-link-alt"></i> Gemini
-          </button>
-        </div>
-
-        <div class="prompt-box" id="resultPrompt"></div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="goToHub()">
-            <i class="fas fa-arrow-left"></i> Voltar ao Hub
-          </button>
+          <div class="ai-buttons">
+            <button class="ai-btn" onclick="openAI('chatgpt')">
+              <i class="fas fa-robot"></i> ChatGPT
+            </button>
+            <button class="ai-btn" onclick="openAI('gemini')">
+              <i class="fas fa-sparkles"></i> Gemini
+            </button>
+          </div>
+          <div class="prompt-box" id="logoPrompt"></div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="goHome()"><i class="fas fa-home"></i> Voltar ao Hub</button>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- CAROUSEL TOOL -->
+  <div id="carousel" class="page">
+    <div class="container">
+      <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Voltar</button>
+      
+      <div class="card">
+        <h2 style="margin-bottom: 24px; text-align: center;">Gerador de Carrossel</h2>
+        <div class="progress-bar">
+          <div class="progress-fill" id="carouselProgress" style="width: 25%;"></div>
+        </div>
+
+        <div id="carouselStep1" class="step">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">📋 Tema do Carrossel</h3>
+          <div class="form-group">
+            <label>Objetivo do Carrossel</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'carouselGoal')">Vender Produto</div>
+              <div class="chip" onclick="selectChip(this, 'carouselGoal')">Educar</div>
+              <div class="chip" onclick="selectChip(this, 'carouselGoal')">Engajar</div>
+              <div class="chip" onclick="selectChip(this, 'carouselGoal')">Promover Evento</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Descrição do Tema</label>
+            <textarea id="carouselTheme" placeholder="Descreva o tema do carrossel..."></textarea>
+          </div>
+          <div class="nav">
+            <button class="btn-primary" onclick="nextCarouselStep()">Próximo</button>
+          </div>
+        </div>
+
+        <div id="carouselStep2" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🎨 Estilo Visual</h3>
+          <div class="form-group">
+            <label>Estilo de Design</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'carouselStyle')">Moderno</div>
+              <div class="chip" onclick="selectChip(this, 'carouselStyle')">Minimalista</div>
+              <div class="chip" onclick="selectChip(this, 'carouselStyle')">Vibrante</div>
+              <div class="chip" onclick="selectChip(this, 'carouselStyle')">Profissional</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Paleta de Cores</label>
+            <div class="color-palette">
+              <div class="color-box" style="background: #d4af59;" onclick="selectColor(this, 'carouselColors')"></div>
+              <div class="color-box" style="background: #ff0000;" onclick="selectColor(this, 'carouselColors')"></div>
+              <div class="color-box" style="background: #0000ff;" onclick="selectColor(this, 'carouselColors')"></div>
+              <div class="color-box" style="background: #00ff00;" onclick="selectColor(this, 'carouselColors')"></div>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevCarouselStep()">Voltar</button>
+            <button class="btn-primary" onclick="nextCarouselStep()">Próximo</button>
+          </div>
+        </div>
+
+        <div id="carouselStep3" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">✅ Confirmação</h3>
+          <div class="confirm-section">
+            <div class="confirm-row">
+              <span class="confirm-label">Objetivo:</span>
+              <span class="confirm-value" id="confirmCarouselGoal">-</span>
+            </div>
+            <div class="confirm-row">
+              <span class="confirm-label">Estilo:</span>
+              <span class="confirm-value" id="confirmCarouselStyle">-</span>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevCarouselStep()">Voltar</button>
+            <button class="btn-primary" onclick="generateCarouselPrompt()">Gerar Prompt</button>
+          </div>
+        </div>
+
+        <div id="carouselStep4" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🚀 Seu Prompt Está Pronto!</h3>
+          <button class="copy-btn" onclick="copyToClipboard('carouselPrompt')">
+            <i class="fas fa-copy"></i> Copiar Prompt
+          </button>
+          <div class="ai-buttons">
+            <button class="ai-btn" onclick="openAI('chatgpt')">
+              <i class="fas fa-robot"></i> ChatGPT
+            </button>
+            <button class="ai-btn" onclick="openAI('gemini')">
+              <i class="fas fa-sparkles"></i> Gemini
+            </button>
+          </div>
+          <div class="prompt-box" id="carouselPrompt"></div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="goHome()"><i class="fas fa-home"></i> Voltar ao Hub</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU TOOL -->
+  <div id="menu" class="page">
+    <div class="container">
+      <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Voltar</button>
+      
+      <div class="card">
+        <h2 style="margin-bottom: 24px; text-align: center;">Gerador de Cardápio</h2>
+        <div class="progress-bar">
+          <div class="progress-fill" id="menuProgress" style="width: 25%;"></div>
+        </div>
+
+        <div id="menuStep1" class="step">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">📋 Informações do Negócio</h3>
+          <div class="form-group">
+            <label>Nome do Estabelecimento</label>
+            <input type="text" id="menuBusinessName" placeholder="Ex: Pizzaria da Nonna">
+          </div>
+          <div class="form-group">
+            <label>Telefone</label>
+            <input type="tel" id="menuPhone" placeholder="(11) 99999-9999">
+          </div>
+          <div class="form-group">
+            <label>Instagram</label>
+            <input type="text" id="menuInstagram" placeholder="@seu_instagram">
+          </div>
+          <div class="form-group">
+            <label>Taxa de Entrega</label>
+            <input type="text" id="menuDeliveryFee" placeholder="Ex: R$ 5,00">
+          </div>
+          <div class="form-group">
+            <label>Tem Logo?</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'menuLogo')">Sim</div>
+              <div class="chip" onclick="selectChip(this, 'menuLogo')">Não</div>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-primary" onclick="nextMenuStep()">Próximo</button>
+          </div>
+        </div>
+
+        <div id="menuStep2" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🍽️ Cardápio</h3>
+          <div class="form-group">
+            <label>Cardápio Completo (Formato: CATEGORIA | PRODUTO | DESCRIÇÃO | VALOR)</label>
+            <textarea id="menuItems" placeholder="PIZZAS | Margherita | Tomate, mozzarela e manjericão | 35.00&#10;PIZZAS | Calabresa | Calabresa e cebola | 38.00&#10;BEBIDAS | Refrigerante | Lata 350ml | 5.00"></textarea>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevMenuStep()">Voltar</button>
+            <button class="btn-primary" onclick="nextMenuStep()">Próximo</button>
+          </div>
+        </div>
+
+        <div id="menuStep3" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🎨 Estilo Visual</h3>
+          <div class="form-group">
+            <label>Estilo de Design</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'menuStyle')">Moderno</div>
+              <div class="chip" onclick="selectChip(this, 'menuStyle')">Clássico</div>
+              <div class="chip" onclick="selectChip(this, 'menuStyle')">Minimalista</div>
+              <div class="chip" onclick="selectChip(this, 'menuStyle')">Rústico</div>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevMenuStep()">Voltar</button>
+            <button class="btn-primary" onclick="nextMenuStep()">Próximo</button>
+          </div>
+        </div>
+
+        <div id="menuStep4" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">✅ Confirmação</h3>
+          <div class="confirm-section">
+            <div class="confirm-row">
+              <span class="confirm-label">Estabelecimento:</span>
+              <span class="confirm-value" id="confirmMenuName">-</span>
+            </div>
+            <div class="confirm-row">
+              <span class="confirm-label">Estilo:</span>
+              <span class="confirm-value" id="confirmMenuStyle">-</span>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevMenuStep()">Voltar</button>
+            <button class="btn-primary" onclick="generateMenuPrompt()">Gerar Prompt</button>
+          </div>
+        </div>
+
+        <div id="menuStep5" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🚀 Seu Prompt Está Pronto!</h3>
+          <button class="copy-btn" onclick="copyToClipboard('menuPrompt')">
+            <i class="fas fa-copy"></i> Copiar Prompt
+          </button>
+          <div class="ai-buttons">
+            <button class="ai-btn" onclick="openAI('chatgpt')">
+              <i class="fas fa-robot"></i> ChatGPT
+            </button>
+            <button class="ai-btn" onclick="openAI('gemini')">
+              <i class="fas fa-sparkles"></i> Gemini
+            </button>
+          </div>
+          <div class="prompt-box" id="menuPrompt"></div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="goHome()"><i class="fas fa-home"></i> Voltar ao Hub</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFO TOOL -->
+  <div id="info" class="page">
+    <div class="container">
+      <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Voltar</button>
+      
+      <div class="card">
+        <h2 style="margin-bottom: 24px; text-align: center;">Gerador de Informativos</h2>
+        <div class="progress-bar">
+          <div class="progress-fill" id="infoProgress" style="width: 50%;"></div>
+        </div>
+
+        <div id="infoStep1" class="step">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">📢 Tipo de Informativo</h3>
+          <div class="form-group">
+            <label>Escolha o Tipo</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'infoType')">Feriado/Fechado</div>
+              <div class="chip" onclick="selectChip(this, 'infoType')">Novo Horário</div>
+              <div class="chip" onclick="selectChip(this, 'infoType')">Promoção</div>
+              <div class="chip" onclick="selectChip(this, 'infoType')">Aviso Importante</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mensagem Principal</label>
+            <textarea id="infoMessage" placeholder="Digite a mensagem do informativo..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Estilo Visual</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'infoStyle')">Urgente</div>
+              <div class="chip" onclick="selectChip(this, 'infoStyle')">Festivo</div>
+              <div class="chip" onclick="selectChip(this, 'infoStyle')">Profissional</div>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-primary" onclick="generateInfoPrompt()">Gerar Prompt</button>
+          </div>
+        </div>
+
+        <div id="infoStep2" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🚀 Seu Prompt Está Pronto!</h3>
+          <button class="copy-btn" onclick="copyToClipboard('infoPrompt')">
+            <i class="fas fa-copy"></i> Copiar Prompt
+          </button>
+          <div class="ai-buttons">
+            <button class="ai-btn" onclick="openAI('chatgpt')">
+              <i class="fas fa-robot"></i> ChatGPT
+            </button>
+            <button class="ai-btn" onclick="openAI('gemini')">
+              <i class="fas fa-sparkles"></i> Gemini
+            </button>
+          </div>
+          <div class="prompt-box" id="infoPrompt"></div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="goHome()"><i class="fas fa-home"></i> Voltar ao Hub</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKER TOOL -->
+  <div id="sticker" class="page">
+    <div class="container">
+      <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Voltar</button>
+      
+      <div class="card">
+        <h2 style="margin-bottom: 24px; text-align: center;">Gerador de Figurinhas</h2>
+        <div class="progress-bar">
+          <div class="progress-fill" id="stickerProgress" style="width: 33%;"></div>
+        </div>
+
+        <div id="stickerStep1" class="step">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🎭 Configuração da Figurinha</h3>
+          <div class="form-group">
+            <label>Frase/Palavra</label>
+            <input type="text" id="stickerPhrase" placeholder="Ex: Bom dia, Boa noite, Sucesso!">
+          </div>
+          <div class="form-group">
+            <label>Estilo do Mascote</label>
+            <div class="chips-group">
+              <div class="chip" onclick="selectChip(this, 'stickerStyle')">2D Cartoon</div>
+              <div class="chip" onclick="selectChip(this, 'stickerStyle')">3D Render</div>
+              <div class="chip" onclick="selectChip(this, 'stickerStyle')">Minimalista</div>
+              <div class="chip" onclick="selectChip(this, 'stickerStyle')">Ilustrativo</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Paleta de Cores (Escolha até 3)</label>
+            <div class="color-palette">
+              <div class="color-box" style="background: #ff0000;" onclick="selectColor(this, 'stickerColors')"></div>
+              <div class="color-box" style="background: #0000ff;" onclick="selectColor(this, 'stickerColors')"></div>
+              <div class="color-box" style="background: #00ff00;" onclick="selectColor(this, 'stickerColors')"></div>
+              <div class="color-box" style="background: #ffff00;" onclick="selectColor(this, 'stickerColors')"></div>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-primary" onclick="nextStickerStep()">Próximo</button>
+          </div>
+        </div>
+
+        <div id="stickerStep2" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">✅ Confirmação</h3>
+          <div class="confirm-section">
+            <div class="confirm-row">
+              <span class="confirm-label">Frase:</span>
+              <span class="confirm-value" id="confirmStickerPhrase">-</span>
+            </div>
+            <div class="confirm-row">
+              <span class="confirm-label">Estilo:</span>
+              <span class="confirm-value" id="confirmStickerStyle">-</span>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="prevStickerStep()">Voltar</button>
+            <button class="btn-primary" onclick="generateStickerPrompt()">Gerar Prompt</button>
+          </div>
+        </div>
+
+        <div id="stickerStep3" class="step" style="display: none;">
+          <h3 style="margin-bottom: 24px; color: #d4af59;">🚀 Seu Prompt Está Pronto!</h3>
+          <button class="copy-btn" onclick="copyToClipboard('stickerPrompt')">
+            <i class="fas fa-copy"></i> Copiar Prompt
+          </button>
+          <div class="ai-buttons">
+            <button class="ai-btn" onclick="openAI('chatgpt')">
+              <i class="fas fa-robot"></i> ChatGPT
+            </button>
+            <button class="ai-btn" onclick="openAI('gemini')">
+              <i class="fas fa-sparkles"></i> Gemini
+            </button>
+          </div>
+          <div class="prompt-box" id="stickerPrompt"></div>
+          <div class="nav">
+            <button class="btn-secondary" onclick="goHome()"><i class="fas fa-home"></i> Voltar ao Hub</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
+    // Motivational quotes
     const quotes = [
-      "Seu sucesso começa com a ação de hoje.",
-      "Quem não arrisca, não prospera.",
-      "A melhor hora para começar foi ontem. A segunda melhor é agora.",
-      "Cada cliente satisfeito é uma porta aberta para o sucesso.",
-      "Criatividade + Ação = Sucesso garantido.",
-      "Você é o responsável pelo seu crescimento.",
-      "Pequenas ações, grandes resultados.",
-      "O mercado recompensa quem se destaca.",
-      "Sua marca merece brilhar.",
-      "Prosperar é uma escolha. Escolha agora.",
-      "Qualidade atrai qualidade.",
-      "Seu negócio é sua melhor obra de arte.",
-      "Inovação é o caminho para o topo.",
-      "Confie no processo, celebre o resultado.",
-      "Você está mais perto do sucesso do que imagina.",
-      "Cada dia é uma nova oportunidade de crescer.",
-      "A excelência não é um destino, é uma jornada.",
-      "Seu cliente está esperando por você.",
-      "Ousadia gera oportunidade.",
-      "Sucesso é 1% inspiração e 99% ação.",
-      "Você tem tudo que precisa para vencer.",
-      "Seja a mudança que seu mercado precisa.",
-      "Grandes coisas começam com pequenas ideias.",
+      "Seu sucesso começa com uma ideia criativa.",
+      "A criatividade é a inteligência se divertindo.",
+      "Grandes ideias começam com pequenos passos.",
+      "Você é capaz de muito mais do que imagina.",
+      "Cada desafio é uma oportunidade de crescer.",
+      "O sucesso é 1% inspiração e 99% transpiração.",
+      "Acredite em si mesmo e tudo é possível.",
+      "A jornada de mil milhas começa com um passo.",
+      "Sua visão se torna realidade quando você age.",
+      "O limite está apenas na sua mente.",
+      "Sucesso é a soma de pequenos esforços.",
+      "Você é o arquiteto do seu próprio destino.",
+      "Nunca é tarde para começar algo novo.",
+      "A persistência é a chave do sucesso.",
       "Seu potencial é ilimitado.",
-      "Faça hoje o que outros deixam para amanhã.",
-      "Qualidade é o melhor marketing.",
-      "Você merece prosperar.",
-      "A consistência é a chave do sucesso.",
-      "Seu trabalho fala mais que suas palavras.",
-      "Comece agora, perfeição depois.",
-      "Sucesso é para quem acredita.",
-      "Você é capaz de mais do que imagina.",
-      "O mercado reconhece a qualidade.",
-      "Sua marca é sua identidade.",
-      "Crescimento começa com decisão.",
-      "Você está no caminho certo.",
-      "Excelência atrai clientes.",
-      "Seu negócio é seu legado.",
-      "Ação hoje, sucesso amanhã.",
-      "Você é o dono do seu destino.",
-      "Criatividade é seu superpoder.",
-      "Prosperar é seu direito.",
-      "Cada venda é uma vitória.",
-      "Você faz diferença no mercado.",
-      "Sucesso é uma escolha diária.",
-      "Seu potencial é infinito.",
-      "Faça acontecer.",
-      "Você merece o melhor.",
-      "Inovação é sua arma.",
-      "Sucesso começa aqui.",
-      "Você é incrível.",
-      "O melhor ainda está por vir.",
-      "Sua jornada é inspiradora.",
-      "Você tem o que é preciso.",
-      "Crescimento é seu destino.",
-      "Qualidade é sua marca.",
-      "Você é um vencedor.",
-      "Sucesso é seu futuro.",
-      "Acredite, crie, prospere.",
-      "Você está pronto.",
-      "O mercado espera por você.",
-      "Sua visão é seu poder.",
-      "Você vai conseguir.",
-      "Sucesso é inevitável.",
-      "Você é extraordinário.",
-      "Criatividade + Coragem = Sucesso.",
-      "Seu negócio vai crescer.",
-      "Você merece brilhar.",
-      "Ação gera resultado.",
-      "Você está no topo.",
-      "Sucesso é seu.",
-      "Você é capaz.",
-      "Prosperar é seu caminho.",
-      "Você faz a diferença.",
-      "Qualidade é seu DNA.",
-      "Você vai vencer.",
-      "Sucesso começa agora.",
-      "Você é incrível demais.",
-      "Seu potencial é real.",
-      "Você está pronto para crescer.",
-      "Criatividade é seu diferencial.",
-      "Você merece sucesso.",
-      "Ação é seu melhor amigo.",
-      "Você vai prosperar.",
-      "Sucesso é seu direito.",
-      "Você é um criador.",
-      "Seu negócio é seu sonho.",
-      "Você está destinado ao sucesso.",
-      "Qualidade sempre vence.",
-      "Você é o melhor.",
-      "Sucesso é seu.",
-      "Você vai brilhar.",
-      "Prosperar é seu destino.",
-      "Você merece tudo.",
-      "Ação hoje, vitória amanhã.",
-      "Você é extraordinário.",
-      "Seu sucesso é garantido.",
-      "Você vai conseguir tudo.",
-      "Sucesso é seu caminho."
+      "Faça hoje o que outros não fazem, amanhã terá o que outros não têm.",
+      "A excelência não é um destino, é uma jornada.",
+      "Você tem tudo que precisa para vencer.",
+      "Transforme seus sonhos em realidade.",
+      "O melhor momento para começar é agora.",
+      "Sua determinação é seu superpoder.",
+      "Cada erro é uma lição para o sucesso.",
+      "Você é mais forte do que pensa.",
+      "A criatividade flui quando você se permite sonhar.",
+      "Seu trabalho vai preencher uma grande parte da sua vida.",
+      "Faça-o com paixão ou não faça.",
+      "O sucesso não é final, o fracasso não é fatal.",
+      "Você é a única versão de si mesmo.",
+      "Grandes coisas nunca vieram da zona de conforto.",
+      "Seu valor não é determinado pelos outros."
     ];
 
-    const state = {
-      tamanho: 'Story 1080x1920',
-      nicho: '',
-      nome: '',
-      telefone: '',
-      instagram: '',
-      endereco: '',
-      promo: '',
-      descricao: '',
-      preco: '',
-      logoChoice: '',
-      produtoChoice: '',
-      styles: [],
-      background: [],
-      colors: [],
-      fonts: [],
-      objectives: [],
-      intensity: '',
-      prompt: '',
-      currentTool: ''
-    };
-
-    function getRandomQuote() {
-      return quotes[Math.floor(Math.random() * quotes.length)];
-    }
-
-    function go(page) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('p' + page).classList.add('active');
-    }
-
-    function goToTool(tool) {
-      state.currentTool = tool;
-      if (tool === 1) {
-        go(1);
-      } else if (tool === 'logo') {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById('p-logo').classList.add('active');
-      } else if (tool === 'carousel') {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById('p-carousel').classList.add('active');
-      } else if (tool === 'menu') {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById('p-menu').classList.add('active');
-        if (document.getElementById('menuItems').innerHTML === '') {
-          addMenuItem();
-        }
-      } else if (tool === 'infos') {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById('p-infos').classList.add('active');
-      } else if (tool === 'sticker') {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById('p-sticker').classList.add('active');
-      }
-    }
-
-    function goToHub() {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('p-hub').classList.add('active');
-      state.currentTool = '';
+    function showRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quoteText').textContent = quotes[randomIndex];
     }
 
     function toggleFullscreen() {
@@ -1680,481 +1318,381 @@
       }
     }
 
-    function initChipListeners() {
-      document.querySelectorAll('.chip').forEach(chip => {
-        chip.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
+    function goToTool(tool) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(tool).classList.add('active');
+      window.scrollTo(0, 0);
+      showRandomQuote();
+    }
 
-          const type = this.getAttribute('data-type');
+    function goHome() {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('home').classList.add('active');
+      window.scrollTo(0, 0);
+      showRandomQuote();
+    }
 
-          if (type === 'background') {
-            handleMultiSelect(this, state.background, 1);
-          } else if (type === 'font') {
-            handleMultiSelect(this, state.fonts, 2);
-          } else if (type === 'objective') {
-            handleMultiSelect(this, state.objectives, 3);
-          } else if (type === 'intensity') {
-            handleSingleSelect(this, state, 'intensity');
-          } else if (type === 'logo-choice') {
-            const value = this.getAttribute('data-value');
-            document.querySelectorAll('[data-type="logo-choice"]').forEach(c => c.classList.remove('active'));
-            this.classList.add('active');
-            state.logoChoice = value;
-          } else if (type === 'produto-choice') {
-            const value = this.getAttribute('data-value');
-            document.querySelectorAll('[data-type="produto-choice"]').forEach(c => c.classList.remove('active'));
-            this.classList.add('active');
-            state.produtoChoice = value;
-          } else if (type === 'logo-style') {
-            document.querySelectorAll('[data-type="logo-style"]').forEach(c => c.classList.remove('active'));
-            this.classList.add('active');
-            state.logoStyle = this.innerText.trim();
-          }
-        });
+    function selectChip(element, group) {
+      document.querySelectorAll(`.chip`).forEach(chip => {
+        if (chip.parentElement.querySelector(`[data-group="${group}"]`) === element.parentElement) {
+          chip.classList.remove('selected');
+        }
+      });
+      element.classList.toggle('selected');
+    }
+
+    function selectColor(element, group) {
+      const selected = document.querySelectorAll(`.color-box.selected`);
+      if (selected.length >= 3 && !element.classList.contains('selected')) {
+        alert('Máximo de 3 cores permitidas');
+        return;
+      }
+      element.classList.toggle('selected');
+    }
+
+    function copyToClipboard(elementId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Prompt copiado para a área de transferência!');
       });
     }
 
-    function handleMultiSelect(chip, array, max) {
-      const text = chip.innerText.trim();
-      if (chip.classList.contains('active')) {
-        chip.classList.remove('active');
-        const idx = array.indexOf(text);
-        if (idx > -1) array.splice(idx, 1);
-      } else {
-        if (array.length >= max) {
-          alert(`Máximo de ${max} item(ns) permitido(s)`);
-          return;
-        }
-        chip.classList.add('active');
-        array.push(text);
+    function openAI(platform) {
+      if (platform === 'chatgpt') {
+        window.open('https://chat.openai.com', '_blank');
+      } else if (platform === 'gemini') {
+        window.open('https://gemini.google.com', '_blank');
       }
     }
 
-    function handleSingleSelect(chip, obj, key) {
-      document.querySelectorAll('.intensity-chips .chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      obj[key] = chip.innerText.trim();
-    }
-
-    function maskPhone(v) {
-      v = v.replace(/\D/g, "");
-      v = v.replace(/^(\d{2})(\d)/g, "($1) $2");
-      v = v.replace(/(\d)(\d{4})$/, "$1-$2");
-      return v;
-    }
-
-    function validarEtapa2() {
-      const nome = document.getElementById('nome').value.trim();
-      const nicho = document.getElementById('nicho').value.trim();
-      const promo = document.getElementById('promo').value.trim();
-
-      if (!nome || !nicho || !promo) {
-        alert('Por favor, preencha Nome, Nicho e Título da Promoção.');
-        return false;
-      }
-
-      state.tamanho = document.getElementById('tamanho').value;
-      state.nicho = nicho;
-      state.nome = nome;
-      state.telefone = document.getElementById('telefone').value;
-      state.instagram = document.getElementById('instagram').value;
-      state.endereco = document.getElementById('endereco').value;
-      state.promo = promo;
-      state.descricao = document.getElementById('descricao').value;
-      state.preco = document.getElementById('preco').value;
-
-      saveToLocalStorage();
-      return true;
-    }
-
-    function renderConfirmation() {
-      const confirmBox = document.getElementById('confirmBox');
+    // Arts Tool Functions
+    function nextArtsStep() {
+      const step1 = document.getElementById('artsStep1');
+      const step2 = document.getElementById('artsStep2');
       
-      let html = `
-        <div class="confirm-row">
-          <span class="confirm-label">Negócio:</span>
-          <span class="confirm-value">${state.nome} (${state.nicho})</span>
-        </div>
-        <div class="confirm-row">
-          <span class="confirm-label">Tamanho:</span>
-          <span class="confirm-value">${state.tamanho}</span>
-        </div>
-        <div class="confirm-row">
-          <span class="confirm-label">Promoção:</span>
-          <span class="confirm-value">${state.promo}</span>
-        </div>
-        <div class="confirm-row">
-          <span class="confirm-label">Preço:</span>
-          <span class="confirm-value">${state.preco || '—'}</span>
-        </div>
-      `;
-
-      if (state.telefone) {
-        html += `<div class="confirm-row"><span class="confirm-label">Telefone:</span><span class="confirm-value">${state.telefone}</span></div>`;
+      if (step1.style.display !== 'none') {
+        step1.style.display = 'none';
+        step2.style.display = 'block';
+        document.getElementById('artsProgress').style.width = '50%';
+      } else if (step2.style.display !== 'none') {
+        step2.style.display = 'none';
+        document.getElementById('artsStep3').style.display = 'block';
+        document.getElementById('artsProgress').style.width = '75%';
+        updateArtsConfirmation();
       }
-
-      if (state.instagram) {
-        html += `<div class="confirm-row"><span class="confirm-label">Instagram:</span><span class="confirm-value">${state.instagram}</span></div>`;
-      }
-
-      html += `
-        <div class="confirm-row">
-          <span class="confirm-label">Fundo:</span>
-          <span class="confirm-value">${state.background.join(', ') || '—'}</span>
-        </div>
-        <div class="confirm-row">
-          <span class="confirm-label">Cores:</span>
-          <span class="confirm-value">${state.colors.length} selecionadas</span>
-        </div>
-        <div class="confirm-row">
-          <span class="confirm-label">Fontes:</span>
-          <span class="confirm-value">${state.fonts.join(', ') || '—'}</span>
-        </div>
-        <div class="confirm-row">
-          <span class="confirm-label">Objetivos:</span>
-          <span class="confirm-value">${state.objectives.join(', ') || '—'}</span>
-        </div>
-        <div class="confirm-row">
-          <span class="confirm-label">Intensidade:</span>
-          <span class="confirm-value">${state.intensity || '—'}</span>
-        </div>
-      `;
-
-      if (state.logoChoice) {
-        const logoLabel = state.logoChoice === 'propria' ? 'Enviar minha logo' : 'Gerar com IA';
-        html += `<div class="confirm-row"><span class="confirm-label">Logo:</span><span class="confirm-value">${logoLabel}</span></div>`;
-      }
-
-      if (state.produtoChoice) {
-        const produtoLabel = state.produtoChoice === 'propria' ? 'Enviar minha foto' : 'Gerar com IA';
-        html += `<div class="confirm-row"><span class="confirm-label">Produto:</span><span class="confirm-value">${produtoLabel}</span></div>`;
-      }
-
-      confirmBox.innerHTML = html;
     }
 
-    function generatePrompt() {
-      let prompt = `# DIRETOR DE ARTE PREMIUM - DELIVERY
+    function prevArtsStep() {
+      const step1 = document.getElementById('artsStep1');
+      const step2 = document.getElementById('artsStep2');
+      const step3 = document.getElementById('artsStep3');
+      
+      if (step2.style.display !== 'none') {
+        step2.style.display = 'none';
+        step1.style.display = 'block';
+        document.getElementById('artsProgress').style.width = '25%';
+      } else if (step3.style.display !== 'none') {
+        step3.style.display = 'none';
+        step2.style.display = 'block';
+        document.getElementById('artsProgress').style.width = '50%';
+      }
+    }
 
-Você é um diretor de arte sênior especialista em publicidade premium para delivery/restaurante. Seu trabalho é criar artes visuais que parecem 100% criadas por um designer humano profissional.
+    function updateArtsConfirmation() {
+      document.getElementById('confirmArtsName').textContent = document.getElementById('artsBusinessName').value || '-';
+      document.getElementById('confirmArtsPhone').textContent = document.getElementById('artsPhone').value || '-';
+      document.getElementById('confirmArtsInstagram').textContent = document.getElementById('artsInstagram').value || '-';
+      const selectedStyle = document.querySelector('.chip.selected');
+      document.getElementById('confirmArtsStyle').textContent = selectedStyle ? selectedStyle.textContent : '-';
+    }
 
-## INSTRUÇÕES CRÍTICAS
+    function generateArtsPrompt() {
+      const businessName = document.getElementById('artsBusinessName').value;
+      const description = document.getElementById('artsDescription').value;
+      const style = document.querySelector('.chip.selected')?.textContent || 'Moderno';
+      
+      const prompt = `Você é um designer profissional especializado em artes para delivery. Crie uma arte profissional com as seguintes especificações:
 
-✓ NÃO faça perguntas
-✓ NÃO explique seu processo
-✓ GERE IMEDIATAMENTE A ARTE FINAL
+NEGÓCIO: ${businessName}
+DESCRIÇÃO: ${description}
+ESTILO: ${style}
 
-## DADOS DA EMPRESA
+Requisitos:
+- Design moderno e atrativo
+- Hierarquia visual clara
+- Pronto para redes sociais
+- Sem texto genérico
+- Qualidade profissional
 
-**Nome:** ${state.nome}
-**Nicho:** ${state.nicho}
-**Promoção:** ${state.promo}
-${state.descricao ? `**Descrição:** ${state.descricao}` : ''}
-${state.preco ? `**Preço:** ${state.preco}` : ''}
-${state.telefone ? `**Contato:** ${state.telefone}` : ''}
+Gere a arte agora.`;
 
-## DIREÇÃO CRIATIVA
+      document.getElementById('artsStep3').style.display = 'none';
+      document.getElementById('artsStep4').style.display = 'block';
+      document.getElementById('artsPrompt').textContent = prompt;
+      document.getElementById('artsProgress').style.width = '100%';
+    }
 
-**Tamanho:** ${state.tamanho}
-**Fundo:** ${state.background.join(', ') || 'Premium fosco'}
-**Tipografia:** ${state.fonts.join(', ') || 'Forte moderna'}
-**Objetivos:** ${state.objectives.join(', ') || 'Vender mais, parecer premium'}
-**Intensidade:** ${state.intensity || 'Equilibrada'}
+    // Logo Tool Functions
+    function nextLogoStep() {
+      const currentStep = document.querySelector('#logo .step:not([style*="display: none"])');
+      const nextStep = currentStep.nextElementSibling;
+      
+      if (nextStep && nextStep.classList.contains('step')) {
+        currentStep.style.display = 'none';
+        nextStep.style.display = 'block';
+        const progress = [25, 50, 75, 100];
+        const stepIndex = Array.from(document.querySelectorAll('#logo .step')).indexOf(nextStep);
+        document.getElementById('logoProgress').style.width = progress[stepIndex] + '%';
+        if (stepIndex === 2) updateLogoConfirmation();
+      }
+    }
 
-## PADRÕES OBRIGATÓRIOS
+    function prevLogoStep() {
+      const currentStep = document.querySelector('#logo .step:not([style*="display: none"])');
+      const prevStep = currentStep.previousElementSibling;
+      
+      if (prevStep && prevStep.classList.contains('step')) {
+        currentStep.style.display = 'none';
+        prevStep.style.display = 'block';
+        const progress = [25, 50, 75, 100];
+        const stepIndex = Array.from(document.querySelectorAll('#logo .step')).indexOf(prevStep);
+        document.getElementById('logoProgress').style.width = progress[stepIndex] + '%';
+      }
+    }
 
-✓ Hierarquia visual forte
-✓ Contraste funcional
-✓ Leitura clara em 2 segundos
-✓ Composição profissional
-✓ Máximo 2 famílias tipográficas
-✓ Paleta coerente
-
-Gere a arte final pronta para publicação no ${state.tamanho.includes('Story') ? 'Instagram Stories' : 'Feed do Instagram'}.`;
-
-      state.prompt = prompt;
-      document.getElementById('promptBox').textContent = prompt;
-      saveToLocalStorage();
+    function updateLogoConfirmation() {
+      document.getElementById('confirmLogoName').textContent = document.getElementById('logoBrandName').value || '-';
+      const selectedStyle = document.querySelector('#logo .chip.selected')?.textContent || '-';
+      document.getElementById('confirmLogoStyle').textContent = selectedStyle;
     }
 
     function generateLogoPrompt() {
-      const brand = document.getElementById('logo-brand').value.trim();
-      const nicho = document.getElementById('logo-nicho').value.trim();
-      const style = state.logoStyle || 'Moderno';
+      const brandName = document.getElementById('logoBrandName').value;
+      const niche = document.getElementById('logoNiche').value;
+      const style = document.querySelector('#logo .chip.selected')?.textContent || 'Moderno';
+      
+      const prompt = `Você é um designer de logos profissional. Crie um logo para:
 
-      if (!brand || !nicho) {
-        alert('Por favor, preencha todos os campos');
-        return;
+MARCA: ${brandName}
+NICHO: ${niche}
+ESTILO: ${style}
+
+Requisitos:
+- Design memorável e único
+- Escalável para diferentes tamanhos
+- Funciona em preto e branco
+- Profissional e atemporal
+
+Gere o logo agora.`;
+
+      document.getElementById('logoStep3').style.display = 'none';
+      document.getElementById('logoStep4').style.display = 'block';
+      document.getElementById('logoPrompt').textContent = prompt;
+      document.getElementById('logoProgress').style.width = '100%';
+    }
+
+    // Carousel Tool Functions
+    function nextCarouselStep() {
+      const currentStep = document.querySelector('#carousel .step:not([style*="display: none"])');
+      const nextStep = currentStep.nextElementSibling;
+      
+      if (nextStep && nextStep.classList.contains('step')) {
+        currentStep.style.display = 'none';
+        nextStep.style.display = 'block';
+        const progress = [25, 50, 75, 100];
+        const stepIndex = Array.from(document.querySelectorAll('#carousel .step')).indexOf(nextStep);
+        document.getElementById('carouselProgress').style.width = progress[stepIndex] + '%';
+        if (stepIndex === 2) updateCarouselConfirmation();
       }
+    }
 
-      const prompt = `# DESIGNER DE LOGOS PROFISSIONAL
+    function prevCarouselStep() {
+      const currentStep = document.querySelector('#carousel .step:not([style*="display: none"])');
+      const prevStep = currentStep.previousElementSibling;
+      
+      if (prevStep && prevStep.classList.contains('step')) {
+        currentStep.style.display = 'none';
+        prevStep.style.display = 'block';
+        const progress = [25, 50, 75, 100];
+        const stepIndex = Array.from(document.querySelectorAll('#carousel .step')).indexOf(prevStep);
+        document.getElementById('carouselProgress').style.width = progress[stepIndex] + '%';
+      }
+    }
 
-Você é um designer de logos sênior com expertise em branding. Crie uma logo profissional e moderna.
-
-## DADOS
-
-**Marca:** ${brand}
-**Nicho:** ${nicho}
-**Estilo:** ${style}
-
-## REQUISITOS
-
-✓ Logo moderna e profissional
-✓ Escalável para qualquer tamanho
-✓ Funciona em preto e branco
-✓ Identidade visual forte
-✓ Sem aparência artificial
-
-Gere a logo em PNG com fundo transparente, pronta para uso.`;
-
-      state.prompt = prompt;
-      document.getElementById('resultPrompt').textContent = prompt;
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('p-result').classList.add('active');
+    function updateCarouselConfirmation() {
+      const goal = document.querySelector('#carousel [data-group="carouselGoal"]')?.textContent || '-';
+      document.getElementById('confirmCarouselGoal').textContent = goal;
+      const style = document.querySelector('#carousel .chip.selected')?.textContent || '-';
+      document.getElementById('confirmCarouselStyle').textContent = style;
     }
 
     function generateCarouselPrompt() {
-      const brand = document.getElementById('carousel-brand').value.trim();
-      const theme = document.getElementById('carousel-theme').value.trim();
-      const desc = document.getElementById('carousel-desc').value.trim();
+      const theme = document.getElementById('carouselTheme').value;
+      const goal = document.querySelector('#carousel .chip.selected')?.textContent || 'Engajar';
+      
+      const prompt = `Crie um carrossel de 3 imagens para Instagram com:
 
-      if (!brand || !theme) {
-        alert('Por favor, preencha todos os campos');
-        return;
-      }
+TEMA: ${theme}
+OBJETIVO: ${goal}
 
-      const prompt = `# DESIGNER DE CARROSSEL - INSTAGRAM
+Imagem 1: Gancho/Atenção
+Imagem 2: Desenvolvimento/Conteúdo
+Imagem 3: Chamada à Ação
 
-Crie uma sequência de 3 imagens para carrossel do Instagram com narrativa clara.
+Requisitos:
+- Design coeso e harmônico
+- Pronto para Instagram
+- Engajador e profissional
 
-## DADOS
+Gere o carrossel agora.`;
 
-**Marca:** ${brand}
-**Tema:** ${theme}
-**Descrição:** ${desc}
-
-## ESTRUTURA
-
-1. **Slide 1 (Capa):** Chame atenção, mostre o tema
-2. **Slide 2 (Conteúdo):** Detalhe o benefício
-3. **Slide 3 (CTA):** Chamada para ação
-
-## REQUISITOS
-
-✓ Sequência lógica e envolvente
-✓ Estilo consistente entre slides
-✓ Tipografia legível
-✓ Cores harmoniosas
-✓ Pronto para publicação
-
-Gere as 3 imagens em 1080x1350px cada.`;
-
-      state.prompt = prompt;
-      document.getElementById('resultPrompt').textContent = prompt;
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('p-result').classList.add('active');
+      document.getElementById('carouselStep3').style.display = 'none';
+      document.getElementById('carouselStep4').style.display = 'block';
+      document.getElementById('carouselPrompt').textContent = prompt;
+      document.getElementById('carouselProgress').style.width = '100%';
     }
 
-    function addMenuItem() {
-      const container = document.getElementById('menuItems');
-      const id = Date.now();
-      const html = `
-        <div class="row-item" id="item-${id}">
-          <input type="text" placeholder="Categoria (ex: Burgers)" class="category">
-          <input type="text" placeholder="Produto (ex: Burger Premium)" class="product">
-          <input type="text" placeholder="Preço (ex: R$ 29,90)" class="price">
-          <button onclick="document.getElementById('item-${id}').remove()">Remover</button>
-        </div>
-      `;
-      container.innerHTML += html;
+    // Menu Tool Functions
+    function nextMenuStep() {
+      const currentStep = document.querySelector('#menu .step:not([style*="display: none"])');
+      const nextStep = currentStep.nextElementSibling;
+      
+      if (nextStep && nextStep.classList.contains('step')) {
+        currentStep.style.display = 'none';
+        nextStep.style.display = 'block';
+        const progress = [20, 40, 60, 80, 100];
+        const stepIndex = Array.from(document.querySelectorAll('#menu .step')).indexOf(nextStep);
+        document.getElementById('menuProgress').style.width = progress[stepIndex] + '%';
+        if (stepIndex === 3) updateMenuConfirmation();
+      }
+    }
+
+    function prevMenuStep() {
+      const currentStep = document.querySelector('#menu .step:not([style*="display: none"])');
+      const prevStep = currentStep.previousElementSibling;
+      
+      if (prevStep && prevStep.classList.contains('step')) {
+        currentStep.style.display = 'none';
+        prevStep.style.display = 'block';
+        const progress = [20, 40, 60, 80, 100];
+        const stepIndex = Array.from(document.querySelectorAll('#menu .step')).indexOf(prevStep);
+        document.getElementById('menuProgress').style.width = progress[stepIndex] + '%';
+      }
+    }
+
+    function updateMenuConfirmation() {
+      document.getElementById('confirmMenuName').textContent = document.getElementById('menuBusinessName').value || '-';
+      const style = document.querySelector('#menu .chip.selected')?.textContent || '-';
+      document.getElementById('confirmMenuStyle').textContent = style;
     }
 
     function generateMenuPrompt() {
-      const brand = document.getElementById('menu-brand').value.trim();
-      const items = [];
+      const businessName = document.getElementById('menuBusinessName').value;
+      const items = document.getElementById('menuItems').value;
+      const style = document.querySelector('#menu .chip.selected')?.textContent || 'Moderno';
+      
+      const prompt = `Crie um cardápio visual profissional com:
 
-      document.querySelectorAll('#menuItems .row-item').forEach(row => {
-        const category = row.querySelector('.category').value.trim();
-        const product = row.querySelector('.product').value.trim();
-        const price = row.querySelector('.price').value.trim();
+ESTABELECIMENTO: ${businessName}
+ESTILO: ${style}
 
-        if (category && product && price) {
-          items.push(`- **${category}**: ${product} (${price})`);
-        }
-      });
+PRODUTOS:
+${items}
 
-      if (!brand || items.length === 0) {
-        alert('Por favor, preencha a marca e adicione pelo menos um item');
-        return;
-      }
+Requisitos:
+- Organizado por categorias
+- Legível e atrativo
+- Profissional
+- Pronto para imprimir ou digital
 
-      const prompt = `# DESIGNER DE CARDÁPIO
+Gere o cardápio agora.`;
 
-Crie um cardápio visual profissional e organizado.
-
-## DADOS
-
-**Marca:** ${brand}
-
-## ITENS
-
-${items.join('\n')}
-
-## REQUISITOS
-
-✓ Organização clara por categorias
-✓ Preços destacados
-✓ Tipografia legível
-✓ Design apetitoso e profissional
-✓ Fácil de ler
-
-Gere um cardápio em formato visual (1080x1440px ou A4).`;
-
-      state.prompt = prompt;
-      document.getElementById('resultPrompt').textContent = prompt;
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('p-result').classList.add('active');
+      document.getElementById('menuStep4').style.display = 'none';
+      document.getElementById('menuStep5').style.display = 'block';
+      document.getElementById('menuPrompt').textContent = prompt;
+      document.getElementById('menuProgress').style.width = '100%';
     }
 
+    // Info Tool Functions
     function generateInfoPrompt() {
-      const brand = document.getElementById('info-brand').value.trim();
-      const type = document.getElementById('info-type').value.trim();
-      const message = document.getElementById('info-message').value.trim();
+      const type = document.querySelector('#info .chip.selected')?.textContent || 'Aviso';
+      const message = document.getElementById('infoMessage').value;
+      
+      const prompt = `Crie um informativo visual com:
 
-      if (!brand || !type || !message) {
-        alert('Por favor, preencha todos os campos');
-        return;
+TIPO: ${type}
+MENSAGEM: ${message}
+
+Requisitos:
+- Impactante e claro
+- Profissional
+- Pronto para redes sociais
+- Chamativo
+
+Gere o informativo agora.`;
+
+      document.getElementById('infoStep1').style.display = 'none';
+      document.getElementById('infoStep2').style.display = 'block';
+      document.getElementById('infoPrompt').textContent = prompt;
+      document.getElementById('infoProgress').style.width = '100%';
+    }
+
+    // Sticker Tool Functions
+    function nextStickerStep() {
+      const step1 = document.getElementById('stickerStep1');
+      const step2 = document.getElementById('stickerStep2');
+      
+      if (step1.style.display !== 'none') {
+        step1.style.display = 'none';
+        step2.style.display = 'block';
+        document.getElementById('stickerProgress').style.width = '66%';
+        updateStickerConfirmation();
       }
+    }
 
-      const prompt = `# DESIGNER DE INFORMATIVOS
+    function prevStickerStep() {
+      const step1 = document.getElementById('stickerStep1');
+      const step2 = document.getElementById('stickerStep2');
+      
+      if (step2.style.display !== 'none') {
+        step2.style.display = 'none';
+        step1.style.display = 'block';
+        document.getElementById('stickerProgress').style.width = '33%';
+      }
+    }
 
-Crie um informativo visual para ${type.toLowerCase()}.
-
-## DADOS
-
-**Marca:** ${brand}
-**Tipo:** ${type}
-**Mensagem:** ${message}
-
-## REQUISITOS
-
-✓ Design chamativo e profissional
-✓ Mensagem clara e legível
-✓ Urgência visual (se aplicável)
-✓ Cores que remetem ao tipo de informativo
-✓ Pronto para publicação
-
-Gere em 1080x1920px (Story) ou 1080x1350px (Feed).`;
-
-      state.prompt = prompt;
-      document.getElementById('resultPrompt').textContent = prompt;
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('p-result').classList.add('active');
+    function updateStickerConfirmation() {
+      document.getElementById('confirmStickerPhrase').textContent = document.getElementById('stickerPhrase').value || '-';
+      const style = document.querySelector('#sticker .chip.selected')?.textContent || '-';
+      document.getElementById('confirmStickerStyle').textContent = style;
     }
 
     function generateStickerPrompt() {
-      const brand = document.getElementById('sticker-brand').value.trim();
-      const phrase = document.getElementById('sticker-phrase').value.trim();
-      const style = document.getElementById('sticker-style').value.trim();
-
-      if (!brand || !phrase || !style) {
-        alert('Por favor, preencha todos os campos');
-        return;
-      }
-
-      const prompt = `# DESIGNER DE FIGURINHAS 2D
-
-Crie um mascote 2D para figurinha de WhatsApp.
-
-## DADOS
-
-**Marca:** ${brand}
-**Frase:** ${phrase}
-**Estilo:** ${style}
-
-## REQUISITOS
-
-✓ Mascote 2D com estilo ${style.toLowerCase()}
-✓ Frase na base da figurinha
-✓ Nome da marca integrado
-✓ Cores vibrantes e harmoniosas
-✓ Formato PNG com fundo transparente
-✓ Pronto para WhatsApp
-
-Gere em 512x512px, pronto para ser figurinha.`;
-
-      state.prompt = prompt;
-      document.getElementById('resultPrompt').textContent = prompt;
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('p-result').classList.add('active');
-    }
-
-    function copiarPrompt() {
-      let text = state.prompt || document.getElementById('resultPrompt').textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        const feedback = document.createElement('div');
-        feedback.className = 'copy-feedback';
-        feedback.innerHTML = '<i class="fas fa-check-circle"></i> Prompt copiado!';
-        document.body.appendChild(feedback);
-        
-        setTimeout(() => feedback.remove(), 2500);
-      }).catch(() => {
-        alert('Erro ao copiar. Tente novamente.');
-      });
-    }
-
-    function saveToLocalStorage() {
-      localStorage.setItem('designaiState', JSON.stringify(state));
-    }
-
-    function loadFromLocalStorage() {
-      const saved = localStorage.getItem('designaiState');
-      if (saved) {
-        Object.assign(state, JSON.parse(saved));
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      initChipListeners();
-
-      const telInput = document.getElementById('telefone');
-      if (telInput) {
-        telInput.addEventListener('input', function(e) {
-          e.target.value = maskPhone(e.target.value);
-        });
-      }
+      const phrase = document.getElementById('stickerPhrase').value;
+      const style = document.querySelector('#sticker .chip.selected')?.textContent || '2D Cartoon';
       
-      document.querySelectorAll('.color').forEach(color => {
-        color.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const bgColor = this.style.background;
-          if (this.classList.contains('active')) {
-            this.classList.remove('active');
-            state.colors = state.colors.filter(c => c !== bgColor);
-          } else {
-            if (state.colors.length >= 3) {
-              alert('Máximo de 3 cores permitido');
-              return;
-            }
-            this.classList.add('active');
-            if (!state.colors.includes(bgColor)) state.colors.push(bgColor);
-          }
-        });
-      });
+      const prompt = `Crie uma figurinha/mascote para WhatsApp com:
 
-      loadFromLocalStorage();
-      document.getElementById('quoteText').textContent = getRandomQuote();
+FRASE: ${phrase}
+ESTILO: ${style}
 
-      const originalGo = go;
-      window.go = function(page) {
-        if (page === 6) renderConfirmation();
-        if (page === 7) generatePrompt();
-        originalGo(page);
-      };
-    });
+Requisitos:
+- 2D, fofo e expressivo
+- Frase na base
+- Fundo transparente
+- Pronto para WhatsApp
+- PNG de alta qualidade
+
+Gere a figurinha agora.`;
+
+      document.getElementById('stickerStep2').style.display = 'none';
+      document.getElementById('stickerStep3').style.display = 'block';
+      document.getElementById('stickerPrompt').textContent = prompt;
+      document.getElementById('stickerProgress').style.width = '100%';
+    }
+
+    // Initialize
+    showRandomQuote();
   </script>
 </body>
 </html>
