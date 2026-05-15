@@ -965,16 +965,7 @@
           <input type="text" id="preco" placeholder="Ex: R$ 49,90">
         </div>
 
-        <div class="field">
-          <label><i class="fas fa-truck"></i> Apps de Entrega</label>
-          <div class="chips">
-            <div class="chip" data-app="iFood">iFood</div>
-            <div class="chip" data-app="Uber Eats">Uber Eats</div>
-            <div class="chip" data-app="99Food">99Food</div>
-            <div class="chip" data-app="Loggi">Loggi</div>
-            <div class="chip" data-app="Outro">Outro</div>
-          </div>
-        </div>
+
 
         <div class="nav">
           <button class="btn btn-secondary" onclick="go(1)">
@@ -1247,7 +1238,6 @@
       promo: '',
       descricao: '',
       preco: '',
-      apps: [],
       logoChoice: null,
       produtoChoice: null,
       styles: [],
@@ -1311,13 +1301,7 @@
             handleMultiSelect(this, state.objectives, 3);
           } else if (category === 'intensity') {
             handleSingleSelect(this, state, 'intensity');
-          } else if (app) {
-            this.classList.toggle('active');
-            if (this.classList.contains('active')) {
-              if (!state.apps.includes(app)) state.apps.push(app);
-            } else {
-              state.apps = state.apps.filter(a => a !== app);
-            }
+
           } else if (type === 'logo-choice') {
             const value = this.getAttribute('data-value');
             document.querySelectorAll('[data-type="logo-choice"]').forEach(c => c.classList.remove('active'));
@@ -1461,9 +1445,7 @@
         html += `<div class="confirm-row"><span class="confirm-label">Instagram:</span><span class="confirm-value">${state.instagram}</span></div>`;
       }
 
-      if (state.apps.length > 0) {
-        html += `<div class="confirm-row"><span class="confirm-label">Apps:</span><span class="confirm-value">${state.apps.join(', ')}</span></div>`;
-      }
+
 
       html += `
         <div class="confirm-row">
@@ -1524,7 +1506,6 @@ ${state.descricao ? `**Descrição:** ${state.descricao}` : ''}
 ${state.preco ? `**Preço:** ${state.preco}` : ''}
 ${state.telefone ? `**Contato:** ${state.telefone}` : ''}
 ${state.instagram ? `**Instagram:** ${state.instagram}` : ''}
-${state.apps.length > 0 ? `**Plataformas:** ${state.apps.join(', ')}` : ''}
 
 ---
 
