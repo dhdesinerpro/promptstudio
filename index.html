@@ -944,29 +944,21 @@
           <p class="subtitle">Logo e foto do produto para sua arte</p>
         </div>
 
-        <div class="grid grid-2">
-          <div class="field">
-            <label><i class="fas fa-image"></i> Logo do Negócio</label>
-            <div class="upload-area" onclick="document.getElementById('logoInput').click()">
-              <label class="upload-label"><i class="fas fa-cloud-arrow-up"></i> Clique para enviar logo</label>
-              <input type="file" id="logoInput" accept="image/*">
-            </div>
-            <div class="chips" style="margin-top: 12px;">
-              <div class="chip" id="logoIA" data-type="logo-ia"><i class="fas fa-wand-magic-sparkles"></i> Criar logo com IA</div>
-            </div>
-            <div class="preview" id="logoPreview"></div>
+        <div class="field">
+          <label><i class="fas fa-image"></i> Logo do Negócio</label>
+          <div class="chips" style="margin-top: 14px;">
+            <div class="chip" data-type="logo-choice" data-value="propria"><i class="fas fa-upload"></i> Vou enviar minha logo</div>
+            <div class="chip" data-type="logo-choice" data-value="ia"><i class="fas fa-wand-magic-sparkles"></i> Gerar logo com IA</div>
           </div>
+        </div>
 
-          <div class="field">
-            <label><i class="fas fa-image"></i> Foto do Produto</label>
-            <div class="upload-area" onclick="document.getElementById('produtoInput').click()">
-              <label class="upload-label"><i class="fas fa-cloud-arrow-up"></i> Clique para enviar foto</label>
-              <input type="file" id="produtoInput" accept="image/*">
-            </div>
-            <div class="chips" style="margin-top: 12px;">
-              <div class="chip" id="produtoIA" data-type="produto-ia"><i class="fas fa-wand-magic-sparkles"></i> Criar imagem com IA</div>
-            </div>
-            <div class="preview" id="produtoPreview"></div>
+        <div class="section-divider"></div>
+
+        <div class="field">
+          <label><i class="fas fa-image"></i> Foto do Produto</label>
+          <div class="chips" style="margin-top: 14px;">
+            <div class="chip" data-type="produto-choice" data-value="propria"><i class="fas fa-upload"></i> Vou enviar minha foto</div>
+            <div class="chip" data-type="produto-choice" data-value="ia"><i class="fas fa-wand-magic-sparkles"></i> Gerar imagem com IA</div>
           </div>
         </div>
 
@@ -1149,22 +1141,11 @@
           <p class="subtitle">Copie o prompt abaixo e envie para ChatGPT ou Gemini</p>
         </div>
 
-        <div class="info-box">
-          <strong><i class="fas fa-lightbulb"></i> Como usar:</strong><br>
-          1. Copie o prompt abaixo<br>
-          2. Abra ChatGPT ou Gemini<br>
-          3. Cole o prompt<br>
-          4. Se você marcou "Enviar logo/foto própria", anexe a imagem quando o chat pedir<br>
-          5. Escreva "GERAR ARTE" e aguarde a IA criar sua imagem
-        </div>
-
-        <div class="prompt-box" id="promptBox"></div>
-
-        <button class="btn btn-primary" onclick="copiarPrompt()" style="width: 100%; margin-bottom: 24px;">
+        <button class="btn btn-primary" onclick="copiarPrompt()" style="width: 100%; margin-bottom: 16px;">
           <i class="fas fa-copy"></i> Copiar Prompt
         </button>
 
-        <div class="nav">
+        <div class="nav" style="margin-bottom: 32px;">
           <button class="btn btn-secondary" onclick="window.open('https://chatgpt.com', '_blank')">
             <i class="fas fa-comments"></i> ChatGPT
           </button>
@@ -1175,6 +1156,17 @@
             <i class="fas fa-plus"></i> Novo
           </button>
         </div>
+
+        <div class="info-box">
+          <strong><i class="fas fa-lightbulb"></i> Como usar:</strong><br>
+          1. Copie o prompt acima<br>
+          2. Abra ChatGPT ou Gemini<br>
+          3. Cole o prompt<br>
+          4. Se você escolheu enviar sua própria imagem, anexe quando o chat pedir<br>
+          5. Escreva "GERAR ARTE" e aguarde a IA criar sua imagem
+        </div>
+
+        <div class="prompt-box" id="promptBox" style="margin-top: 20px; max-height: 250px; font-size: 0.8rem;"></div>
 
         <div class="footer">
           Desenvolvido por <span>@dhdesignerpro</span>
@@ -1196,10 +1188,8 @@
       descricao: '',
       preco: '',
       apps: [],
-      logo: null,
-      logoIA: false,
-      produto: null,
-      produtoIA: false,
+      logoChoice: null,
+      produtoChoice: null,
       styles: [],
       background: [],
       colors: [],
@@ -1253,12 +1243,16 @@
             } else {
               state.apps = state.apps.filter(a => a !== app);
             }
-          } else if (type === 'logo-ia') {
-            this.classList.toggle('active');
-            state.logoIA = this.classList.contains('active');
-          } else if (type === 'produto-ia') {
-            this.classList.toggle('active');
-            state.produtoIA = this.classList.contains('active');
+          } else if (type === 'logo-choice') {
+            const value = this.getAttribute('data-value');
+            document.querySelectorAll('[data-type="logo-choice"]').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            state.logoChoice = value;
+          } else if (type === 'produto-choice') {
+            const value = this.getAttribute('data-value');
+            document.querySelectorAll('[data-type="produto-choice"]').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            state.produtoChoice = value;
           }
         });
       });
@@ -1305,15 +1299,6 @@
             }
           }
         });
-      });
-
-      // FILE UPLOADS
-      document.getElementById('logoInput').addEventListener('change', function(e) {
-        handleFileUpload(e, 'logo', 'logoPreview');
-      });
-
-      document.getElementById('produtoInput').addEventListener('change', function(e) {
-        handleFileUpload(e, 'produto', 'produtoPreview');
       });
 
       loadFromLocalStorage();
@@ -1424,12 +1409,14 @@
         </div>
       `;
 
-      if (state.logo || state.logoIA) {
-        html += `<div class="confirm-row"><span class="confirm-label">Logo:</span><span class="status-badge ${state.logo ? 'status-done' : 'status-pending'}"><i class="fas fa-check"></i> ${state.logo ? 'Enviada' : 'Criar com IA'}</span></div>`;
+      if (state.logoChoice) {
+        const logoLabel = state.logoChoice === 'propria' ? 'Enviar minha logo' : 'Gerar com IA';
+        html += `<div class="confirm-row"><span class="confirm-label">Logo:</span><span class="confirm-value">${logoLabel}</span></div>`;
       }
 
-      if (state.produto || state.produtoIA) {
-        html += `<div class="confirm-row"><span class="confirm-label">Produto:</span><span class="status-badge ${state.produto ? 'status-done' : 'status-pending'}"><i class="fas fa-check"></i> ${state.produto ? 'Enviada' : 'Criar com IA'}</span></div>`;
+      if (state.produtoChoice) {
+        const produtoLabel = state.produtoChoice === 'propria' ? 'Enviar minha foto' : 'Gerar com IA';
+        html += `<div class="confirm-row"><span class="confirm-label">Produto:</span><span class="confirm-value">${produtoLabel}</span></div>`;
       }
 
       confirmBox.innerHTML = html;
@@ -1479,9 +1466,9 @@ ${state.apps.length > 0 ? `**Plataformas:** ${state.apps.join(', ')}` : ''}
 
 ## REFERÊNCIAS VISUAIS
 
-${state.logo ? `**Logo fornecida:** Você receberá a logo em anexo. Use obrigatoriamente na arte.` : `**Logo:** Crie uma logo moderna e premium que represente "${state.nome}".`}
+${state.logoChoice === 'propria' ? `**Logo fornecida:** Você receberá a logo em anexo. Use obrigatoriamente na arte.` : `**Logo:** Crie uma logo moderna e premium que represente "${state.nome}".`}
 
-${state.produto ? `**Foto do produto:** Você receberá a foto em anexo. Use obrigatoriamente na composição.` : `**Produto:** Crie uma visualização premium do produto/serviço de ${state.nicho}.`}
+${state.produtoChoice === 'propria' ? `**Foto do produto:** Você receberá a foto em anexo. Use obrigatoriamente na composição.` : `**Produto:** Crie uma visualização premium do produto/serviço de ${state.nicho}.`}
 
 ---
 
@@ -1519,11 +1506,11 @@ Não responda em texto.
 Não explique.
 Apenas gere a imagem pronta para publicação no ${state.tamanho.includes('Story') ? 'Instagram Stories' : 'Feed do Instagram'}.`;
 
-      if (state.logo) {
+      if (state.logoChoice === 'propria') {
         prompt += `\n\n---\n\n⚠️ **IMPORTANTE:** Você receberá a logo em anexo. Anexe-a agora antes de gerar a arte.`;
       }
 
-      if (state.produto) {
+      if (state.produtoChoice === 'propria') {
         prompt += `\n\n---\n\n⚠️ **IMPORTANTE:** Você receberá a foto do produto em anexo. Anexe-a agora antes de gerar a arte.`;
       }
 
