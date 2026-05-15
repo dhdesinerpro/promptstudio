@@ -63,6 +63,10 @@ h1 em{font-style:normal;color:var(--gold)}
 .sidebar-step.done .step-dot{border-color:var(--text3);background:var(--text3);color:var(--bg)}
 
 .form-main{padding:2rem 2.5rem;max-width:680px}
+.form-main-inner{background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.3rem 0;box-shadow:0 20px 40px rgba(0,0,0,.15)}
+.micro-tip{margin:0 0 1rem;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:rgba(201,168,76,0.05);font-size:.74rem;color:var(--text2)}
+.field-error{display:none;margin-top:6px;font-size:.72rem;color:#ff8e8e}
+.field.invalid select{border-color:#a94a4a}
 .block{display:none}
 .block.visible{display:block}
 .block-header{margin-bottom:1.5rem}
@@ -164,6 +168,23 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 @keyframes spin{to{transform:rotate(360deg)}}
 .gen-text{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.5rem}
 .gen-sub{font-size:0.82rem;color:var(--text3)}
+
+@media (max-width: 900px){
+  .form-layout{grid-template-columns:1fr}
+  .form-sidebar{position:relative;top:0;height:auto;border-right:none;border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:.75rem}
+  .sidebar-step{padding:8px;font-size:.7rem;border-left:none;border:1px solid transparent;border-radius:8px}
+  .sidebar-step.active{border-color:var(--gold);background:rgba(201,168,76,0.06)}
+  .form-main{padding:1rem}
+  .form-main-inner{padding:1rem 1rem 0}
+  .style-grid,.format-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width: 640px){
+  nav{padding:.85rem 1rem}
+  .grid2,.upload-row,.action-row{grid-template-columns:1fr}
+  .home-badges{gap:6px}
+  .form-nav{position:sticky;bottom:0;background:linear-gradient(180deg, rgba(10,10,11,0), rgba(10,10,11,0.95) 35%);padding-bottom:1rem;z-index:5}
+}
 </style>
 
 <div class="app">
@@ -228,6 +249,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     </div>
 
     <div class="form-main">
+      <div class="form-main-inner">
+      <div class="micro-tip">Dica: preencha o essencial primeiro. Você pode voltar e ajustar qualquer etapa depois.</div>
 
       <!-- BLOCO 1: EMPRESA -->
       <div class="block visible" id="block-0">
@@ -256,6 +279,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
               <option>💼 Serviços</option>
               <option>Outro</option>
             </select>
+            <div class="field-error" id="err-nicho">Selecione um nicho para continuar.</div>
           </div>
         </div>
         <div class="field"><label>Slogan <span class="optional">opcional</span></label><input type="text" id="f-slogan" placeholder="Ex: O sabor que você nunca esquece"></div>
@@ -422,6 +446,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         </div>
       </div>
 
+      </div>
     </div>
   </div>
 </div>
@@ -500,6 +525,15 @@ function setBlock(n){
 }
 
 function nextBlock(n){
+  if(n>currentBlock && currentBlock===0 && !document.getElementById('f-nicho').value){
+    const field = document.getElementById('f-nicho').closest('.field');
+    field.classList.add('invalid');
+    document.getElementById('err-nicho').style.display='block';
+    document.getElementById('f-nicho').focus();
+    return;
+  }
+  document.getElementById('f-nicho').closest('.field').classList.remove('invalid');
+  document.getElementById('err-nicho').style.display='none';
   setBlock(n);
   goTo('form-screen');
 }
