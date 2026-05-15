@@ -293,6 +293,8 @@
       padding: 24px;
       margin: 24px 0;
       line-height: 1.8;
+      max-height: 400px;
+      overflow-y: auto;
     }
 
     .confirm-row {
@@ -300,6 +302,7 @@
       justify-content: space-between;
       padding: 12px 0;
       border-bottom: 1px solid #1a1a1a;
+      align-items: center;
     }
 
     .confirm-row:last-child {
@@ -309,11 +312,32 @@
     .confirm-label {
       color: #999;
       font-weight: 500;
+      flex: 0 0 auto;
     }
 
     .confirm-value {
       color: #d4af59;
       font-weight: 600;
+      text-align: right;
+      flex: 1;
+      margin-left: 16px;
+      word-break: break-word;
+    }
+
+    .prompt-box {
+      background: #111;
+      border: 1px solid #d4af59;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #ddd;
+      max-height: 500px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
 
     .nav {
@@ -417,6 +441,35 @@
       margin: 28px 0;
     }
 
+    .info-box {
+      background: rgba(212, 175, 89, 0.08);
+      border: 1px solid rgba(212, 175, 89, 0.3);
+      border-radius: 14px;
+      padding: 16px;
+      margin: 16px 0;
+      color: #ddd;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .copy-feedback {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #4caf50;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      animation: slideIn 0.3s ease;
+      z-index: 1000;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(400px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
     @media (max-width: 768px) {
       .card {
         padding: 24px;
@@ -449,6 +502,17 @@
       .colors {
         grid-template-columns: repeat(4, 1fr);
       }
+
+      .confirm-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .confirm-value {
+        text-align: left;
+        margin-left: 0;
+        margin-top: 8px;
+      }
     }
   </style>
 </head>
@@ -479,7 +543,7 @@
         </div>
         
         <div class="header">
-          <div class="stage-badge">Etapa 1 de 5</div>
+          <div class="stage-badge">Etapa 1 de 4</div>
           <h2 class="title">Dados Principais</h2>
           <p class="subtitle">Informações sobre seu negócio e promoção</p>
         </div>
@@ -583,7 +647,7 @@
         </div>
 
         <div class="header">
-          <div class="stage-badge">Etapa 2 de 5</div>
+          <div class="stage-badge">Etapa 2 de 4</div>
           <h2 class="title">Referências Visuais</h2>
           <p class="subtitle">Logo e foto do produto para sua arte</p>
         </div>
@@ -631,7 +695,7 @@
         </div>
 
         <div class="header">
-          <div class="stage-badge">Etapa 3 de 5</div>
+          <div class="stage-badge">Etapa 3 de 4</div>
           <h2 class="title">Direção Criativa</h2>
           <p class="subtitle">Escolha o estilo, cores e fontes da sua arte</p>
         </div>
@@ -737,32 +801,8 @@
     </div>
   </section>
 
-  <!-- PAGE 5: ETAPA 04 - CONFIRMAÇÃO -->
+  <!-- PAGE 5: ETAPA 04 - CONFIRMAÇÃO & PROMPT -->
   <section class="page" id="p5">
-    <div class="container">
-      <div class="card">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 80%;"></div>
-        </div>
-
-        <div class="header">
-          <div class="stage-badge">Etapa 4 de 5</div>
-          <h2 class="title">Confirmação</h2>
-          <p class="subtitle">Revise todas as informações antes de gerar</p>
-        </div>
-
-        <div class="confirm-box" id="confirmBox"></div>
-
-        <div class="nav">
-          <button class="btn btn-secondary" onclick="go(4)">Editar</button>
-          <button class="btn btn-primary" onclick="go(6)">Gerar CreativePack</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAGE 6: ETAPA 05 - EXPORTAÇÃO -->
-  <section class="page" id="p6">
     <div class="container">
       <div class="card">
         <div class="progress-bar">
@@ -770,19 +810,28 @@
         </div>
 
         <div class="header">
-          <div class="stage-badge">Etapa 5 de 5</div>
-          <h2 class="title">CreativePack Pronto!</h2>
-          <p class="subtitle">Seu arquivo está pronto para usar no ChatGPT ou Gemini</p>
+          <div class="stage-badge">Etapa 4 de 4</div>
+          <h2 class="title">Seu Prompt Está Pronto!</h2>
+          <p class="subtitle">Copie o prompt abaixo e envie para ChatGPT ou Gemini</p>
         </div>
 
-        <div class="confirm-box" style="text-align: center; border: 2px solid #d4af59;">
-          <p style="font-size: 1.1rem; margin-bottom: 16px;">✅ CreativePack gerado com sucesso!</p>
-          <p style="color: #999; margin-bottom: 24px;">Baixe o arquivo .md e envie para o ChatGPT ou Gemini. Escreva "GERAR ARTE" e a IA criará sua imagem final.</p>
+        <div class="info-box">
+          <strong>📋 Como usar:</strong><br>
+          1. Copie o prompt abaixo<br>
+          2. Abra ChatGPT ou Gemini<br>
+          3. Cole o prompt<br>
+          4. Se você marcou "Enviar logo/foto própria", anexe a imagem quando o chat pedir<br>
+          5. Escreva "GERAR ARTE" e aguarde a IA criar sua imagem
         </div>
 
-        <button class="btn btn-primary" onclick="baixarCreativePack()" style="width: 100%; margin-bottom: 16px;">📥 Baixar CreativePack .MD</button>
+        <div class="confirm-box" id="confirmBox" style="border: 1px solid #999; max-height: 300px;"></div>
+
+        <div class="prompt-box" id="promptBox"></div>
+
+        <button class="btn btn-primary" onclick="copiarPrompt()" style="width: 100%; margin-bottom: 16px;">📋 Copiar Prompt</button>
 
         <div class="nav">
+          <button class="btn btn-secondary" onclick="go(4)">Editar</button>
           <button class="btn btn-secondary" onclick="window.open('https://chatgpt.com', '_blank')" style="flex: 1;">Abrir ChatGPT</button>
           <button class="btn btn-secondary" onclick="window.open('https://gemini.google.com', '_blank')" style="flex: 1;">Abrir Gemini</button>
         </div>
@@ -819,7 +868,7 @@
       fonts: [],
       objectives: [],
       intensity: '',
-      markdown: ''
+      prompt: ''
     };
 
     // NAVIGATION
@@ -827,8 +876,10 @@
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('p' + pageNum).classList.add('active');
       
-      if (pageNum === 5) renderConfirmation();
-      if (pageNum === 6) generateMarkdown();
+      if (pageNum === 5) {
+        renderConfirmation();
+        generatePrompt();
+      }
       
       window.scrollTo(0, 0);
     }
@@ -966,12 +1017,12 @@
       
       let html = `
         <div class="confirm-row">
-          <span class="confirm-label">Tamanho:</span>
-          <span class="confirm-value">${state.tamanho}</span>
-        </div>
-        <div class="confirm-row">
           <span class="confirm-label">Negócio:</span>
           <span class="confirm-value">${state.nome} (${state.nicho})</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Tamanho:</span>
+          <span class="confirm-value">${state.tamanho}</span>
         </div>
         <div class="confirm-row">
           <span class="confirm-label">Promoção:</span>
@@ -979,7 +1030,7 @@
         </div>
         <div class="confirm-row">
           <span class="confirm-label">Preço:</span>
-          <span class="confirm-value">${state.preco || 'Não informado'}</span>
+          <span class="confirm-value">${state.preco || '—'}</span>
         </div>
       `;
 
@@ -998,7 +1049,7 @@
       html += `
         <div class="confirm-row">
           <span class="confirm-label">Estilos:</span>
-          <span class="confirm-value">${state.styles.join(', ') || 'Nenhum'}</span>
+          <span class="confirm-value">${state.styles.join(', ') || '—'}</span>
         </div>
         <div class="confirm-row">
           <span class="confirm-label">Cores:</span>
@@ -1006,149 +1057,134 @@
         </div>
         <div class="confirm-row">
           <span class="confirm-label">Fontes:</span>
-          <span class="confirm-value">${state.fonts.join(', ') || 'Nenhuma'}</span>
+          <span class="confirm-value">${state.fonts.join(', ') || '—'}</span>
         </div>
         <div class="confirm-row">
           <span class="confirm-label">Objetivos:</span>
-          <span class="confirm-value">${state.objectives.join(', ') || 'Nenhum'}</span>
+          <span class="confirm-value">${state.objectives.join(', ') || '—'}</span>
         </div>
       `;
 
       if (state.logo || state.logoIA) {
-        html += `<div class="confirm-row"><span class="confirm-label">Logo:</span><span class="status-badge ${state.logo ? 'status-done' : 'status-pending'}">${state.logo ? '✓ Enviada' : '⚡ Será criada com IA'}</span></div>`;
+        html += `<div class="confirm-row"><span class="confirm-label">Logo:</span><span class="status-badge ${state.logo ? 'status-done' : 'status-pending'}">${state.logo ? '✓ Enviada' : '⚡ Criar com IA'}</span></div>`;
       }
 
       if (state.produto || state.produtoIA) {
-        html += `<div class="confirm-row"><span class="confirm-label">Produto:</span><span class="status-badge ${state.produto ? 'status-done' : 'status-pending'}">${state.produto ? '✓ Enviada' : '⚡ Será criada com IA'}</span></div>`;
+        html += `<div class="confirm-row"><span class="confirm-label">Produto:</span><span class="status-badge ${state.produto ? 'status-done' : 'status-pending'}">${state.produto ? '✓ Enviada' : '⚡ Criar com IA'}</span></div>`;
       }
 
       confirmBox.innerHTML = html;
     }
 
-    // MARKDOWN GENERATION
-    function generateMarkdown() {
-      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
-      
-      let markdown = `# SISTEMA DE DIREÇÃO CRIATIVA
+    // PROMPT GENERATION - REFINED & IA-FIRST
+    function generatePrompt() {
+      let prompt = `# DIRETOR DE ARTE PREMIUM - DELIVERY
 
-Você é um diretor de arte especialista em publicidade premium para delivery/restaurante.
+Você é um diretor de arte sênior especialista em publicidade premium para delivery/restaurante. Seu trabalho é criar artes visuais que parecem 100% criadas por um designer humano profissional.
 
 ## INSTRUÇÕES CRÍTICAS
 
-NÃO faça perguntas.
-NÃO explique.
-NÃO peça novas imagens.
-NÃO peça confirmação.
+✓ NÃO faça perguntas
+✓ NÃO explique seu processo
+✓ NÃO peça confirmação
+✓ NÃO solicite novas imagens (use as fornecidas)
+✓ GERE IMEDIATAMENTE A ARTE FINAL
 
-Sua única função é: **GERAR IMEDIATAMENTE A ARTE FINAL**.
-
-A arte deve parecer criada por um designer humano profissional.
-
-### PROIBIDO:
-- Aparência artificial de IA
-- Brushes ou respingos
-- Glow exagerado
-- Poluição visual
-- Tipografia amadora
-- Layout genérico
+Sua única função: GERAR A IMAGEM PRONTA PARA PUBLICAÇÃO.
 
 ---
 
-# DADOS DO NEGÓCIO
+## DADOS DA EMPRESA
 
 **Nome:** ${state.nome}
 **Nicho:** ${state.nicho}
-**Tamanho:** ${state.tamanho}
 **Promoção:** ${state.promo}
-**Descrição:** ${state.descricao || 'N/A'}
-**Preço:** ${state.preco || 'N/A'}
-${state.telefone ? `**Telefone:** ${state.telefone}` : ''}
+${state.descricao ? `**Descrição:** ${state.descricao}` : ''}
+${state.preco ? `**Preço:** ${state.preco}` : ''}
+${state.telefone ? `**Contato:** ${state.telefone}` : ''}
 ${state.instagram ? `**Instagram:** ${state.instagram}` : ''}
-${state.endereco ? `**Endereço:** ${state.endereco}` : ''}
-${state.apps.length > 0 ? `**Apps:** ${state.apps.join(', ')}` : ''}
+${state.apps.length > 0 ? `**Plataformas:** ${state.apps.join(', ')}` : ''}
 
 ---
 
-# DIREÇÃO CRIATIVA
+## DIREÇÃO CRIATIVA
 
+**Tamanho:** ${state.tamanho}
 **Estilos:** ${state.styles.join(', ') || 'Moderno e profissional'}
 **Fundo:** ${state.background.join(', ') || 'Premium fosco'}
-**Paleta:** ${state.colors.length > 0 ? `${state.colors.length} cores selecionadas` : 'Preto, dourado, branco'}
-**Fontes:** ${state.fonts.join(', ') || 'Forte moderna e elegante'}
+**Tipografia:** ${state.fonts.join(', ') || 'Forte moderna'}
 **Objetivos:** ${state.objectives.join(', ') || 'Vender mais, parecer premium'}
 **Intensidade:** ${state.intensity || 'Equilibrada'}
 
 ---
 
-# REFERÊNCIAS VISUAIS
+## REFERÊNCIAS VISUAIS
 
-${state.logo ? `## Logo
+${state.logo ? `**Logo fornecida:** Você receberá a logo em anexo. Use obrigatoriamente na arte.` : `**Logo:** Crie uma logo moderna e premium que represente "${state.nome}".`}
 
-\`\`\`
-${state.logo}
-\`\`\`
-
-Use obrigatoriamente esta logo na arte.` : ''}
-
-${state.produtoIA ? `## Imagem do Produto
-
-Gere uma imagem de alta qualidade do produto com as características descritas acima.` : ''}
-
-${state.produto ? `## Foto do Produto
-
-\`\`\`
-${state.produto}
-\`\`\`
-
-Use obrigatoriamente esta foto na arte.` : ''}
+${state.produto ? `**Foto do produto:** Você receberá a foto em anexo. Use obrigatoriamente na composição.` : `**Produto:** Crie uma visualização premium do produto/serviço de ${state.nicho}.`}
 
 ---
 
-# REQUISITOS DE DIFERENCIAÇÃO (ANTI-GENÉRICO)
+## PADRÕES DE QUALIDADE OBRIGATÓRIOS
 
-- Estruture o layout com hierarquia forte: título, oferta, benefício, prova e CTA em ordem de leitura natural
-- Evite clichês de IA: rostos deformados, textos aleatórios, excesso de efeitos
-- Trabalhe contraste e respiro entre blocos para facilitar leitura em 2 segundos
-- Priorize composição modular, com grid consistente e alinhamento óptico profissional
+### ✗ PROIBIDO:
+- Aparência artificial ou gerada por IA
+- Rostos deformados ou desproporcionais
+- Brushes, respingos ou efeitos exagerados
+- Glow, brilho ou efeitos sem função
+- Textos aleatórios ou ilegíveis
+- Poluição visual ou excesso de elementos
+- Tipografia amadora ou desalinhada
+- Layout genérico ou clichê
+
+### ✓ OBRIGATÓRIO:
+- Hierarquia visual forte (título → oferta → benefício → CTA)
+- Contraste funcional e respiro entre blocos
+- Leitura clara em 2 segundos
+- Composição modular com grid consistente
+- Alinhamento óptico profissional
+- Máximo 2 famílias tipográficas
+- Paleta coerente com o nicho
+- Elementos com função de conversão
+- Destaque real para preço/oferta
+- CTA com urgência elegante
 
 ---
 
-# REQUISITOS DE EXECUÇÃO
+## AÇÃO FINAL
 
-- **Tipografia:** no máximo 2 famílias, pesos bem definidos e kerning uniforme
-- **Cores:** paleta coerente com o nicho, contraste funcional e variações controladas
-- **Elementos:** somente itens com função de conversão; remover enfeites sem objetivo
-- **Foco comercial:** destaque real para preço/oferta e CTA com urgência elegante
-
----
-
-# AÇÃO FINAL
-
-## Gere agora a arte final completa.
+**Gere agora a arte final completa.**
 
 Não responda em texto.
 Não explique.
-Apenas gere a imagem final pronta para publicação.
+Apenas gere a imagem pronta para publicação no ${state.tamanho.includes('Story') ? 'Instagram Stories' : 'Feed do Instagram'}.`;
 
----
+      if (state.logo) {
+        prompt += `\n\n---\n\n⚠️ **IMPORTANTE:** Você receberá a logo em anexo. Anexe-a agora antes de gerar a arte.`;
+      }
 
-*CreativePack gerado em ${new Date().toLocaleString('pt-BR')}*
-*Arquivo: creativepack-${state.nome.toLowerCase().replace(/\s+/g, '-')}-${timestamp}.md*`;
+      if (state.produto) {
+        prompt += `\n\n---\n\n⚠️ **IMPORTANTE:** Você receberá a foto do produto em anexo. Anexe-a agora antes de gerar a arte.`;
+      }
 
-      state.markdown = markdown;
+      state.prompt = prompt;
+      document.getElementById('promptBox').textContent = prompt;
       saveToLocalStorage();
     }
 
-    // FILE DOWNLOAD
-    function baixarCreativePack() {
-      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
-      const filename = `creativepack-${state.nome.toLowerCase().replace(/\s+/g, '-')}-${timestamp}.md`;
-      
-      const blob = new Blob([state.markdown], { type: 'text/markdown; charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = filename;
-      link.click();
+    // COPY PROMPT
+    function copiarPrompt() {
+      navigator.clipboard.writeText(state.prompt).then(() => {
+        const feedback = document.createElement('div');
+        feedback.className = 'copy-feedback';
+        feedback.textContent = '✓ Prompt copiado!';
+        document.body.appendChild(feedback);
+        
+        setTimeout(() => feedback.remove(), 2000);
+      }).catch(() => {
+        alert('Erro ao copiar. Tente novamente.');
+      });
     }
 
     // LOCAL STORAGE
