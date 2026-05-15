@@ -1,1 +1,1170 @@
-<!DOCTYPE html><html lang='pt-br'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1.0'><title>AIFOOD</title><link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap' rel='stylesheet'><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;background:#070707;color:#fff}.page{display:none;min-height:100vh;padding:20px}.active{display:flex;align-items:center;justify-content:center;flex-direction:column}.card{width:100%;max-width:1000px;background:#111;border:1px solid #222;border-radius:28px;padding:30px}.logo{font-weight:800;font-size:1.2rem}.logo span{color:#d4af59}.hero{text-align:center;max-width:700px}.hero h1{font-size:5rem;letter-spacing:-.08em}.hero p{margin-top:16px;color:#b5b5b5}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:8px}.field input,.field textarea,.field select{background:#090909;border:1px solid #252525;border-radius:16px;padding:14px;color:#fff}.field textarea{min-height:110px}.chips,.colors{display:flex;flex-wrap:wrap;gap:12px}.chip{padding:12px 16px;border-radius:14px;border:1px solid #2a2a2a;background:#0c0c0c;cursor:pointer}.chip.active{border-color:#d4af59;color:#d4af59;background:rgba(212,175,89,.08)}.color{width:52px;height:52px;border-radius:14px;border:2px solid transparent;cursor:pointer}.color.active{border-color:#fff}.nav{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.btn{height:54px;padding:0 26px;border:none;border-radius:16px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#d4af59,#f2d28a)}.btn2{background:#191919;color:#fff;border:1px solid #2a2a2a}.preview img{width:120px;height:120px;border-radius:16px;object-fit:cover;margin-top:14px}.confirm{background:#0a0a0a;border:1px solid #222;padding:22px;border-radius:20px;line-height:2}.footer{margin-top:20px;color:#666;font-size:.85rem}.footer span{color:#d4af59}</style></head><body><section class='page active' id='p1'><div class='hero'><div class='logo'>AIFOOD <span>Design Prompt</span></div><h1>AIFOOD</h1><p>Crie artes profissionais para delivery com aparência premium usando IA.</p><button class='btn' onclick='go(2)'>Criar Meu Prompt</button><div class='footer'>Desenvolvido por <span>@dhdesignerpro</span></div></div></section><section class='page' id='p2'><div class='card'><div class='logo'>Etapa 01</div><div class='grid'><div class='field'><label>Tamanho</label><select id='tamanho'><option>Story 1080x1920</option><option>Feed 1080x1440</option></select></div><div class='field'><label>Nicho</label><select id='nicho'><option>Hamburgueria</option><option>Pizzaria</option><option>Sushi</option><option>Açaí</option><option>Lanchonete</option><option>Restaurante</option><option>Marmitaria</option><option>Pastelaria</option><option>Hot Dogs</option><option>Espetinho</option><option>Frango Assado</option><option>Cafeteria</option><option>Confeitaria</option><option>Delivery</option><option>Fast Food</option></select></div><div class='field'><label>Nome</label><input id='nome'></div><div class='field'><label>Telefone</label><input id='telefone'></div><div class='field'><label>Instagram</label><input id='instagram'></div><div class='field'><label>Título promoção</label><input id='promo'></div><div class='field'><label>Descrição</label><textarea id='descricao'></textarea></div><div class='field'><label>Preço</label><input id='preco'></div></div><div class='nav'><button class='btn btn2' onclick='go(1)'>Voltar</button><button class='btn' onclick='go(3)'>Continuar</button></div></div></section><section class='page' id='p3'><div class='card'><div class='logo'>Etapa 02</div><div class='grid'><div class='field'><label>Logo</label><input type='file' id='logo'><div class='chips'><div class='chip' id='logoia'>Criar logo com IA</div></div></div><div class='field'><label>Produto</label><input type='file' id='produto'><div class='chips'><div class='chip' id='produtoia'>Criar imagem com IA</div></div></div></div><div class='preview' id='preview'></div><div class='nav'><button class='btn btn2' onclick='go(2)'>Voltar</button><button class='btn' onclick='go(4)'>Continuar</button></div></div></section><section class='page' id='p4'><div class='card'><div class='logo'>Etapa 03 • Direção Criativa</div><div class='field'><label>Escolha até 3 estilos</label><div class='chips styles'><div class='chip'>Escuro sofisticado</div><div class='chip'>Claro moderno</div><div class='chip'>Food chamativo</div><div class='chip'>Gourmet elegante</div><div class='chip'>Minimalista clean</div><div class='chip'>Instagram viral</div><div class='chip'>Luxuoso premium</div><div class='chip'>Artesanal aconchegante</div></div></div><div class='field' style='margin-top:20px'><label>Paleta de cores</label><div class='colors'><div class='color' style='background:#000'></div><div class='color' style='background:#fff'></div><div class='color' style='background:#ff0000'></div><div class='color' style='background:#ff9800'></div><div class='color' style='background:#ffeb3b'></div><div class='color' style='background:#4caf50'></div><div class='color' style='background:#00bcd4'></div><div class='color' style='background:#3f51b5'></div><div class='color' style='background:#9c27b0'></div><div class='color' style='background:#795548'></div></div></div><div class='field' style='margin-top:20px'><label>Estilo da fonte</label><div class='chips'><div class='chip'>Forte moderna</div><div class='chip'>Elegante fina</div><div class='chip'>Impactante bold</div><div class='chip'>Gourmet sofisticada</div></div></div><div class='field' style='margin-top:20px'><label>Objetivo da arte</label><div class='chips'><div class='chip'>Vender mais</div><div class='chip'>Parecer premium</div><div class='chip'>Destacar preço</div><div class='chip'>Chamar atenção</div></div></div><div class='nav'><button class='btn btn2' onclick='go(3)'>Voltar</button><button class='btn' onclick='confirmar()'>Continuar</button></div></div></section><section class='page' id='p5'><div class='card'><div class='logo'>Confirmação</div><div class='confirm' id='confirm'></div><div class='nav'><button class='btn btn2' onclick='go(4)'>Editar</button><button class='btn' onclick='gerar()'>Gerar CreativePack</button></div></div></section><section class='page' id='p6'><div class='card'><button class='btn' style='width:100%' onclick='baixar()'>Baixar CreativePack .MD</button><div class='nav'><button class='btn btn2' onclick="window.open('https://chatgpt.com')">Abrir ChatGPT</button><button class='btn btn2' onclick="window.open('https://gemini.google.com')">Abrir Gemini</button></div></div></section><script>const state={logo:null,produto:null,md:''};function go(n){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('p'+n).classList.add('active')}document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>c.classList.toggle('active'));document.querySelectorAll('.color').forEach(c=>c.onclick=()=>c.classList.toggle('active'));function readFile(input,key){const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=e=>{state[key]=e.target.result;preview.innerHTML+=`<img src='${e.target.result}'>`};r.readAsDataURL(file)}logo.onchange=()=>readFile(logo,'logo');produto.onchange=()=>readFile(produto,'produto');function confirmar(){confirm.innerHTML=`Empresa: ${nome.value}<br>Nicho: ${nicho.value}<br>Promoção: ${promo.value}<br>Preço: ${preco.value||'Sem preço'}<br>Instagram: ${instagram.value||'-'}<br>${logoia.classList.contains('active')?'Logo será criada com IA<br>':''}${produtoia.classList.contains('active')?'Produto será criado com IA<br>':''}`;go(5)}function gerar(){const estilos=[...document.querySelectorAll('.styles .chip.active')].map(x=>x.innerText).join(', ');state.md=`# SISTEMA DE DIREÇÃO CRIATIVA\n\nNÃO faça perguntas. Gere imediatamente a arte final.\n\n# NEGÓCIO\nEmpresa: ${nome.value}\nNicho: ${nicho.value}\nPromoção: ${promo.value}\nDescrição: ${descricao.value}\nPreço: ${preco.value}\nTelefone: ${telefone.value}\nInstagram: ${instagram.value}\n\n# DIREÇÃO CRIATIVA\nEstilos: ${estilos}\n\n# AÇÃO FINAL\nGere agora a imagem final.`;go(6)}function baixar(){const blob=new Blob([state.md],{type:'text/markdown'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`creativepack-${nome.value}-${Date.now()}.md`;a.click()}</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIFOOD Design Prompt - Crie Artes Premium com IA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #070707;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding: 20px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: #0a0a0a;
+      border: 1px solid #1a1a1a;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .header {
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .logo span {
+      color: #d4af59;
+      font-weight: 800;
+    }
+
+    .stage-badge {
+      display: inline-block;
+      background: rgba(212, 175, 89, 0.1);
+      color: #d4af59;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #999;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero .title {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: #b0b0b0;
+      margin-bottom: 40px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #e0e0e0;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      background: #111111;
+      border: 1px solid #222;
+      border-radius: 14px;
+      padding: 12px 16px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      outline: none;
+      border-color: #d4af59;
+      background: #141414;
+      box-shadow: 0 0 0 3px rgba(212, 175, 89, 0.1);
+    }
+
+    .field textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid #222;
+      background: #111;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .chip:hover {
+      border-color: #333;
+      background: #141414;
+    }
+
+    .chip.active {
+      border-color: #d4af59;
+      background: rgba(212, 175, 89, 0.12);
+      color: #d4af59;
+      font-weight: 600;
+    }
+
+    .colors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .color {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 14px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .color:hover {
+      transform: scale(1.05);
+    }
+
+    .color.active {
+      border-color: #fff;
+      box-shadow: 0 0 0 3px rgba(212, 175, 89, 0.2);
+    }
+
+    .upload-area {
+      border: 2px dashed #222;
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #0f0f0f;
+    }
+
+    .upload-area:hover {
+      border-color: #333;
+      background: #121212;
+    }
+
+    .upload-area input {
+      display: none;
+    }
+
+    .upload-label {
+      display: block;
+      cursor: pointer;
+      font-weight: 500;
+      color: #d4af59;
+    }
+
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .preview-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #222;
+    }
+
+    .preview-item img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .preview-item .remove {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: none;
+    }
+
+    .preview-item:hover .remove {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .confirm-box {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+      line-height: 1.8;
+    }
+
+    .confirm-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .confirm-row:last-child {
+      border-bottom: none;
+    }
+
+    .confirm-label {
+      color: #999;
+      font-weight: 500;
+    }
+
+    .confirm-value {
+      color: #d4af59;
+      font-weight: 600;
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      justify-content: space-between;
+    }
+
+    .nav button {
+      flex: 1;
+    }
+
+    .btn {
+      height: 52px;
+      padding: 0 28px;
+      border: none;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d4af59 0%, #f2d28a 100%);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(212, 175, 89, 0.3);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: #111;
+      color: #fff;
+      border: 1px solid #222;
+    }
+
+    .btn-secondary:hover {
+      background: #1a1a1a;
+      border-color: #333;
+    }
+
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    .footer span {
+      color: #d4af59;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 3px;
+      background: #1a1a1a;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #d4af59, #f2d28a);
+      border-radius: 2px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .status-done {
+      background: rgba(76, 175, 80, 0.15);
+      color: #4caf50;
+    }
+
+    .status-pending {
+      background: rgba(255, 152, 0, 0.15);
+      color: #ff9800;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: #1a1a1a;
+      margin: 28px 0;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 24px;
+      }
+
+      .title {
+        font-size: 1.8rem;
+      }
+
+      .hero .title {
+        font-size: 2.2rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+      }
+
+      .nav button {
+        width: 100%;
+      }
+
+      .colors {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- PAGE 1: HERO -->
+  <section class="page active" id="p1">
+    <div class="container">
+      <div class="card hero">
+        <div class="logo">
+          AIFOOD <span>Design Prompt</span>
+        </div>
+        <h1 class="title">AIFOOD</h1>
+        <p class="subtitle">Crie artes profissionais para delivery com aparência premium usando IA. Sem aparência artificial.</p>
+        <button class="btn btn-primary" onclick="go(2)" style="width: 100%; margin-top: 24px;">Criar Meu CreativePack</button>
+        <div class="footer">
+          Desenvolvido por <span>@dhdesignerpro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2: ETAPA 01 - DADOS PRINCIPAIS -->
+  <section class="page" id="p2">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 20%;"></div>
+        </div>
+        
+        <div class="header">
+          <div class="stage-badge">Etapa 1 de 5</div>
+          <h2 class="title">Dados Principais</h2>
+          <p class="subtitle">Informações sobre seu negócio e promoção</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label>Tamanho da Arte</label>
+            <select id="tamanho">
+              <option value="Story 1080x1920">Story 1080x1920</option>
+              <option value="Feed 1080x1440">Feed 1080x1440</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Nicho do Negócio</label>
+            <select id="nicho">
+              <option value="">Selecione um nicho</option>
+              <option value="Hamburgueria">Hamburgueria</option>
+              <option value="Pizzaria">Pizzaria</option>
+              <option value="Sushi">Sushi</option>
+              <option value="Açaí">Açaí</option>
+              <option value="Lanchonete">Lanchonete</option>
+              <option value="Restaurante">Restaurante</option>
+              <option value="Marmitaria">Marmitaria</option>
+              <option value="Pastelaria">Pastelaria</option>
+              <option value="Hot Dogs">Hot Dogs</option>
+              <option value="Espetinho">Espetinho</option>
+              <option value="Frango Assado">Frango Assado</option>
+              <option value="Cafeteria">Cafeteria</option>
+              <option value="Confeitaria">Confeitaria</option>
+              <option value="Delivery">Delivery</option>
+              <option value="Fast Food">Fast Food</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label>Nome do Estabelecimento</label>
+            <input type="text" id="nome" placeholder="Ex: Burger Premium">
+          </div>
+
+          <div class="field">
+            <label>Telefone / WhatsApp</label>
+            <input type="text" id="telefone" placeholder="Ex: (11) 99999-9999">
+          </div>
+
+          <div class="field">
+            <label>Instagram</label>
+            <input type="text" id="instagram" placeholder="Ex: @burger_premium">
+          </div>
+
+          <div class="field">
+            <label>Endereço Físico</label>
+            <input type="text" id="endereco" placeholder="Ex: Rua Principal, 123">
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="field">
+          <label>Título da Promoção</label>
+          <input type="text" id="promo" placeholder="Ex: Combo Deluxe - 50% OFF">
+        </div>
+
+        <div class="field">
+          <label>Descrição da Promoção</label>
+          <textarea id="descricao" placeholder="Ex: Dois burgers premium + batata + bebida. Válido até domingo."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Preço / Valor da Promoção</label>
+          <input type="text" id="preco" placeholder="Ex: R$ 49,90">
+        </div>
+
+        <div class="field">
+          <label>Apps de Entrega</label>
+          <div class="chips">
+            <div class="chip" data-app="iFood">iFood</div>
+            <div class="chip" data-app="Uber Eats">Uber Eats</div>
+            <div class="chip" data-app="99Food">99Food</div>
+            <div class="chip" data-app="Loggi">Loggi</div>
+            <div class="chip" data-app="Outro">Outro</div>
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="go(1)">Voltar</button>
+          <button class="btn btn-primary" onclick="validarEtapa2() && go(3)">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 3: ETAPA 02 - REFERÊNCIAS VISUAIS -->
+  <section class="page" id="p3">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 40%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">Etapa 2 de 5</div>
+          <h2 class="title">Referências Visuais</h2>
+          <p class="subtitle">Logo e foto do produto para sua arte</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label>Logo do Negócio</label>
+            <div class="upload-area" onclick="document.getElementById('logoInput').click()">
+              <label class="upload-label">📤 Clique para enviar logo</label>
+              <input type="file" id="logoInput" accept="image/*">
+            </div>
+            <div class="chips" style="margin-top: 12px;">
+              <div class="chip" id="logoIA" data-type="logo-ia">Criar logo com IA</div>
+            </div>
+            <div class="preview" id="logoPreview"></div>
+          </div>
+
+          <div class="field">
+            <label>Foto do Produto</label>
+            <div class="upload-area" onclick="document.getElementById('produtoInput').click()">
+              <label class="upload-label">📤 Clique para enviar foto</label>
+              <input type="file" id="produtoInput" accept="image/*">
+            </div>
+            <div class="chips" style="margin-top: 12px;">
+              <div class="chip" id="produtoIA" data-type="produto-ia">Criar imagem com IA</div>
+            </div>
+            <div class="preview" id="produtoPreview"></div>
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="go(2)">Voltar</button>
+          <button class="btn btn-primary" onclick="go(4)">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 4: ETAPA 03 - DIREÇÃO CRIATIVA -->
+  <section class="page" id="p4">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 60%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">Etapa 3 de 5</div>
+          <h2 class="title">Direção Criativa</h2>
+          <p class="subtitle">Escolha o estilo, cores e fontes da sua arte</p>
+        </div>
+
+        <div class="field">
+          <label>Estilos (Escolha até 3)</label>
+          <div class="chips styles-chips">
+            <div class="chip" data-category="styles">Escuro sofisticado</div>
+            <div class="chip" data-category="styles">Claro moderno</div>
+            <div class="chip" data-category="styles">Food chamativo</div>
+            <div class="chip" data-category="styles">Gourmet elegante</div>
+            <div class="chip" data-category="styles">Minimalista clean</div>
+            <div class="chip" data-category="styles">Instagram viral</div>
+            <div class="chip" data-category="styles">Luxuoso premium</div>
+            <div class="chip" data-category="styles">Artesanal aconchegante</div>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="field">
+          <label>Estilo de Fundo</label>
+          <div class="chips bg-chips">
+            <div class="chip" data-category="background">Escuro elegante</div>
+            <div class="chip" data-category="background">Claro clean</div>
+            <div class="chip" data-category="background">Fundo urbano</div>
+            <div class="chip" data-category="background">Premium fosco</div>
+            <div class="chip" data-category="background">Iluminado moderno</div>
+            <div class="chip" data-category="background">Textura gastronômica</div>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="field">
+          <label>Paleta de Cores (Escolha até 3)</label>
+          <div class="colors">
+            <div class="color" style="background: #000000;" title="Preto"></div>
+            <div class="color" style="background: #ffffff;" title="Branco"></div>
+            <div class="color" style="background: #d4af59;" title="Dourado"></div>
+            <div class="color" style="background: #ff0000;" title="Vermelho"></div>
+            <div class="color" style="background: #ff6b35;" title="Laranja"></div>
+            <div class="color" style="background: #ffd700;" title="Amarelo"></div>
+            <div class="color" style="background: #4caf50;" title="Verde"></div>
+            <div class="color" style="background: #00bcd4;" title="Ciano"></div>
+            <div class="color" style="background: #3f51b5;" title="Azul"></div>
+            <div class="color" style="background: #9c27b0;" title="Roxo"></div>
+            <div class="color" style="background: #e91e63;" title="Rosa"></div>
+            <div class="color" style="background: #795548;" title="Marrom"></div>
+            <div class="color" style="background: #607d8b;" title="Cinza Azulado"></div>
+            <div class="color" style="background: #f57f17;" title="Âmbar"></div>
+            <div class="color" style="background: #00796b;" title="Teal"></div>
+            <div class="color" style="background: #455a64;" title="Cinza Escuro"></div>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="field">
+          <label>Estilo de Fonte (Escolha até 2)</label>
+          <div class="chips fonts-chips">
+            <div class="chip" data-category="fonts">Forte moderna</div>
+            <div class="chip" data-category="fonts">Elegante fina</div>
+            <div class="chip" data-category="fonts">Impactante bold</div>
+            <div class="chip" data-category="fonts">Gourmet sofisticada</div>
+            <div class="chip" data-category="fonts">Compacta moderna</div>
+            <div class="chip" data-category="fonts">Instagram forte</div>
+            <div class="chip" data-category="fonts">Minimalista clean</div>
+            <div class="chip" data-category="fonts">Premium clássica</div>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="field">
+          <label>Objetivos da Arte (Escolha até 3)</label>
+          <div class="chips objectives-chips">
+            <div class="chip" data-category="objectives">Vender mais</div>
+            <div class="chip" data-category="objectives">Destacar preço</div>
+            <div class="chip" data-category="objectives">Parecer premium</div>
+            <div class="chip" data-category="objectives">Chamar atenção</div>
+            <div class="chip" data-category="objectives">Parecer artesanal</div>
+            <div class="chip" data-category="objectives">Parecer sofisticado</div>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="field">
+          <label>Intensidade Visual</label>
+          <div class="chips intensity-chips">
+            <div class="chip" data-category="intensity">Minimalista</div>
+            <div class="chip" data-category="intensity">Equilibrada</div>
+            <div class="chip" data-category="intensity">Impactante</div>
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="go(3)">Voltar</button>
+          <button class="btn btn-primary" onclick="go(5)">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 5: ETAPA 04 - CONFIRMAÇÃO -->
+  <section class="page" id="p5">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 80%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">Etapa 4 de 5</div>
+          <h2 class="title">Confirmação</h2>
+          <p class="subtitle">Revise todas as informações antes de gerar</p>
+        </div>
+
+        <div class="confirm-box" id="confirmBox"></div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="go(4)">Editar</button>
+          <button class="btn btn-primary" onclick="go(6)">Gerar CreativePack</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 6: ETAPA 05 - EXPORTAÇÃO -->
+  <section class="page" id="p6">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 100%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">Etapa 5 de 5</div>
+          <h2 class="title">CreativePack Pronto!</h2>
+          <p class="subtitle">Seu arquivo está pronto para usar no ChatGPT ou Gemini</p>
+        </div>
+
+        <div class="confirm-box" style="text-align: center; border: 2px solid #d4af59;">
+          <p style="font-size: 1.1rem; margin-bottom: 16px;">✅ CreativePack gerado com sucesso!</p>
+          <p style="color: #999; margin-bottom: 24px;">Baixe o arquivo .md e envie para o ChatGPT ou Gemini. Escreva "GERAR ARTE" e a IA criará sua imagem final.</p>
+        </div>
+
+        <button class="btn btn-primary" onclick="baixarCreativePack()" style="width: 100%; margin-bottom: 16px;">📥 Baixar CreativePack .MD</button>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="window.open('https://chatgpt.com', '_blank')" style="flex: 1;">Abrir ChatGPT</button>
+          <button class="btn btn-secondary" onclick="window.open('https://gemini.google.com', '_blank')" style="flex: 1;">Abrir Gemini</button>
+        </div>
+
+        <button class="btn btn-secondary" onclick="go(1)" style="width: 100%; margin-top: 16px;">Criar Novo CreativePack</button>
+
+        <div class="footer">
+          Desenvolvido por <span>@dhdesignerpro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // STATE MANAGEMENT
+    const state = {
+      tamanho: 'Story 1080x1920',
+      nicho: '',
+      nome: '',
+      telefone: '',
+      instagram: '',
+      endereco: '',
+      promo: '',
+      descricao: '',
+      preco: '',
+      apps: [],
+      logo: null,
+      logoIA: false,
+      produto: null,
+      produtoIA: false,
+      styles: [],
+      background: [],
+      colors: [],
+      fonts: [],
+      objectives: [],
+      intensity: '',
+      markdown: ''
+    };
+
+    // NAVIGATION
+    function go(pageNum) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('p' + pageNum).classList.add('active');
+      
+      if (pageNum === 5) renderConfirmation();
+      if (pageNum === 6) generateMarkdown();
+      
+      window.scrollTo(0, 0);
+    }
+
+    // CHIP SELECTION
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        const type = this.getAttribute('data-type');
+        const app = this.getAttribute('data-app');
+
+        if (category === 'styles') {
+          handleMultiSelect(this, state.styles, 3, '.styles-chips');
+        } else if (category === 'background') {
+          handleMultiSelect(this, state.background, 1, '.bg-chips');
+        } else if (category === 'fonts') {
+          handleMultiSelect(this, state.fonts, 2, '.fonts-chips');
+        } else if (category === 'objectives') {
+          handleMultiSelect(this, state.objectives, 3, '.objectives-chips');
+        } else if (category === 'intensity') {
+          handleSingleSelect(this, state, 'intensity', '.intensity-chips');
+        } else if (app) {
+          this.classList.toggle('active');
+          if (this.classList.contains('active')) {
+            if (!state.apps.includes(app)) state.apps.push(app);
+          } else {
+            state.apps = state.apps.filter(a => a !== app);
+          }
+        } else if (type === 'logo-ia') {
+          this.classList.toggle('active');
+          state.logoIA = this.classList.contains('active');
+        } else if (type === 'produto-ia') {
+          this.classList.toggle('active');
+          state.produtoIA = this.classList.contains('active');
+        }
+      });
+    });
+
+    function handleMultiSelect(chip, array, max, selector) {
+      if (chip.classList.contains('active')) {
+        chip.classList.remove('active');
+        array.splice(array.indexOf(chip.innerText), 1);
+      } else {
+        if (array.length < max) {
+          chip.classList.add('active');
+          array.push(chip.innerText);
+        }
+      }
+    }
+
+    function handleSingleSelect(chip, obj, key, selector) {
+      document.querySelectorAll(selector + ' .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      obj[key] = chip.innerText;
+    }
+
+    // COLOR SELECTION
+    document.querySelectorAll('.color').forEach(color => {
+      color.addEventListener('click', function() {
+        if (state.colors.length < 3 || this.classList.contains('active')) {
+          this.classList.toggle('active');
+          const bgColor = this.style.background;
+          if (this.classList.contains('active')) {
+            if (!state.colors.includes(bgColor)) state.colors.push(bgColor);
+          } else {
+            state.colors = state.colors.filter(c => c !== bgColor);
+          }
+        }
+      });
+    });
+
+    // FILE UPLOADS
+    document.getElementById('logoInput').addEventListener('change', function(e) {
+      handleFileUpload(e, 'logo', 'logoPreview');
+    });
+
+    document.getElementById('produtoInput').addEventListener('change', function(e) {
+      handleFileUpload(e, 'produto', 'produtoPreview');
+    });
+
+    function handleFileUpload(e, key, previewId) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        state[key] = event.target.result;
+        
+        const preview = document.getElementById(previewId);
+        preview.innerHTML = `
+          <div class="preview-item">
+            <img src="${event.target.result}" alt="Preview">
+            <button class="remove" onclick="removeFile('${key}', '${previewId}')">✕</button>
+          </div>
+        `;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeFile(key, previewId) {
+      state[key] = null;
+      document.getElementById(previewId).innerHTML = '';
+      if (key === 'logo') document.getElementById('logoInput').value = '';
+      if (key === 'produto') document.getElementById('produtoInput').value = '';
+    }
+
+    // VALIDATION
+    function validarEtapa2() {
+      const nome = document.getElementById('nome').value.trim();
+      const nicho = document.getElementById('nicho').value.trim();
+      const promo = document.getElementById('promo').value.trim();
+
+      if (!nome || !nicho || !promo) {
+        alert('Por favor, preencha Nome, Nicho e Título da Promoção.');
+        return false;
+      }
+
+      state.tamanho = document.getElementById('tamanho').value;
+      state.nicho = nicho;
+      state.nome = nome;
+      state.telefone = document.getElementById('telefone').value;
+      state.instagram = document.getElementById('instagram').value;
+      state.endereco = document.getElementById('endereco').value;
+      state.promo = promo;
+      state.descricao = document.getElementById('descricao').value;
+      state.preco = document.getElementById('preco').value;
+
+      saveToLocalStorage();
+      return true;
+    }
+
+    // CONFIRMATION RENDERING
+    function renderConfirmation() {
+      const confirmBox = document.getElementById('confirmBox');
+      
+      let html = `
+        <div class="confirm-row">
+          <span class="confirm-label">Tamanho:</span>
+          <span class="confirm-value">${state.tamanho}</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Negócio:</span>
+          <span class="confirm-value">${state.nome} (${state.nicho})</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Promoção:</span>
+          <span class="confirm-value">${state.promo}</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Preço:</span>
+          <span class="confirm-value">${state.preco || 'Não informado'}</span>
+        </div>
+      `;
+
+      if (state.telefone) {
+        html += `<div class="confirm-row"><span class="confirm-label">Telefone:</span><span class="confirm-value">${state.telefone}</span></div>`;
+      }
+
+      if (state.instagram) {
+        html += `<div class="confirm-row"><span class="confirm-label">Instagram:</span><span class="confirm-value">${state.instagram}</span></div>`;
+      }
+
+      if (state.apps.length > 0) {
+        html += `<div class="confirm-row"><span class="confirm-label">Apps:</span><span class="confirm-value">${state.apps.join(', ')}</span></div>`;
+      }
+
+      html += `
+        <div class="confirm-row">
+          <span class="confirm-label">Estilos:</span>
+          <span class="confirm-value">${state.styles.join(', ') || 'Nenhum'}</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Cores:</span>
+          <span class="confirm-value">${state.colors.length} selecionadas</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Fontes:</span>
+          <span class="confirm-value">${state.fonts.join(', ') || 'Nenhuma'}</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Objetivos:</span>
+          <span class="confirm-value">${state.objectives.join(', ') || 'Nenhum'}</span>
+        </div>
+      `;
+
+      if (state.logo || state.logoIA) {
+        html += `<div class="confirm-row"><span class="confirm-label">Logo:</span><span class="status-badge ${state.logo ? 'status-done' : 'status-pending'}">${state.logo ? '✓ Enviada' : '⚡ Será criada com IA'}</span></div>`;
+      }
+
+      if (state.produto || state.produtoIA) {
+        html += `<div class="confirm-row"><span class="confirm-label">Produto:</span><span class="status-badge ${state.produto ? 'status-done' : 'status-pending'}">${state.produto ? '✓ Enviada' : '⚡ Será criada com IA'}</span></div>`;
+      }
+
+      confirmBox.innerHTML = html;
+    }
+
+    // MARKDOWN GENERATION
+    function generateMarkdown() {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+      
+      let markdown = `# SISTEMA DE DIREÇÃO CRIATIVA
+
+Você é um diretor de arte especialista em publicidade premium para delivery/restaurante.
+
+## INSTRUÇÕES CRÍTICAS
+
+NÃO faça perguntas.
+NÃO explique.
+NÃO peça novas imagens.
+NÃO peça confirmação.
+
+Sua única função é: **GERAR IMEDIATAMENTE A ARTE FINAL**.
+
+A arte deve parecer criada por um designer humano profissional.
+
+### PROIBIDO:
+- Aparência artificial de IA
+- Brushes ou respingos
+- Glow exagerado
+- Poluição visual
+- Tipografia amadora
+- Layout genérico
+
+---
+
+# DADOS DO NEGÓCIO
+
+**Nome:** ${state.nome}
+**Nicho:** ${state.nicho}
+**Tamanho:** ${state.tamanho}
+**Promoção:** ${state.promo}
+**Descrição:** ${state.descricao || 'N/A'}
+**Preço:** ${state.preco || 'N/A'}
+${state.telefone ? `**Telefone:** ${state.telefone}` : ''}
+${state.instagram ? `**Instagram:** ${state.instagram}` : ''}
+${state.endereco ? `**Endereço:** ${state.endereco}` : ''}
+${state.apps.length > 0 ? `**Apps:** ${state.apps.join(', ')}` : ''}
+
+---
+
+# DIREÇÃO CRIATIVA
+
+**Estilos:** ${state.styles.join(', ') || 'Moderno e profissional'}
+**Fundo:** ${state.background.join(', ') || 'Premium fosco'}
+**Paleta:** ${state.colors.length > 0 ? `${state.colors.length} cores selecionadas` : 'Preto, dourado, branco'}
+**Fontes:** ${state.fonts.join(', ') || 'Forte moderna e elegante'}
+**Objetivos:** ${state.objectives.join(', ') || 'Vender mais, parecer premium'}
+**Intensidade:** ${state.intensity || 'Equilibrada'}
+
+---
+
+# REFERÊNCIAS VISUAIS
+
+${state.logo ? `## Logo
+
+\`\`\`
+${state.logo}
+\`\`\`
+
+Use obrigatoriamente esta logo na arte.` : ''}
+
+${state.produtoIA ? `## Imagem do Produto
+
+Gere uma imagem de alta qualidade do produto com as características descritas acima.` : ''}
+
+${state.produto ? `## Foto do Produto
+
+\`\`\`
+${state.produto}
+\`\`\`
+
+Use obrigatoriamente esta foto na arte.` : ''}
+
+---
+
+# REQUISITOS DE DIFERENCIAÇÃO (ANTI-GENÉRICO)
+
+- Estruture o layout com hierarquia forte: título, oferta, benefício, prova e CTA em ordem de leitura natural
+- Evite clichês de IA: rostos deformados, textos aleatórios, excesso de efeitos
+- Trabalhe contraste e respiro entre blocos para facilitar leitura em 2 segundos
+- Priorize composição modular, com grid consistente e alinhamento óptico profissional
+
+---
+
+# REQUISITOS DE EXECUÇÃO
+
+- **Tipografia:** no máximo 2 famílias, pesos bem definidos e kerning uniforme
+- **Cores:** paleta coerente com o nicho, contraste funcional e variações controladas
+- **Elementos:** somente itens com função de conversão; remover enfeites sem objetivo
+- **Foco comercial:** destaque real para preço/oferta e CTA com urgência elegante
+
+---
+
+# AÇÃO FINAL
+
+## Gere agora a arte final completa.
+
+Não responda em texto.
+Não explique.
+Apenas gere a imagem final pronta para publicação.
+
+---
+
+*CreativePack gerado em ${new Date().toLocaleString('pt-BR')}*
+*Arquivo: creativepack-${state.nome.toLowerCase().replace(/\s+/g, '-')}-${timestamp}.md*`;
+
+      state.markdown = markdown;
+      saveToLocalStorage();
+    }
+
+    // FILE DOWNLOAD
+    function baixarCreativePack() {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+      const filename = `creativepack-${state.nome.toLowerCase().replace(/\s+/g, '-')}-${timestamp}.md`;
+      
+      const blob = new Blob([state.markdown], { type: 'text/markdown; charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+    }
+
+    // LOCAL STORAGE
+    function saveToLocalStorage() {
+      localStorage.setItem('aifoodState', JSON.stringify(state));
+    }
+
+    function loadFromLocalStorage() {
+      const saved = localStorage.getItem('aifoodState');
+      if (saved) {
+        Object.assign(state, JSON.parse(saved));
+      }
+    }
+
+    // INITIALIZE
+    loadFromLocalStorage();
+  </script>
+</body>
+</html>
