@@ -67,23 +67,11 @@
       }
     }
 
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translateX(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
     .container {
       width: 100%;
       max-width: 900px;
     }
 
-    /* ===== HUB STYLES ===== */
     .hub-container {
       width: 100%;
       max-width: 1200px;
@@ -307,7 +295,6 @@
       font-weight: 700;
     }
 
-    /* ===== ART GENERATOR STYLES ===== */
     .card {
       background: rgba(15, 15, 25, 0.7);
       backdrop-filter: blur(20px);
@@ -344,7 +331,6 @@
 
     .header {
       margin-bottom: 40px;
-      animation: slideInRight 0.6s ease-out;
     }
 
     .stage-badge {
@@ -607,8 +593,72 @@
       z-index: 1000;
     }
 
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
     .hero .title {
       font-size: 2.8rem;
+    }
+
+    .add-row-btn {
+      background: rgba(212, 175, 89, 0.1);
+      border: 1px dashed rgba(212, 175, 89, 0.5);
+      color: #d4af59;
+      padding: 12px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 12px;
+    }
+
+    .add-row-btn:hover {
+      background: rgba(212, 175, 89, 0.2);
+      border-color: #d4af59;
+    }
+
+    .row-item {
+      background: rgba(212, 175, 89, 0.05);
+      border: 1px solid rgba(212, 175, 89, 0.2);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .row-item input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 89, 0.2);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .row-item button {
+      background: rgba(255, 0, 0, 0.2);
+      border: 1px solid rgba(255, 0, 0, 0.4);
+      color: #ff6b6b;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .row-item button:hover {
+      background: rgba(255, 0, 0, 0.3);
     }
 
     @media (max-width: 768px) {
@@ -648,6 +698,10 @@
 
       .quote-banner .quote-text {
         font-size: 1.3rem;
+      }
+
+      .row-item {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -716,6 +770,7 @@
     </div>
   </section>
 
+  <!-- ===== GERADOR DE ARTES ===== -->
   <!-- PAGE 1: ART GENERATOR - HERO -->
   <section class="page" id="p1">
     <div class="container">
@@ -1109,30 +1164,299 @@
     </div>
   </section>
 
-  <script>
-    // STATE MANAGEMENT
-    const state = {
-      tamanho: 'Story 1080x1920',
-      nicho: '',
-      nome: '',
-      telefone: '',
-      instagram: '',
-      endereco: '',
-      promo: '',
-      descricao: '',
-      preco: '',
-      logoChoice: '',
-      produtoChoice: '',
-      styles: [],
-      background: [],
-      colors: [],
-      fonts: [],
-      objectives: [],
-      intensity: '',
-      prompt: ''
-    };
+  <!-- ===== GERADOR DE LOGOS ===== -->
+  <section class="page" id="p-logo">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 50%;"></div>
+        </div>
 
-    // MOTIVATIONAL QUOTES
+        <div class="header">
+          <div class="stage-badge">
+            <i class="fas fa-trademark"></i> Gerador de Logos
+          </div>
+          <h2 class="title">Crie Sua Logo</h2>
+          <p class="subtitle">Logos modernas e profissionais para sua marca</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label><i class="fas fa-store"></i> Nome da Marca</label>
+            <input type="text" id="logo-brand" placeholder="Ex: Premium Burgers">
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-utensils"></i> Nicho</label>
+            <select id="logo-nicho">
+              <option value="">Selecione um nicho</option>
+              <option value="Alimentos">Alimentos</option>
+              <option value="Tecnologia">Tecnologia</option>
+              <option value="Moda">Moda</option>
+              <option value="Beleza">Beleza</option>
+              <option value="Saúde">Saúde</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-palette"></i> Estilo (Escolha 1)</label>
+            <div class="chips" style="margin-top: 14px;">
+              <div class="chip" data-type="logo-style">Minimalista</div>
+              <div class="chip" data-type="logo-style">Moderno</div>
+              <div class="chip" data-type="logo-style">Vintage</div>
+              <div class="chip" data-type="logo-style">Geométrico</div>
+              <div class="chip" data-type="logo-style">Elegante</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="goToHub()">
+            <i class="fas fa-arrow-left"></i> Voltar ao Hub
+          </button>
+          <button class="btn btn-primary" onclick="generateLogoPrompt()">
+            Gerar Prompt <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GERADOR DE CARROSSEL ===== -->
+  <section class="page" id="p-carousel">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 50%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">
+            <i class="fas fa-images"></i> Gerador de Carrossel
+          </div>
+          <h2 class="title">Crie um Carrossel</h2>
+          <p class="subtitle">Sequência de até 3 imagens com narrativa</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label><i class="fas fa-store"></i> Nome do Negócio</label>
+            <input type="text" id="carousel-brand" placeholder="Ex: Burger Premium">
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-align-left"></i> Tema do Carrossel</label>
+            <input type="text" id="carousel-theme" placeholder="Ex: Novo Combo Especial">
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-align-left"></i> Descrição</label>
+            <textarea id="carousel-desc" placeholder="Descreva o que quer mostrar em cada slide..."></textarea>
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="goToHub()">
+            <i class="fas fa-arrow-left"></i> Voltar ao Hub
+          </button>
+          <button class="btn btn-primary" onclick="generateCarouselPrompt()">
+            Gerar Prompt <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GERADOR DE CARDÁPIO ===== -->
+  <section class="page" id="p-menu">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 50%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">
+            <i class="fas fa-utensils"></i> Gerador de Cardápio
+          </div>
+          <h2 class="title">Organize Seu Cardápio</h2>
+          <p class="subtitle">Categorias, produtos e preços</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label><i class="fas fa-store"></i> Nome do Estabelecimento</label>
+            <input type="text" id="menu-brand" placeholder="Ex: Burger Premium">
+          </div>
+        </div>
+
+        <div id="menuItems"></div>
+        <button class="add-row-btn" onclick="addMenuItem()">
+          <i class="fas fa-plus"></i> Adicionar Categoria
+        </button>
+
+        <div class="nav" style="margin-top: 40px;">
+          <button class="btn btn-secondary" onclick="goToHub()">
+            <i class="fas fa-arrow-left"></i> Voltar ao Hub
+          </button>
+          <button class="btn btn-primary" onclick="generateMenuPrompt()">
+            Gerar Prompt <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GERADOR DE INFORMATIVOS ===== -->
+  <section class="page" id="p-infos">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 50%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">
+            <i class="fas fa-bell"></i> Gerador de Informativos
+          </div>
+          <h2 class="title">Crie um Informativo</h2>
+          <p class="subtitle">Avisos, promoções e comunicados</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label><i class="fas fa-store"></i> Nome do Negócio</label>
+            <input type="text" id="info-brand" placeholder="Ex: Burger Premium">
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-tag"></i> Tipo de Informativo</label>
+            <select id="info-type">
+              <option value="">Selecione um tipo</option>
+              <option value="Feriado">Feriado/Fechamento</option>
+              <option value="Novo Horário">Novo Horário</option>
+              <option value="Promoção">Promoção Relâmpago</option>
+              <option value="Novo Produto">Novo Produto</option>
+              <option value="Aviso">Aviso Importante</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-align-left"></i> Mensagem</label>
+            <textarea id="info-message" placeholder="Descreva o informativo..."></textarea>
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="goToHub()">
+            <i class="fas fa-arrow-left"></i> Voltar ao Hub
+          </button>
+          <button class="btn btn-primary" onclick="generateInfoPrompt()">
+            Gerar Prompt <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GERADOR DE FIGURINHAS ===== -->
+  <section class="page" id="p-sticker">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 50%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">
+            <i class="fas fa-face-grin-hearts"></i> Gerador de Figurinhas
+          </div>
+          <h2 class="title">Crie Mascotes 2D</h2>
+          <p class="subtitle">Figurinhas para WhatsApp com sua marca</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label><i class="fas fa-store"></i> Nome da Marca</label>
+            <input type="text" id="sticker-brand" placeholder="Ex: Burger Premium">
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-quote-left"></i> Frase/Palavra</label>
+            <input type="text" id="sticker-phrase" placeholder="Ex: Bom Dia, Boa Tarde, etc">
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-palette"></i> Paleta de Cores (Escolha até 3)</label>
+            <div class="colors" style="margin-top: 14px;">
+              <div class="color" style="background: #ff0000;"></div>
+              <div class="color" style="background: #ff6600;"></div>
+              <div class="color" style="background: #ffff00;"></div>
+              <div class="color" style="background: #00ff00;"></div>
+              <div class="color" style="background: #00ffff;"></div>
+              <div class="color" style="background: #0000ff;"></div>
+              <div class="color" style="background: #ff00ff;"></div>
+              <div class="color" style="background: #d4af59;"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label><i class="fas fa-smile"></i> Estilo do Mascote</label>
+            <select id="sticker-style">
+              <option value="">Selecione um estilo</option>
+              <option value="Fofo">Fofo e Amigável</option>
+              <option value="Moderno">Moderno e Geométrico</option>
+              <option value="Cartoon">Cartoon Divertido</option>
+              <option value="Minimalista">Minimalista</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="goToHub()">
+            <i class="fas fa-arrow-left"></i> Voltar ao Hub
+          </button>
+          <button class="btn btn-primary" onclick="generateStickerPrompt()">
+            Gerar Prompt <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADO GENÉRICO -->
+  <section class="page" id="p-result">
+    <div class="container">
+      <div class="card">
+        <div class="header">
+          <h2 class="title">Seu Prompt Está Pronto!</h2>
+          <p class="subtitle">Copie e cole no ChatGPT ou Gemini</p>
+        </div>
+
+        <div class="nav" style="margin-bottom: 24px;">
+          <button class="btn btn-primary" onclick="copiarPrompt()">
+            <i class="fas fa-copy"></i> Copiar Prompt
+          </button>
+          <button class="btn btn-primary" onclick="window.open('https://chat.openai.com', '_blank')" style="background: linear-gradient(135deg, #10a37f 0%, #0d9b6f 100%);">
+            <i class="fas fa-external-link-alt"></i> ChatGPT
+          </button>
+          <button class="btn btn-primary" onclick="window.open('https://gemini.google.com', '_blank')" style="background: linear-gradient(135deg, #4285f4 0%, #1f6feb 100%);">
+            <i class="fas fa-external-link-alt"></i> Gemini
+          </button>
+        </div>
+
+        <div class="prompt-box" id="resultPrompt"></div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="goToHub()">
+            <i class="fas fa-arrow-left"></i> Voltar ao Hub
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
     const quotes = [
       "Seu sucesso começa com a ação de hoje.",
       "Quem não arrisca, não prospera.",
@@ -1235,30 +1559,68 @@
       "Sucesso é seu caminho."
     ];
 
+    const state = {
+      tamanho: 'Story 1080x1920',
+      nicho: '',
+      nome: '',
+      telefone: '',
+      instagram: '',
+      endereco: '',
+      promo: '',
+      descricao: '',
+      preco: '',
+      logoChoice: '',
+      produtoChoice: '',
+      styles: [],
+      background: [],
+      colors: [],
+      fonts: [],
+      objectives: [],
+      intensity: '',
+      prompt: '',
+      currentTool: ''
+    };
+
     function getRandomQuote() {
       return quotes[Math.floor(Math.random() * quotes.length)];
     }
 
-    // NAVIGATION
     function go(page) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('p' + page).classList.add('active');
     }
 
     function goToTool(tool) {
+      state.currentTool = tool;
       if (tool === 1) {
         go(1);
-      } else {
-        alert(`Ferramenta "${tool}" será implementada em breve!`);
+      } else if (tool === 'logo') {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('p-logo').classList.add('active');
+      } else if (tool === 'carousel') {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('p-carousel').classList.add('active');
+      } else if (tool === 'menu') {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('p-menu').classList.add('active');
+        if (document.getElementById('menuItems').innerHTML === '') {
+          addMenuItem();
+        }
+      } else if (tool === 'infos') {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('p-infos').classList.add('active');
+      } else if (tool === 'sticker') {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('p-sticker').classList.add('active');
       }
     }
 
     function goToHub() {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('p-hub').classList.add('active');
+      state.currentTool = '';
     }
 
-    // FULLSCREEN
     function toggleFullscreen() {
       const elem = document.documentElement;
       if (!document.fullscreenElement) {
@@ -1270,7 +1632,6 @@
       }
     }
 
-    // CHIP LISTENERS
     function initChipListeners() {
       document.querySelectorAll('.chip').forEach(chip => {
         chip.addEventListener('click', function(e) {
@@ -1278,7 +1639,6 @@
           e.stopPropagation();
 
           const type = this.getAttribute('data-type');
-          const category = this.getAttribute('data-category');
 
           if (type === 'background') {
             handleMultiSelect(this, state.background, 1);
@@ -1298,6 +1658,10 @@
             document.querySelectorAll('[data-type="produto-choice"]').forEach(c => c.classList.remove('active'));
             this.classList.add('active');
             state.produtoChoice = value;
+          } else if (type === 'logo-style') {
+            document.querySelectorAll('[data-type="logo-style"]').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            state.logoStyle = this.innerText.trim();
           }
         });
       });
@@ -1325,7 +1689,6 @@
       obj[key] = chip.innerText.trim();
     }
 
-    // PHONE MASK
     function maskPhone(v) {
       v = v.replace(/\D/g, "");
       v = v.replace(/^(\d{2})(\d)/g, "($1) $2");
@@ -1333,7 +1696,6 @@
       return v;
     }
 
-    // VALIDATION
     function validarEtapa2() {
       const nome = document.getElementById('nome').value.trim();
       const nicho = document.getElementById('nicho').value.trim();
@@ -1358,7 +1720,6 @@
       return true;
     }
 
-    // CONFIRMATION RENDERING
     function renderConfirmation() {
       const confirmBox = document.getElementById('confirmBox');
       
@@ -1425,7 +1786,6 @@
       confirmBox.innerHTML = html;
     }
 
-    // PROMPT GENERATION
     function generatePrompt() {
       let prompt = `# DIRETOR DE ARTE PREMIUM - DELIVERY
 
@@ -1435,13 +1795,7 @@ Você é um diretor de arte sênior especialista em publicidade premium para del
 
 ✓ NÃO faça perguntas
 ✓ NÃO explique seu processo
-✓ NÃO peça confirmação
-✓ NÃO solicite novas imagens (use as fornecidas)
 ✓ GERE IMEDIATAMENTE A ARTE FINAL
-
-Sua única função: GERAR A IMAGEM PRONTA PARA PUBLICAÇÃO.
-
----
 
 ## DADOS DA EMPRESA
 
@@ -1451,9 +1805,6 @@ Sua única função: GERAR A IMAGEM PRONTA PARA PUBLICAÇÃO.
 ${state.descricao ? `**Descrição:** ${state.descricao}` : ''}
 ${state.preco ? `**Preço:** ${state.preco}` : ''}
 ${state.telefone ? `**Contato:** ${state.telefone}` : ''}
-${state.instagram ? `**Instagram:** ${state.instagram}` : ''}
-
----
 
 ## DIREÇÃO CRIATIVA
 
@@ -1463,66 +1814,237 @@ ${state.instagram ? `**Instagram:** ${state.instagram}` : ''}
 **Objetivos:** ${state.objectives.join(', ') || 'Vender mais, parecer premium'}
 **Intensidade:** ${state.intensity || 'Equilibrada'}
 
----
+## PADRÕES OBRIGATÓRIOS
 
-## REFERÊNCIAS VISUAIS
+✓ Hierarquia visual forte
+✓ Contraste funcional
+✓ Leitura clara em 2 segundos
+✓ Composição profissional
+✓ Máximo 2 famílias tipográficas
+✓ Paleta coerente
 
-${state.logoChoice === 'propria' ? `**Logo fornecida:** Você receberá a logo em anexo. Use obrigatoriamente na arte.` : `**Logo:** Crie uma logo moderna e premium que represente "${state.nome}".`}
-
-${state.produtoChoice === 'propria' ? `**Foto do produto:** Você receberá a foto em anexo. Use obrigatoriamente na composição.` : `**Produto:** Crie uma visualização premium do produto/serviço de ${state.nicho}.`}
-
----
-
-## PADRÕES DE QUALIDADE OBRIGATÓRIOS
-
-### ✗ PROIBIDO:
-- Aparência artificial ou gerada por IA
-- Rostos deformados ou desproporcionais
-- Brushes, respingos ou efeitos exagerados
-- Glow, brilho ou efeitos sem função
-- Textos aleatórios ou ilegíveis
-- Poluição visual ou excesso de elementos
-- Tipografia amadora ou desalinhada
-- Layout genérico ou clichê
-
-### ✓ OBRIGATÓRIO:
-- Hierarquia visual forte (título → oferta → benefício → CTA)
-- Contraste funcional e respiro entre blocos
-- Leitura clara em 2 segundos
-- Composição modular com grid consistente
-- Alinhamento óptico profissional
-- Máximo 2 famílias tipográficas
-- Paleta coerente com o nicho
-- Elementos com função de conversão
-- Destaque real para preço/oferta
-- CTA com urgência elegante
-
----
-
-## AÇÃO FINAL
-
-**Gere agora a arte final completa.**
-
-Não responda em texto.
-Não explique.
-Apenas gere a imagem pronta para publicação no ${state.tamanho.includes('Story') ? 'Instagram Stories' : 'Feed do Instagram'}.`;
-
-      if (state.logoChoice === 'propria') {
-        prompt += `\n\n---\n\n⚠️ **IMPORTANTE:** Você receberá a logo em anexo. Anexe-a agora antes de gerar a arte.`;
-      }
-
-      if (state.produtoChoice === 'propria') {
-        prompt += `\n\n---\n\n⚠️ **IMPORTANTE:** Você receberá a foto do produto em anexo. Anexe-a agora antes de gerar a arte.`;
-      }
+Gere a arte final pronta para publicação no ${state.tamanho.includes('Story') ? 'Instagram Stories' : 'Feed do Instagram'}.`;
 
       state.prompt = prompt;
       document.getElementById('promptBox').textContent = prompt;
       saveToLocalStorage();
     }
 
-    // COPY PROMPT
+    function generateLogoPrompt() {
+      const brand = document.getElementById('logo-brand').value.trim();
+      const nicho = document.getElementById('logo-nicho').value.trim();
+      const style = state.logoStyle || 'Moderno';
+
+      if (!brand || !nicho) {
+        alert('Por favor, preencha todos os campos');
+        return;
+      }
+
+      const prompt = `# DESIGNER DE LOGOS PROFISSIONAL
+
+Você é um designer de logos sênior com expertise em branding. Crie uma logo profissional e moderna.
+
+## DADOS
+
+**Marca:** ${brand}
+**Nicho:** ${nicho}
+**Estilo:** ${style}
+
+## REQUISITOS
+
+✓ Logo moderna e profissional
+✓ Escalável para qualquer tamanho
+✓ Funciona em preto e branco
+✓ Identidade visual forte
+✓ Sem aparência artificial
+
+Gere a logo em PNG com fundo transparente, pronta para uso.`;
+
+      state.prompt = prompt;
+      document.getElementById('resultPrompt').textContent = prompt;
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('p-result').classList.add('active');
+    }
+
+    function generateCarouselPrompt() {
+      const brand = document.getElementById('carousel-brand').value.trim();
+      const theme = document.getElementById('carousel-theme').value.trim();
+      const desc = document.getElementById('carousel-desc').value.trim();
+
+      if (!brand || !theme) {
+        alert('Por favor, preencha todos os campos');
+        return;
+      }
+
+      const prompt = `# DESIGNER DE CARROSSEL - INSTAGRAM
+
+Crie uma sequência de 3 imagens para carrossel do Instagram com narrativa clara.
+
+## DADOS
+
+**Marca:** ${brand}
+**Tema:** ${theme}
+**Descrição:** ${desc}
+
+## ESTRUTURA
+
+1. **Slide 1 (Capa):** Chame atenção, mostre o tema
+2. **Slide 2 (Conteúdo):** Detalhe o benefício
+3. **Slide 3 (CTA):** Chamada para ação
+
+## REQUISITOS
+
+✓ Sequência lógica e envolvente
+✓ Estilo consistente entre slides
+✓ Tipografia legível
+✓ Cores harmoniosas
+✓ Pronto para publicação
+
+Gere as 3 imagens em 1080x1350px cada.`;
+
+      state.prompt = prompt;
+      document.getElementById('resultPrompt').textContent = prompt;
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('p-result').classList.add('active');
+    }
+
+    function addMenuItem() {
+      const container = document.getElementById('menuItems');
+      const id = Date.now();
+      const html = `
+        <div class="row-item" id="item-${id}">
+          <input type="text" placeholder="Categoria (ex: Burgers)" class="category">
+          <input type="text" placeholder="Produto (ex: Burger Premium)" class="product">
+          <input type="text" placeholder="Preço (ex: R$ 29,90)" class="price">
+          <button onclick="document.getElementById('item-${id}').remove()">Remover</button>
+        </div>
+      `;
+      container.innerHTML += html;
+    }
+
+    function generateMenuPrompt() {
+      const brand = document.getElementById('menu-brand').value.trim();
+      const items = [];
+
+      document.querySelectorAll('#menuItems .row-item').forEach(row => {
+        const category = row.querySelector('.category').value.trim();
+        const product = row.querySelector('.product').value.trim();
+        const price = row.querySelector('.price').value.trim();
+
+        if (category && product && price) {
+          items.push(`- **${category}**: ${product} (${price})`);
+        }
+      });
+
+      if (!brand || items.length === 0) {
+        alert('Por favor, preencha a marca e adicione pelo menos um item');
+        return;
+      }
+
+      const prompt = `# DESIGNER DE CARDÁPIO
+
+Crie um cardápio visual profissional e organizado.
+
+## DADOS
+
+**Marca:** ${brand}
+
+## ITENS
+
+${items.join('\n')}
+
+## REQUISITOS
+
+✓ Organização clara por categorias
+✓ Preços destacados
+✓ Tipografia legível
+✓ Design apetitoso e profissional
+✓ Fácil de ler
+
+Gere um cardápio em formato visual (1080x1440px ou A4).`;
+
+      state.prompt = prompt;
+      document.getElementById('resultPrompt').textContent = prompt;
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('p-result').classList.add('active');
+    }
+
+    function generateInfoPrompt() {
+      const brand = document.getElementById('info-brand').value.trim();
+      const type = document.getElementById('info-type').value.trim();
+      const message = document.getElementById('info-message').value.trim();
+
+      if (!brand || !type || !message) {
+        alert('Por favor, preencha todos os campos');
+        return;
+      }
+
+      const prompt = `# DESIGNER DE INFORMATIVOS
+
+Crie um informativo visual para ${type.toLowerCase()}.
+
+## DADOS
+
+**Marca:** ${brand}
+**Tipo:** ${type}
+**Mensagem:** ${message}
+
+## REQUISITOS
+
+✓ Design chamativo e profissional
+✓ Mensagem clara e legível
+✓ Urgência visual (se aplicável)
+✓ Cores que remetem ao tipo de informativo
+✓ Pronto para publicação
+
+Gere em 1080x1920px (Story) ou 1080x1350px (Feed).`;
+
+      state.prompt = prompt;
+      document.getElementById('resultPrompt').textContent = prompt;
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('p-result').classList.add('active');
+    }
+
+    function generateStickerPrompt() {
+      const brand = document.getElementById('sticker-brand').value.trim();
+      const phrase = document.getElementById('sticker-phrase').value.trim();
+      const style = document.getElementById('sticker-style').value.trim();
+
+      if (!brand || !phrase || !style) {
+        alert('Por favor, preencha todos os campos');
+        return;
+      }
+
+      const prompt = `# DESIGNER DE FIGURINHAS 2D
+
+Crie um mascote 2D para figurinha de WhatsApp.
+
+## DADOS
+
+**Marca:** ${brand}
+**Frase:** ${phrase}
+**Estilo:** ${style}
+
+## REQUISITOS
+
+✓ Mascote 2D com estilo ${style.toLowerCase()}
+✓ Frase na base da figurinha
+✓ Nome da marca integrado
+✓ Cores vibrantes e harmoniosas
+✓ Formato PNG com fundo transparente
+✓ Pronto para WhatsApp
+
+Gere em 512x512px, pronto para ser figurinha.`;
+
+      state.prompt = prompt;
+      document.getElementById('resultPrompt').textContent = prompt;
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('p-result').classList.add('active');
+    }
+
     function copiarPrompt() {
-      navigator.clipboard.writeText(state.prompt).then(() => {
+      let text = state.prompt || document.getElementById('resultPrompt').textContent;
+      navigator.clipboard.writeText(text).then(() => {
         const feedback = document.createElement('div');
         feedback.className = 'copy-feedback';
         feedback.innerHTML = '<i class="fas fa-check-circle"></i> Prompt copiado!';
@@ -1534,7 +2056,6 @@ Apenas gere a imagem pronta para publicação no ${state.tamanho.includes('Story
       });
     }
 
-    // LOCAL STORAGE
     function saveToLocalStorage() {
       localStorage.setItem('designaiState', JSON.stringify(state));
     }
@@ -1546,7 +2067,6 @@ Apenas gere a imagem pronta para publicação no ${state.tamanho.includes('Story
       }
     }
 
-    // INIT
     document.addEventListener('DOMContentLoaded', function() {
       initChipListeners();
 
@@ -1578,11 +2098,8 @@ Apenas gere a imagem pronta para publicação no ${state.tamanho.includes('Story
       });
 
       loadFromLocalStorage();
-
-      // Initialize quote
       document.getElementById('quoteText').textContent = getRandomQuote();
 
-      // Hook para renderizar confirmação antes de exibir
       const originalGo = go;
       window.go = function(page) {
         if (page === 6) renderConfirmation();
