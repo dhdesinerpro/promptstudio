@@ -278,6 +278,7 @@
       backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
+      user-select: none;
     }
 
     .chip::before {
@@ -820,12 +821,12 @@
     <div class="container">
       <div class="card">
         <div class="progress-bar">
-          <div class="progress-fill" style="width: 25%;"></div>
+          <div class="progress-fill" style="width: 20%;"></div>
         </div>
         
         <div class="header">
           <div class="stage-badge">
-            <i class="fas fa-circle-1"></i> Etapa 1 de 4
+            <i class="fas fa-circle-1"></i> Etapa 1 de 5
           </div>
           <h2 class="title">Dados Principais</h2>
           <p class="subtitle">Informações sobre seu negócio e promoção</p>
@@ -930,12 +931,12 @@
     <div class="container">
       <div class="card">
         <div class="progress-bar">
-          <div class="progress-fill" style="width: 50%;"></div>
+          <div class="progress-fill" style="width: 40%;"></div>
         </div>
 
         <div class="header">
           <div class="stage-badge">
-            <i class="fas fa-circle-2"></i> Etapa 2 de 4
+            <i class="fas fa-circle-2"></i> Etapa 2 de 5
           </div>
           <h2 class="title">Referências Visuais</h2>
           <p class="subtitle">Logo e foto do produto para sua arte</p>
@@ -984,12 +985,12 @@
     <div class="container">
       <div class="card">
         <div class="progress-bar">
-          <div class="progress-fill" style="width: 75%;"></div>
+          <div class="progress-fill" style="width: 60%;"></div>
         </div>
 
         <div class="header">
           <div class="stage-badge">
-            <i class="fas fa-circle-3"></i> Etapa 3 de 4
+            <i class="fas fa-circle-3"></i> Etapa 3 de 5
           </div>
           <h2 class="title">Direção Criativa</h2>
           <p class="subtitle">Escolha o estilo, cores e fontes da sua arte</p>
@@ -1100,8 +1101,38 @@
     </div>
   </section>
 
-  <!-- PAGE 5: ETAPA 04 - CONFIRMAÇÃO & PROMPT -->
+  <!-- PAGE 5: ETAPA 04 - CONFIRMAÇÃO -->
   <section class="page" id="p5">
+    <div class="container">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 80%;"></div>
+        </div>
+
+        <div class="header">
+          <div class="stage-badge">
+            <i class="fas fa-circle-4"></i> Etapa 4 de 5
+          </div>
+          <h2 class="title">Confirmação</h2>
+          <p class="subtitle">Revise todas as informações antes de gerar o prompt</p>
+        </div>
+
+        <div class="confirm-box" id="confirmBox"></div>
+
+        <div class="nav">
+          <button class="btn btn-secondary" onclick="go(4)">
+            <i class="fas fa-arrow-left"></i> Editar
+          </button>
+          <button class="btn btn-primary" onclick="go(6)">
+            Gerar Prompt <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 6: ETAPA 05 - PROMPT FINAL -->
+  <section class="page" id="p6">
     <div class="container">
       <div class="card">
         <div class="progress-bar">
@@ -1110,7 +1141,7 @@
 
         <div class="header">
           <div class="stage-badge">
-            <i class="fas fa-circle-4"></i> Etapa 4 de 4
+            <i class="fas fa-circle-5"></i> Etapa 5 de 5
           </div>
           <h2 class="title">Seu Prompt Está Pronto!</h2>
           <p class="subtitle">Copie o prompt abaixo e envie para ChatGPT ou Gemini</p>
@@ -1125,29 +1156,23 @@
           5. Escreva "GERAR ARTE" e aguarde a IA criar sua imagem
         </div>
 
-        <div class="confirm-box" id="confirmBox" style="border: 1.5px solid rgba(212, 175, 89, 0.4);"></div>
-
         <div class="prompt-box" id="promptBox"></div>
 
-        <button class="btn btn-primary" onclick="copiarPrompt()" style="width: 100%; margin-bottom: 16px;">
+        <button class="btn btn-primary" onclick="copiarPrompt()" style="width: 100%; margin-bottom: 24px;">
           <i class="fas fa-copy"></i> Copiar Prompt
         </button>
 
         <div class="nav">
-          <button class="btn btn-secondary" onclick="go(4)">
-            <i class="fas fa-pen-to-square"></i> Editar
-          </button>
           <button class="btn btn-secondary" onclick="window.open('https://chatgpt.com', '_blank')">
             <i class="fas fa-comments"></i> ChatGPT
           </button>
           <button class="btn btn-secondary" onclick="window.open('https://gemini.google.com', '_blank')">
             <i class="fas fa-comments"></i> Gemini
           </button>
+          <button class="btn btn-secondary" onclick="go(1)">
+            <i class="fas fa-plus"></i> Novo
+          </button>
         </div>
-
-        <button class="btn btn-secondary" onclick="go(1)" style="width: 100%; margin-top: 16px;">
-          <i class="fas fa-plus"></i> Criar Novo CreativePack
-        </button>
 
         <div class="footer">
           Desenvolvido por <span>@dhdesignerpro</span>
@@ -1189,86 +1214,107 @@
       
       if (pageNum === 5) {
         renderConfirmation();
+      }
+      
+      if (pageNum === 6) {
         generatePrompt();
       }
       
       window.scrollTo(0, 0);
     }
 
-    // CHIP SELECTION
-    document.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', function() {
-        const category = this.getAttribute('data-category');
-        const type = this.getAttribute('data-type');
-        const app = this.getAttribute('data-app');
+    // CHIP SELECTION - FIXED
+    function initChipListeners() {
+      document.querySelectorAll('.chip').forEach(chip => {
+        chip.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const category = this.getAttribute('data-category');
+          const type = this.getAttribute('data-type');
+          const app = this.getAttribute('data-app');
 
-        if (category === 'styles') {
-          handleMultiSelect(this, state.styles, 3, '.styles-chips');
-        } else if (category === 'background') {
-          handleMultiSelect(this, state.background, 1, '.bg-chips');
-        } else if (category === 'fonts') {
-          handleMultiSelect(this, state.fonts, 2, '.fonts-chips');
-        } else if (category === 'objectives') {
-          handleMultiSelect(this, state.objectives, 3, '.objectives-chips');
-        } else if (category === 'intensity') {
-          handleSingleSelect(this, state, 'intensity', '.intensity-chips');
-        } else if (app) {
-          this.classList.toggle('active');
-          if (this.classList.contains('active')) {
-            if (!state.apps.includes(app)) state.apps.push(app);
-          } else {
-            state.apps = state.apps.filter(a => a !== app);
+          if (category === 'styles') {
+            handleMultiSelect(this, state.styles, 3);
+          } else if (category === 'background') {
+            handleMultiSelect(this, state.background, 1);
+          } else if (category === 'fonts') {
+            handleMultiSelect(this, state.fonts, 2);
+          } else if (category === 'objectives') {
+            handleMultiSelect(this, state.objectives, 3);
+          } else if (category === 'intensity') {
+            handleSingleSelect(this, state, 'intensity');
+          } else if (app) {
+            this.classList.toggle('active');
+            if (this.classList.contains('active')) {
+              if (!state.apps.includes(app)) state.apps.push(app);
+            } else {
+              state.apps = state.apps.filter(a => a !== app);
+            }
+          } else if (type === 'logo-ia') {
+            this.classList.toggle('active');
+            state.logoIA = this.classList.contains('active');
+          } else if (type === 'produto-ia') {
+            this.classList.toggle('active');
+            state.produtoIA = this.classList.contains('active');
           }
-        } else if (type === 'logo-ia') {
-          this.classList.toggle('active');
-          state.logoIA = this.classList.contains('active');
-        } else if (type === 'produto-ia') {
-          this.classList.toggle('active');
-          state.produtoIA = this.classList.contains('active');
-        }
+        });
       });
-    });
+    }
 
-    function handleMultiSelect(chip, array, max, selector) {
+    function handleMultiSelect(chip, array, max) {
+      const text = chip.innerText.trim();
       if (chip.classList.contains('active')) {
         chip.classList.remove('active');
-        array.splice(array.indexOf(chip.innerText.trim()), 1);
+        const idx = array.indexOf(text);
+        if (idx > -1) array.splice(idx, 1);
       } else {
         if (array.length < max) {
           chip.classList.add('active');
-          array.push(chip.innerText.trim());
+          array.push(text);
+        } else {
+          alert(`Máximo de ${max} item(ns) permitido(s)`);
         }
       }
     }
 
-    function handleSingleSelect(chip, obj, key, selector) {
-      document.querySelectorAll(selector + ' .chip').forEach(c => c.classList.remove('active'));
+    function handleSingleSelect(chip, obj, key) {
+      document.querySelectorAll('.intensity-chips .chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       obj[key] = chip.innerText.trim();
     }
 
     // COLOR SELECTION
-    document.querySelectorAll('.color').forEach(color => {
-      color.addEventListener('click', function() {
-        if (state.colors.length < 3 || this.classList.contains('active')) {
-          this.classList.toggle('active');
-          const bgColor = this.style.background;
-          if (this.classList.contains('active')) {
-            if (!state.colors.includes(bgColor)) state.colors.push(bgColor);
-          } else {
-            state.colors = state.colors.filter(c => c !== bgColor);
+    document.addEventListener('DOMContentLoaded', function() {
+      initChipListeners();
+      
+      document.querySelectorAll('.color').forEach(color => {
+        color.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          if (state.colors.length < 3 || this.classList.contains('active')) {
+            this.classList.toggle('active');
+            const bgColor = this.style.background;
+            if (this.classList.contains('active')) {
+              if (!state.colors.includes(bgColor)) state.colors.push(bgColor);
+            } else {
+              state.colors = state.colors.filter(c => c !== bgColor);
+            }
           }
-        }
+        });
       });
-    });
 
-    // FILE UPLOADS
-    document.getElementById('logoInput').addEventListener('change', function(e) {
-      handleFileUpload(e, 'logo', 'logoPreview');
-    });
+      // FILE UPLOADS
+      document.getElementById('logoInput').addEventListener('change', function(e) {
+        handleFileUpload(e, 'logo', 'logoPreview');
+      });
 
-    document.getElementById('produtoInput').addEventListener('change', function(e) {
-      handleFileUpload(e, 'produto', 'produtoPreview');
+      document.getElementById('produtoInput').addEventListener('change', function(e) {
+        handleFileUpload(e, 'produto', 'produtoPreview');
+      });
+
+      loadFromLocalStorage();
     });
 
     function handleFileUpload(e, key, previewId) {
@@ -1387,7 +1433,7 @@
       confirmBox.innerHTML = html;
     }
 
-    // PROMPT GENERATION - REFINED & IA-FIRST
+    // PROMPT GENERATION
     function generatePrompt() {
       let prompt = `# DIRETOR DE ARTE PREMIUM - DELIVERY
 
@@ -1509,9 +1555,6 @@ Apenas gere a imagem pronta para publicação no ${state.tamanho.includes('Story
         Object.assign(state, JSON.parse(saved));
       }
     }
-
-    // INITIALIZE
-    loadFromLocalStorage();
   </script>
 </body>
 </html>
