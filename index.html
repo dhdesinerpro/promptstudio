@@ -1340,8 +1340,23 @@
     }
 
     // COLOR SELECTION
+    // PHONE MASK
+    function maskPhone(v) {
+      v = v.replace(/\D/g, "");
+      v = v.replace(/^(\d{2})(\d)/g, "($1) $2");
+      v = v.replace(/(\d)(\d{4})$/, "$1-$2");
+      return v;
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       initChipListeners();
+
+      const telInput = document.getElementById('telefone');
+      if (telInput) {
+        telInput.addEventListener('input', function(e) {
+          e.target.value = maskPhone(e.target.value);
+        });
+      }
       
       document.querySelectorAll('.color').forEach(color => {
         color.addEventListener('click', function(e) {
