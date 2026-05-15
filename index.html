@@ -132,22 +132,26 @@
 
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
       margin-bottom: 40px;
     }
 
     .tool-card {
       background: linear-gradient(135deg, rgba(30, 30, 50, 0.6) 0%, rgba(20, 20, 35, 0.4) 100%);
       border: 1px solid rgba(212, 175, 89, 0.2);
-      border-radius: 16px;
-      padding: 32px 24px;
+      border-radius: 12px;
+      padding: 20px 12px;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .tool-card::before {
@@ -164,8 +168,8 @@
 
     .tool-card:hover {
       border-color: rgba(212, 175, 89, 0.5);
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(212, 175, 89, 0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(212, 175, 89, 0.15);
     }
 
     .tool-card:hover::before {
@@ -173,34 +177,36 @@
     }
 
     .tool-card .icon {
-      font-size: 3rem;
+      font-size: 2rem;
       color: #d4af59;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       display: block;
     }
 
     .tool-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
+      font-size: 1rem;
+      margin-bottom: 4px;
       color: #ffffff;
+      font-weight: 700;
     }
 
     .tool-card p {
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       color: #a0a0a0;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
 
     .tool-card .btn {
       background: linear-gradient(135deg, #d4af59 0%, #e8c547 100%);
       color: #000;
       border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
     }
 
     .tool-card .btn:hover {
