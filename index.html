@@ -487,6 +487,18 @@
             <div class="chip" onclick="toggleColorChip(this)" data-color="Roxo"><span class="color-dot" style="background: #800080;"></span>Roxo</div>
           </div>
         </div>
+        <div class="input-group">
+          <label>Cor Predominante de Fundo</label>
+          <div class="chips" id="bgChips">
+            <div class="chip active" onclick="selectChip(this)" data-color="Preto"><span class="color-dot" style="background: #000000;"></span>Preto</div>
+            <div class="chip" onclick="selectChip(this)" data-color="Branco"><span class="color-dot" style="background: #ffffff;"></span>Branco</div>
+            <div class="chip" onclick="selectChip(this)" data-color="Cinza Escuro"><span class="color-dot" style="background: #333333;"></span>Cinza</div>
+            <div class="chip" onclick="selectChip(this)" data-color="Vermelho Escuro"><span class="color-dot" style="background: #8b0000;"></span>Vermelho</div>
+            <div class="chip" onclick="selectChip(this)" data-color="Azul Marinho"><span class="color-dot" style="background: #000080;"></span>Azul</div>
+            <div class="chip" onclick="selectChip(this)" data-color="Verde Musgo"><span class="color-dot" style="background: #006400;"></span>Verde</div>
+            <div class="chip" onclick="selectChip(this)" data-color="Dourado"><span class="color-dot" style="background: #d4af59;"></span>Dourado</div>
+          </div>
+        </div>
         <button class="main-action-btn" onclick="showPage('step2')">Próximo Passo <i class="fas fa-arrow-right"></i></button>
       </div>
     </div>
@@ -667,11 +679,19 @@
     }
 
     function prepareReview() {
+      const selectedColors = Array.from(document.querySelectorAll('#colorChips .chip.active'))
+        .map(c => c.getAttribute('data-color'));
+      
       const data = {
         'Negócio': document.getElementById('bizName').value || '-',
         'Promoção': document.getElementById('promoTitle').value || '-',
+        'Descrição': document.getElementById('bizDesc').value || '-',
         'Valor': document.getElementById('promoValue').value || '-',
+        'Instagram': document.getElementById('bizInsta').value || '-',
+        'Formato': document.getElementById('artFormat').value,
         'Estilo': document.querySelector('#styleChips .chip.active').innerText,
+        'Cores': selectedColors.length > 0 ? selectedColors.join(', ') : 'Não selecionado',
+        'Fundo': document.querySelector('#bgChips .chip.active').getAttribute('data-color'),
         'Logo': document.querySelector('#logoOptions .option-card.active span').innerText,
         'Foto': document.querySelector('#photoOptions .option-card.active span').innerText
       };
@@ -695,6 +715,7 @@
       const logoOption = document.querySelector('#logoOptions .option-card.active span').innerText;
       const photoOption = document.querySelector('#photoOptions .option-card.active span').innerText;
       const style = document.querySelector('#styleChips .chip.active').innerText;
+      const bgColor = document.querySelector('#bgChips .chip.active').getAttribute('data-color');
       const selectedColors = Array.from(document.querySelectorAll('#colorChips .chip.active')).map(c => c.getAttribute('data-color'));
       const colorsText = selectedColors.length > 0 ? selectedColors.join(', ') : 'Cores que combinem com o estilo';
 
@@ -717,6 +738,25 @@ Seu objetivo é criar conceitos visuais altamente profissionais, modernos e estr
 - FOTO DO PRODUTO: ${photoOption}
 - FORMATO: ${format}
 - ESTILO VISUAL: ${style}
+- COR DE FUNDO PREDOMINANTE: ${bgColor}
+- PALETA DE CORES BASE: ${colorsText}
+
+Seu objetivo é criar conceitos visuais altamente profissionais, modernos e estratégicos, com aparência de arte feita por um designer humano experiente — nunca com aparência genérica de IA.
+
+━━━━━━━━━━━━━━━━━━
+## INFORMAÇÕES DO PROJETO
+
+- NEGÓCIO: ${name}
+- TÍTULO DA PROMOÇÃO: ${promo}
+- PRODUTO/OFERTA: ${desc}
+- VALOR: ${value ? 'R$ ' + value : 'Não informado'}
+- CONTATO: ${phone}
+- INSTAGRAM: ${insta}
+- LOGOMARCA: ${logoOption}
+- FOTO DO PRODUTO: ${photoOption}
+- FORMATO: ${format}
+- ESTILO VISUAL: ${style}
+- COR DE FUNDO PREDOMINANTE: ${bgColor}
 - PALETA DE CORES BASE: ${colorsText}
 
 ━━━━━━━━━━━━━━━━━━
