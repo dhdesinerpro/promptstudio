@@ -573,14 +573,21 @@
     <!-- RESULT PAGE -->
     <div id="result" class="page">
       <button class="back-btn" onclick="showPage('review')"><i class="fas fa-arrow-left"></i> Voltar</button>
-      <h2 style="font-size: 1.5rem;">Seu Prompt Mestre</h2>
-      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">Copie e cole na sua IA favorita.</p>
-
-      <div class="result-card" id="promptResult"></div>
       
-      <button class="main-action-btn" onclick="copyPrompt()" style="background: #fff; color: #000;">
-        <i class="fas fa-copy"></i> Copiar Prompt
-      </button>
+      <div style="text-align: center; padding: 40px 20px;">
+        <div style="width: 80px; height: 80px; background: rgba(212, 175, 89, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto; color: var(--primary); font-size: 2rem; border: 2px solid var(--primary);">
+          <i class="fas fa-check"></i>
+        </div>
+        <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;">Seu prompt está pronto!</h2>
+        <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 32px;">Agora é só copiar e colar na sua IA favorita para gerar sua arte premium.</p>
+
+        <!-- Hidden prompt storage -->
+        <div id="promptResult" style="display: none;"></div>
+        
+        <button class="main-action-btn" onclick="copyPrompt()" style="background: #fff; color: #000; padding: 20px; font-size: 1.1rem; border-radius: 20px;">
+          <i class="fas fa-copy"></i> Copiar Prompt Mestre
+        </button>
+      </div>
 
       <div style="margin-top: 30px;">
         <p style="text-align: center; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 15px;">ABRIR FERRAMENTA DE IA:</p>
