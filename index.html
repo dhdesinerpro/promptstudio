@@ -582,11 +582,53 @@
     <!-- TUTORIAL PAGE -->
     <div id="tutorial" class="page">
       <button class="back-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> Voltar</button>
-      <h2 style="font-size: 1.5rem; margin-bottom: 24px;">Como usar</h2>
-      <div class="tutorial-step"><div class="step-number">1</div><div class="step-content"><h3>Dados</h3><p>Preencha as informações do seu negócio e promoção.</p></div></div>
-      <div class="tutorial-step"><div class="step-number">2</div><div class="step-content"><h3>Imagens</h3><p>Escolha se vai enviar suas fotos ou se a IA deve criá-las.</p></div></div>
-      <div class="tutorial-step"><div class="step-number">3</div><div class="step-content"><h3>Gere</h3><p>Copie o prompt e cole no ChatGPT ou Gemini.</p></div></div>
-      <button class="main-action-btn" onclick="showPage('step1')">Vamos lá!</button>
+      
+      <div style="text-align: center; margin-bottom: 32px;">
+        <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;">Guia Rápido</h2>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">Aprenda a criar artes de alto nível em 3 passos simples.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Step 1 -->
+        <div style="background: var(--card-bg); border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.03); display: flex; gap: 16px;">
+          <div style="width: 40px; height: 40px; background: var(--primary); color: #000; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0;">1</div>
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 4px; color: var(--primary);">Preencha os Dados</h3>
+            <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.4;">Insira o nome do seu negócio, a oferta e escolha o estilo visual. Quanto mais detalhes na descrição, melhor será o resultado.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="background: var(--card-bg); border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.03); display: flex; gap: 16px;">
+          <div style="width: 40px; height: 40px; background: var(--primary); color: #000; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0;">2</div>
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 4px; color: var(--primary);">Defina as Imagens</h3>
+            <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.4;">Escolha se você vai enviar sua própria logo e foto ou se quer que a IA crie tudo do zero para você.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="background: var(--card-bg); border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.03); display: flex; gap: 16px;">
+          <div style="width: 40px; height: 40px; background: var(--primary); color: #000; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0;">3</div>
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 4px; color: var(--primary);">Copie e Use</h3>
+            <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.4;">Copie o "Prompt Mestre" gerado e cole no ChatGPT ou Gemini. Eles seguirão as instruções para criar sua direção de arte.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 32px; background: rgba(212, 175, 89, 0.05); border-radius: 20px; padding: 20px; border: 1px dashed rgba(212, 175, 89, 0.3);">
+        <h4 style="font-size: 0.9rem; color: var(--primary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+          <i class="fas fa-lightbulb"></i> Dica de Ouro
+        </h4>
+        <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">
+          Para resultados ainda mais incríveis, use o <strong>ChatGPT Plus (GPT-4)</strong> ou o <strong>Gemini Advanced</strong>. Eles entendem melhor as nuances de design premium.
+        </p>
+      </div>
+
+      <button class="main-action-btn" onclick="showPage('step1')" style="margin-top: 32px;">
+        Começar Agora <i class="fas fa-rocket"></i>
+      </button>
     </div>
 
     <nav class="nav-bar">
