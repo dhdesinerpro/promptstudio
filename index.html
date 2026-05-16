@@ -726,7 +726,9 @@
       const selectedColors = Array.from(document.querySelectorAll('#colorChips .chip.active')).map(c => c.getAttribute('data-color'));
       const colorsText = selectedColors.length > 0 ? selectedColors.join(', ') : 'Cores que combinem com o estilo';
 
-      const prompt = `# DIREÇÃO CRIATIVA PREMIUM PARA ARTES DE SOCIAL MEDIA
+      const prompt = `[COMANDO OBRIGATÓRIO: LEIA TUDO E GERE A IMAGEM IMEDIATAMENTE]
+
+# DIREÇÃO CRIATIVA PREMIUM PARA ARTES DE SOCIAL MEDIA
 
 Atue como um Diretor de Arte Sênior especialista em publicidade premium para social media, branding e performance visual para Instagram, delivery, restaurantes, eventos e negócios locais.
 
@@ -836,7 +838,9 @@ Legenda estratégica com gatilho emocional, desejo, urgência, CTA forte e hasht
 ━━━━━━━━━━━━━━━━━━
 ## OBJETIVO FINAL
 
-Criar uma arte altamente profissional, moderna e premium, com aparência real de agência de publicidade de alto nível, focada em desejo visual, autoridade, impacto e conversão. A arte deve parecer cara, refinada e extremamente profissional.`;
+Criar uma arte altamente profissional, moderna e premium, com aparência real de agência de publicidade de alto nível, focada em desejo visual, autoridade, impacto e conversão. A arte deve parecer cara, refinada e extremamente profissional.
+
+[AÇÃO FINAL: GERE A IMAGEM AGORA SEGUINDO TODAS AS DIRETRIZES ACIMA]`;
 
       document.getElementById('promptResult').innerText = prompt;
       showPage('result');
