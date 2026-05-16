@@ -398,6 +398,20 @@
             <input type="tel" id="bizPhone" placeholder="(11) 99999-9999">
           </div>
         </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div class="input-group">
+            <label>Instagram</label>
+            <input type="text" id="bizInsta" placeholder="Ex: @seu_negocio">
+          </div>
+          <div class="input-group">
+            <label>Formato</label>
+            <select id="artFormat" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 89, 0.1); border-radius: 12px; padding: 14px; color: #fff; font-family: inherit; font-size: 1rem;">
+              <option value="Feed (1080x1350)">Feed (Retrato)</option>
+              <option value="Story (1080x1920)">Story</option>
+              <option value="Quadrado (1080x1080)">Quadrado</option>
+            </select>
+          </div>
+        </div>
         <div class="input-group">
           <label>Logomarca</label>
           <div class="chips" id="logoChips">
@@ -567,6 +581,8 @@
       const desc = document.getElementById('bizDesc').value || 'Um produto incrível';
       const value = document.getElementById('promoValue').value || '';
       const phone = document.getElementById('bizPhone').value || '';
+      const insta = document.getElementById('bizInsta').value || '';
+      const format = document.getElementById('artFormat').value;
       const logoOption = document.querySelector('#logoChips .chip.active').innerText;
       const photoOption = document.querySelector('#photoChips .chip.active').innerText;
       const style = document.querySelector('#styleChips .chip.active').innerText;
@@ -575,27 +591,98 @@
         .map(c => c.getAttribute('data-color'));
       const colorsText = selectedColors.length > 0 ? selectedColors.join(', ') : 'Cores que combinem com o estilo';
 
-      const prompt = `Atue como um Designer Sênior e Especialista em Copywriting para Social Media. 
+      const prompt = `# DIREÇÃO CRIATIVA PREMIUM PARA ARTES DE SOCIAL MEDIA
 
-Crie uma estrutura completa de arte profissional para:
-NEGÓCIO: ${name}
-TÍTULO DA PROMOÇÃO: ${promo}
-PRODUTO/OFERTA: ${desc}
-VALOR: ${value ? 'R$ ' + value : 'Não informado'}
-CONTATO: ${phone}
-LOGOMARCA: ${logoOption}
-FOTO DO PRODUTO: ${photoOption}
-ESTILO VISUAL: ${style}
-PALETA DE CORES: ${colorsText}
+Atue como um Diretor de Arte Sênior especialista em publicidade premium para social media, branding e performance visual para Instagram, delivery, restaurantes, eventos e negócios locais.
 
-Sua resposta deve conter:
-1. Título de Impacto (Headline) para a arte
-2. Descrição detalhada da Composição Visual (Cenário, Iluminação, Posicionamento dos Elementos)
-3. Como integrar a Logomarca e a Foto do Produto no layout
-4. Paleta de Cores Sugerida (Hex codes) baseada nas cores: ${colorsText}
-5. Sugestão de Legenda para Instagram com CTA (Chamada para Ação)
+Seu objetivo é criar conceitos visuais altamente profissionais, modernos e estratégicos, com aparência de arte feita por um designer humano experiente — nunca com aparência genérica de IA.
 
-Foque em um design que gere desejo imediato, autoridade e conversão.`;
+━━━━━━━━━━━━━━━━━━
+## INFORMAÇÕES DO PROJETO
+
+- NEGÓCIO: ${name}
+- TÍTULO DA PROMOÇÃO: ${promo}
+- PRODUTO/OFERTA: ${desc}
+- VALOR: ${value ? 'R$ ' + value : 'Não informado'}
+- CONTATO: ${phone}
+- INSTAGRAM: ${insta}
+- LOGOMARCA: ${logoOption}
+- FOTO DO PRODUTO: ${photoOption}
+- FORMATO: ${format}
+- ESTILO VISUAL: ${style}
+- PALETA DE CORES BASE: ${colorsText}
+
+━━━━━━━━━━━━━━━━━━
+## DIREÇÃO VISUAL OBRIGATÓRIA
+
+A arte deve seguir um padrão PREMIUM MODERNO.
+
+✓ Design minimalista e sofisticado  
+✓ Visual clean e organizado  
+✓ Hierarquia visual profissional  
+✓ Aparência de campanha publicitária real  
+✓ Elementos com profundidade e iluminação realista  
+✓ Sombras suaves e acabamento premium  
+✓ Tipografia moderna e elegante  
+✓ Composição equilibrada e refinada  
+✓ Layout com respiro e espaçamento inteligente  
+✓ Visual forte para conversão e desejo imediato  
+✓ Aparência cinematográfica e profissional  
+✓ Sem excesso de elementos desnecessários  
+✓ Sem poluição visual  
+✓ Fundo elegante e coerente com a marca  
+✓ Botões e caixas SEMPRE retangulares com cantos arredondados premium  
+
+━━━━━━━━━━━━━━━━━━
+## O QUE É PROIBIDO NA ARTE
+
+✗ NÃO usar respingos  
+✗ NÃO usar pinceladas  
+✗ NÃO usar brush effects  
+✗ NÃO usar blushes  
+✗ NÃO usar fumaças exageradas  
+✗ NÃO usar texturas sujas ou poluídas  
+✗ NÃO usar elementos aleatórios sem função  
+✗ NÃO usar visual genérico de IA  
+✗ NÃO exagerar em brilhos e efeitos  
+✗ NÃO usar excesso de cores  
+✗ NÃO usar fontes caricatas ou infantis  
+✗ NÃO usar composição amadora  
+
+━━━━━━━━━━━━━━━━━━
+## PADRÃO TIPOGRÁFICO
+
+- Fontes modernas premium
+- Letras fortes e sofisticadas
+- Excelente legibilidade
+- Destaque estratégico para preço e headline
+- Visual semelhante a campanhas publicitárias high-end
+
+━━━━━━━━━━━━━━━━━━
+## SUA RESPOSTA DEVE CONTER
+
+1. HEADLINE PRINCIPAL
+Crie um título forte, curto e persuasivo.
+
+2. DIREÇÃO COMPLETA DA COMPOSIÇÃO VISUAL
+Descreva detalhadamente: cenário, iluminação, profundidade, posicionamento dos elementos, composição, sensação transmitida, estilo fotográfico e acabamento visual.
+
+3. INTEGRAÇÃO DA LOGO E PRODUTO
+Explique como posicionar: logomarca, foto do produto, preço, CTA e contato.
+
+4. PALETA DE CORES
+Sugira cores profissionais com HEX baseadas em: ${colorsText}.
+
+5. COPY PARA A ARTE
+Texto principal da arte com CTA persuasivo.
+
+6. LEGENDA PARA INSTAGRAM
+Legenda estratégica com gatilho emocional, desejo, urgência, CTA forte e hashtags relevantes.
+
+━━━━━━━━━━━━━━━━━━
+## OBJETIVO FINAL
+
+Criar uma arte altamente profissional, moderna e premium, com aparência real de agência de publicidade de alto nível, focada em desejo visual, autoridade, impacto e conversão. A arte deve parecer cara, refinada e extremamente profissional.`;
 
       document.getElementById('promptResult').innerText = prompt;
       document.getElementById('resultArea').style.display = 'block';
