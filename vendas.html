@@ -114,6 +114,99 @@
       box-shadow: 0 18px 40px rgba(212, 175, 89, 0.35);
     }
 
+    /* ─── SECURE BADGE ─── */
+    .secure-badge {
+      margin-top: 12px;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .secure-badge i { color: var(--success); }
+
+    /* ─── FLOATING CTA BAR ─── */
+    .floating-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 999;
+      box-shadow: 0 -8px 24px rgba(212, 175, 89, 0.2);
+      animation: slideUp 0.4s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .floating-cta-content {
+      flex: 1;
+      color: #000;
+    }
+
+    .floating-cta-title {
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 2px;
+    }
+
+    .floating-cta-urgency {
+      font-size: 0.7rem;
+      font-weight: 700;
+      opacity: 0.9;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .floating-cta-urgency i {
+      animation: pulse 1s infinite;
+    }
+
+    .floating-cta-button {
+      background: #000;
+      color: var(--primary);
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+
+    .floating-cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .floating-cta {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .floating-cta-button {
+        width: 100%;
+      }
+    }
+
     /* ─── SLIDER ─── */
     .slider-section {
       padding: 40px 0;
@@ -445,6 +538,11 @@
       font-weight: 700;
     }
 
+    /* ─── BODY PADDING ─── */
+    body.has-floating-cta {
+      padding-bottom: 70px;
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       h1 { font-size: 2rem; }
@@ -470,6 +568,9 @@
       <a href="#comprar" class="cta-button">
         <i class="fas fa-rocket"></i> COMPRAR AGORA
       </a>
+      <div class="secure-badge">
+        <i class="fas fa-shield-alt"></i> Compra 100% Segura
+      </div>
     </section>
 
     <!-- ─── SLIDER ─── -->
@@ -578,6 +679,17 @@
     </section>
   </div>
 
+  <!-- ─── FLOATING CTA BAR ─── -->
+  <div class="floating-cta">
+    <div class="floating-cta-content">
+      <div class="floating-cta-title">💥 R$ 27,00 - Promoção de Lançamento</div>
+      <div class="floating-cta-urgency">
+        <i class="fas fa-fire"></i> Oferta válida por tempo limitado
+      </div>
+    </div>
+    <a href="#comprar" class="floating-cta-button">COMPRAR AGORA</a>
+  </div>
+
   <footer>
     <p>Desenvolvido por <a href="https://instagram.com/dhdesignerpro" target="_blank">@dhdesignerpro</a></p>
     <p style="margin-top: 8px;">© 2026 PromptStudio. Todos os direitos reservados.</p>
@@ -640,6 +752,9 @@
 
     // Resize handler
     window.addEventListener('resize', updateSlider);
+
+    // Add padding to body for floating CTA
+    document.body.classList.add('has-floating-cta');
   </script>
 </body>
 </html>
