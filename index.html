@@ -34,7 +34,6 @@
       min-height: 100vh;
     }
 
-    /* App Shell Layout */
     .app-container {
       max-width: 500px;
       margin: 0 auto;
@@ -46,7 +45,6 @@
       box-shadow: 0 0 50px rgba(0,0,0,0.5);
     }
 
-    /* Header */
     header {
       padding: 24px 20px;
       display: flex;
@@ -82,7 +80,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Pages */
     .page {
       display: none;
       flex: 1;
@@ -100,7 +97,6 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
-    /* Home UI */
     .hero-card {
       background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
       border: 1px solid rgba(212, 175, 89, 0.2);
@@ -109,30 +105,6 @@
       margin-top: 10px;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(212, 175, 89, 0.1) 0%, transparent 70%);
-      filter: blur(30px);
-    }
-
-    .hero-card h2 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-
-    .hero-card p {
-      color: var(--text-dim);
-      font-size: 0.95rem;
-      margin-bottom: 24px;
     }
 
     .main-action-btn {
@@ -150,50 +122,20 @@
       justify-content: center;
       gap: 10px;
       box-shadow: 0 10px 20px rgba(212, 175, 89, 0.2);
-      transition: transform 0.2s;
+      transition: all 0.2s;
+      margin-top: 20px;
     }
 
     .main-action-btn:active {
       transform: scale(0.98);
     }
 
-    /* Tutorial Page */
-    .tutorial-step {
-      margin-bottom: 32px;
-      display: flex;
-      gap: 20px;
-    }
-
-    .step-number {
-      width: 32px;
-      height: 32px;
-      background: var(--primary);
-      color: #000;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .step-content h3 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      color: var(--primary);
-    }
-
-    .step-content p {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-    }
-
-    /* Form UI */
     .form-card {
       background: var(--card-bg);
       border-radius: 24px;
       padding: 24px;
       margin-top: 20px;
+      border: 1px solid rgba(255,255,255,0.03);
     }
 
     .input-group {
@@ -210,7 +152,7 @@
       letter-spacing: 1px;
     }
 
-    .input-group input, .input-group textarea {
+    .input-group input, .input-group textarea, .input-group select {
       width: 100%;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(212, 175, 89, 0.1);
@@ -220,12 +162,6 @@
       font-family: inherit;
       font-size: 1rem;
       transition: all 0.3s;
-    }
-
-    .input-group input:focus, .input-group textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      background: rgba(212, 175, 89, 0.05);
     }
 
     .chips {
@@ -242,78 +178,18 @@
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s;
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .chip:hover {
-      background: rgba(212, 175, 89, 0.05);
-      border-color: rgba(212, 175, 89, 0.3);
-      transform: translateY(-2px);
     }
 
     .chip.active {
       background: var(--primary);
       color: #000;
       border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(212, 175, 89, 0.3);
-      transform: translateY(-2px) scale(1.05);
     }
 
-    /* Option Cards */
-    .option-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .option-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(212, 175, 89, 0.1);
-      border-radius: 16px;
-      padding: 16px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .option-card i {
-      font-size: 1.2rem;
-      color: var(--primary);
-      opacity: 0.7;
-    }
-
-    .option-card span {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .option-card.active {
-      background: rgba(212, 175, 89, 0.1);
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .option-card.active i {
-      opacity: 1;
-      transform: scale(1.1);
-    }
-
-    .option-card.active span {
-      color: var(--primary);
-    }
-
-    /* Color Chips Specific */
     .color-dot {
       width: 16px;
       height: 16px;
@@ -321,42 +197,70 @@
       border: 1px solid rgba(255,255,255,0.2);
     }
 
-    .chip.active .color-dot {
-      border-color: rgba(0,0,0,0.2);
+    /* Option Cards - Smaller */
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
     }
 
-    /* Modern UI Effects */
-    .form-card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 24px;
-      margin-top: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-
-    .input-group input, .input-group textarea, .input-group select {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .input-group input:hover, .input-group textarea:hover, .input-group select:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .nav-item {
+    .option-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212, 175, 89, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
       transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
     }
 
-    .nav-item:active {
-      transform: scale(0.9);
+    .option-card i {
+      font-size: 1rem;
+      color: var(--primary);
     }
 
-    .help-icon:hover {
-      transform: rotate(15deg) scale(1.1);
-      background: rgba(212, 175, 89, 0.2);
+    .option-card span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-dim);
     }
 
-    /* Navigation Bar */
+    .option-card.active {
+      background: rgba(212, 175, 89, 0.1);
+      border-color: var(--primary);
+    }
+
+    .option-card.active span {
+      color: var(--primary);
+    }
+
+    /* Review List */
+    .review-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .review-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .review-value {
+      font-size: 0.85rem;
+      color: #fff;
+      font-weight: 700;
+      text-align: right;
+      max-width: 60%;
+    }
+
     .nav-bar {
       position: fixed;
       bottom: 0;
@@ -389,11 +293,6 @@
       color: var(--primary);
     }
 
-    .nav-item i {
-      font-size: 1.2rem;
-    }
-
-    /* Prompt Result */
     .result-card {
       background: #000;
       border: 1px dashed var(--primary);
@@ -432,13 +331,30 @@
       margin-bottom: 20px;
       cursor: pointer;
     }
+
+    .step-indicator {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .step-dot {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+    }
+
+    .step-dot.active {
+      background: var(--primary);
+    }
   </style>
 </head>
 <body>
 
   <div class="app-container">
     <header>
-      <div class="logo"><span>Prompt</span>Studio</div>
+      <div class="logo" onclick="showPage('home')"><span>Prompt</span>Studio</div>
       <div class="help-icon" onclick="showPage('tutorial')">
         <i class="fas fa-question"></i>
       </div>
@@ -449,36 +365,22 @@
       <div class="hero-card">
         <h2>Crie artes que vendem em segundos.</h2>
         <p>A ferramenta definitiva para gerar prompts profissionais para o seu delivery ou negócio.</p>
-        <button class="main-action-btn" onclick="showPage('generator')">
+        <button class="main-action-btn" onclick="showPage('step1')">
           <i class="fas fa-wand-magic-sparkles"></i> Começar Agora
         </button>
       </div>
-
-      <div style="margin-top: 40px;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 20px;">Por que usar?</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-          <div style="background: #1a1a1a; padding: 20px; border-radius: 20px;">
-            <i class="fas fa-bolt" style="color: var(--primary); margin-bottom: 10px;"></i>
-            <h4 style="font-size: 0.9rem;">Rápido</h4>
-            <p style="font-size: 0.75rem; color: var(--text-dim);">Prompts prontos em menos de 1 minuto.</p>
-          </div>
-          <div style="background: #1a1a1a; padding: 20px; border-radius: 20px;">
-            <i class="fas fa-star" style="color: var(--primary); margin-bottom: 10px;"></i>
-            <h4 style="font-size: 0.9rem;">Profissional</h4>
-            <p style="font-size: 0.75rem; color: var(--text-dim);">Designers de IA treinados para converter.</p>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- GENERATOR PAGE -->
-    <div id="generator" class="page">
-      <button class="back-btn" onclick="showPage('home')">
-        <i class="fas fa-arrow-left"></i> Voltar
-      </button>
-      
-      <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Gerador de Artes</h2>
-      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">Preencha os dados para criar seu prompt mestre.</p>
+    <!-- STEP 1: INFO -->
+    <div id="step1" class="page">
+      <button class="back-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> Voltar</button>
+      <div class="step-indicator">
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+        <div class="step-dot"></div>
+      </div>
+      <h2 style="font-size: 1.5rem;">Informações da Arte</h2>
+      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">O que vamos anunciar hoje?</p>
 
       <div class="form-card">
         <div class="input-group">
@@ -510,37 +412,11 @@
           </div>
           <div class="input-group">
             <label>Formato</label>
-            <select id="artFormat" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 89, 0.1); border-radius: 12px; padding: 14px; color: #fff; font-family: inherit; font-size: 1rem;">
+            <select id="artFormat">
               <option value="Feed (1080x1350)">Feed (Retrato)</option>
               <option value="Story (1080x1920)">Story</option>
               <option value="Quadrado (1080x1080)">Quadrado</option>
             </select>
-          </div>
-        </div>
-        <div class="input-group">
-          <label>Logomarca</label>
-          <div class="option-grid" id="logoOptions">
-            <div class="option-card active" onclick="selectOption(this, 'logo')">
-              <i class="fas fa-upload"></i>
-              <span>Vou enviar a minha</span>
-            </div>
-            <div class="option-card" onclick="selectOption(this, 'logo')">
-              <i class="fas fa-robot"></i>
-              <span>Gerar com IA</span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group">
-          <label>Foto do Produto</label>
-          <div class="option-grid" id="photoOptions">
-            <div class="option-card active" onclick="selectOption(this, 'photo')">
-              <i class="fas fa-image"></i>
-              <span>Vou enviar a minha</span>
-            </div>
-            <div class="option-card" onclick="selectOption(this, 'photo')">
-              <i class="fas fa-magic"></i>
-              <span>Gerar com IA</span>
-            </div>
           </div>
         </div>
         <div class="input-group">
@@ -556,7 +432,7 @@
           </div>
         </div>
         <div class="input-group">
-          <label>Cores da sua marca (Escolha até 3)</label>
+          <label>Cores da marca (Até 3)</label>
           <div class="chips" id="colorChips">
             <div class="chip" onclick="toggleColorChip(this)" data-color="Dourado"><span class="color-dot" style="background: #d4af59;"></span>Dourado</div>
             <div class="chip" onclick="toggleColorChip(this)" data-color="Preto"><span class="color-dot" style="background: #000000;"></span>Preto</div>
@@ -570,87 +446,112 @@
             <div class="chip" onclick="toggleColorChip(this)" data-color="Roxo"><span class="color-dot" style="background: #800080;"></span>Roxo</div>
           </div>
         </div>
-        
-        <button class="main-action-btn" onclick="generatePrompt()" style="margin-top: 10px;">
-          <i class="fas fa-check"></i> Gerar Prompt Mestre
-        </button>
+        <button class="main-action-btn" onclick="showPage('step2')">Próximo Passo <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- STEP 2: LOGO & PHOTO -->
+    <div id="step2" class="page">
+      <button class="back-btn" onclick="showPage('step1')"><i class="fas fa-arrow-left"></i> Voltar</button>
+      <div class="step-indicator">
+        <div class="step-dot active"></div>
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+      </div>
+      <h2 style="font-size: 1.5rem;">Arquivos Visuais</h2>
+      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">Como a IA deve lidar com as imagens?</p>
+
+      <div class="form-card">
+        <div style="background: rgba(212, 175, 89, 0.05); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(212, 175, 89, 0.1);">
+          <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">💡 Dica: Se você não tiver uma foto profissional, escolha "Gerar com IA" e descreva o produto detalhadamente na etapa anterior.</p>
+        </div>
+
+        <div class="input-group">
+          <label>Sua Logomarca</label>
+          <div class="option-grid" id="logoOptions">
+            <div class="option-card" onclick="selectOption(this, 'logo')">
+              <i class="fas fa-upload"></i>
+              <span>Vou enviar</span>
+            </div>
+            <div class="option-card active" onclick="selectOption(this, 'logo')">
+              <i class="fas fa-robot"></i>
+              <span>Gerar com IA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Foto do Produto</label>
+          <div class="option-grid" id="photoOptions">
+            <div class="option-card" onclick="selectOption(this, 'photo')">
+              <i class="fas fa-image"></i>
+              <span>Vou enviar</span>
+            </div>
+            <div class="option-card active" onclick="selectOption(this, 'photo')">
+              <i class="fas fa-magic"></i>
+              <span>Gerar com IA</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="main-action-btn" onclick="prepareReview()">Revisar Dados <i class="fas fa-check-double"></i></button>
+      </div>
+    </div>
+
+    <!-- STEP 3: REVIEW -->
+    <div id="review" class="page">
+      <button class="back-btn" onclick="showPage('step2')"><i class="fas fa-arrow-left"></i> Voltar</button>
+      <div class="step-indicator">
+        <div class="step-dot active"></div>
+        <div class="step-dot active"></div>
+        <div class="step-dot active"></div>
+      </div>
+      <h2 style="font-size: 1.5rem;">Tudo certo?</h2>
+      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">Confira as informações antes de gerar o prompt.</p>
+
+      <div class="form-card" id="reviewList">
+        <!-- Review items injected here -->
       </div>
 
-      <div id="resultArea" style="display: none;">
-        <div class="result-card" id="promptResult"></div>
-        <button class="main-action-btn" onclick="copyPrompt()" style="margin-top: 15px; background: #fff; color: #000;">
-          <i class="fas fa-copy"></i> Copiar Prompt
-        </button>
-        <div style="display: flex; gap: 10px; margin-top: 10px;">
-          <button class="main-action-btn" onclick="window.open('https://chat.openai.com', '_blank')" style="background: #10a37f; color: #fff; font-size: 0.8rem;">
-            ChatGPT
-          </button>
-          <button class="main-action-btn" onclick="window.open('https://gemini.google.com', '_blank')" style="background: #4285f4; color: #fff; font-size: 0.8rem;">
-            Gemini
-          </button>
+      <button class="main-action-btn" onclick="generatePrompt()">Gerar Prompt Mestre <i class="fas fa-rocket"></i></button>
+      <button class="main-action-btn" onclick="showPage('step1')" style="background: transparent; border: 1px solid var(--primary); color: var(--primary); box-shadow: none;">Editar Informações</button>
+    </div>
+
+    <!-- RESULT PAGE -->
+    <div id="result" class="page">
+      <button class="back-btn" onclick="showPage('review')"><i class="fas fa-arrow-left"></i> Voltar</button>
+      <h2 style="font-size: 1.5rem;">Seu Prompt Mestre</h2>
+      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">Copie e cole na sua IA favorita.</p>
+
+      <div class="result-card" id="promptResult"></div>
+      
+      <button class="main-action-btn" onclick="copyPrompt()" style="background: #fff; color: #000;">
+        <i class="fas fa-copy"></i> Copiar Prompt
+      </button>
+
+      <div style="margin-top: 30px;">
+        <p style="text-align: center; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 15px;">ABRIR FERRAMENTA DE IA:</p>
+        <div style="display: flex; gap: 10px;">
+          <button class="main-action-btn" onclick="window.open('https://chat.openai.com', '_blank')" style="background: #10a37f; color: #fff; margin-top: 0;">ChatGPT</button>
+          <button class="main-action-btn" onclick="window.open('https://gemini.google.com', '_blank')" style="background: #4285f4; color: #fff; margin-top: 0;">Gemini</button>
         </div>
       </div>
     </div>
 
     <!-- TUTORIAL PAGE -->
     <div id="tutorial" class="page">
-      <button class="back-btn" onclick="showPage('home')">
-        <i class="fas fa-arrow-left"></i> Voltar
-      </button>
-
-      <h2 style="font-size: 1.5rem; margin-bottom: 24px;">Como usar o PromptStudio</h2>
-
-      <div class="tutorial-step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h3>Preencha os dados</h3>
-          <p>Informe o nome da sua empresa e o que você deseja vender ou anunciar. Seja específico para melhores resultados.</p>
-        </div>
-      </div>
-
-      <div class="tutorial-step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h3>Escolha o estilo</h3>
-          <p>Selecione o estilo visual que mais combina com a sua marca (Moderno, Rústico, etc).</p>
-        </div>
-      </div>
-
-      <div class="tutorial-step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h3>Gere e Copie</h3>
-          <p>Clique em "Gerar Prompt Mestre" e copie o texto gerado clicando no botão de copiar.</p>
-        </div>
-      </div>
-
-      <div class="tutorial-step">
-        <div class="step-number">4</div>
-        <div class="step-content">
-          <h3>Cole na sua IA</h3>
-          <p>Abra o ChatGPT ou Gemini, cole o prompt e veja a mágica acontecer. A IA criará a descrição completa da sua arte!</p>
-        </div>
-      </div>
-
-      <button class="main-action-btn" onclick="showPage('generator')" style="margin-top: 20px;">
-        <i class="fas fa-rocket"></i> Entendi, vamos lá!
-      </button>
+      <button class="back-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> Voltar</button>
+      <h2 style="font-size: 1.5rem; margin-bottom: 24px;">Como usar</h2>
+      <div class="tutorial-step"><div class="step-number">1</div><div class="step-content"><h3>Dados</h3><p>Preencha as informações do seu negócio e promoção.</p></div></div>
+      <div class="tutorial-step"><div class="step-number">2</div><div class="step-content"><h3>Imagens</h3><p>Escolha se vai enviar suas fotos ou se a IA deve criá-las.</p></div></div>
+      <div class="tutorial-step"><div class="step-number">3</div><div class="step-content"><h3>Gere</h3><p>Copie o prompt e cole no ChatGPT ou Gemini.</p></div></div>
+      <button class="main-action-btn" onclick="showPage('step1')">Vamos lá!</button>
     </div>
 
-    <!-- NAV BAR -->
     <nav class="nav-bar">
-      <div class="nav-item active" onclick="showPage('home')">
-        <i class="fas fa-home"></i>
-        <span>Início</span>
-      </div>
-      <div class="nav-item" onclick="showPage('generator')">
-        <i class="fas fa-wand-magic-sparkles"></i>
-        <span>Gerador</span>
-      </div>
-      <div class="nav-item" onclick="showPage('tutorial')">
-        <i class="fas fa-book"></i>
-        <span>Tutorial</span>
-      </div>
+      <div class="nav-item active" onclick="showPage('home')"><i class="fas fa-home"></i><span>Início</span></div>
+      <div class="nav-item" onclick="showPage('step1')"><i class="fas fa-wand-magic-sparkles"></i><span>Gerador</span></div>
+      <div class="nav-item" onclick="showPage('tutorial')"><i class="fas fa-book"></i><span>Tutorial</span></div>
     </nav>
   </div>
 
@@ -658,34 +559,13 @@
 
   <script>
     function showPage(pageId) {
-      // Hide all pages
-      document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-      });
-      
-      // Show target page
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
-      
-      // Update nav bar
-      document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-        if (item.innerText.toLowerCase().includes(pageId === 'generator' ? 'gerador' : (pageId === 'home' ? 'início' : 'tutorial'))) {
-          item.classList.add('active');
-        }
-      });
-
       window.scrollTo(0, 0);
     }
 
     function selectChip(el) {
-      const parent = el.parentElement;
-      parent.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-      el.classList.add('active');
-    }
-
-    function selectOption(el, type) {
-      const parent = el.parentElement;
-      parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('active'));
+      el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       el.classList.add('active');
     }
 
@@ -696,6 +576,29 @@
         return;
       }
       el.classList.toggle('active');
+    }
+
+    function selectOption(el, type) {
+      el.parentElement.querySelectorAll('.option-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function prepareReview() {
+      const data = {
+        'Negócio': document.getElementById('bizName').value || '-',
+        'Promoção': document.getElementById('promoTitle').value || '-',
+        'Valor': document.getElementById('promoValue').value || '-',
+        'Estilo': document.querySelector('#styleChips .chip.active').innerText,
+        'Logo': document.querySelector('#logoOptions .option-card.active span').innerText,
+        'Foto': document.querySelector('#photoOptions .option-card.active span').innerText
+      };
+
+      let html = '';
+      for (const [label, value] of Object.entries(data)) {
+        html += `<div class="review-item"><span class="review-label">${label}</span><span class="review-value">${value}</span></div>`;
+      }
+      document.getElementById('reviewList').innerHTML = html;
+      showPage('review');
     }
 
     function generatePrompt() {
@@ -709,9 +612,7 @@
       const logoOption = document.querySelector('#logoOptions .option-card.active span').innerText;
       const photoOption = document.querySelector('#photoOptions .option-card.active span').innerText;
       const style = document.querySelector('#styleChips .chip.active').innerText;
-      
-      const selectedColors = Array.from(document.querySelectorAll('#colorChips .chip.active'))
-        .map(c => c.getAttribute('data-color'));
+      const selectedColors = Array.from(document.querySelectorAll('#colorChips .chip.active')).map(c => c.getAttribute('data-color'));
       const colorsText = selectedColors.length > 0 ? selectedColors.join(', ') : 'Cores que combinem com o estilo';
 
       const prompt = `# DIREÇÃO CRIATIVA PREMIUM PARA ARTES DE SOCIAL MEDIA
@@ -808,10 +709,7 @@ Legenda estratégica com gatilho emocional, desejo, urgência, CTA forte e hasht
 Criar uma arte altamente profissional, moderna e premium, com aparência real de agência de publicidade de alto nível, focada em desejo visual, autoridade, impacto e conversão. A arte deve parecer cara, refinada e extremamente profissional.`;
 
       document.getElementById('promptResult').innerText = prompt;
-      document.getElementById('resultArea').style.display = 'block';
-      
-      // Scroll to result
-      document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth' });
+      showPage('result');
     }
 
     function copyPrompt() {
@@ -819,9 +717,7 @@ Criar uma arte altamente profissional, moderna e premium, com aparência real de
       navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('toast');
         toast.style.display = 'block';
-        setTimeout(() => {
-          toast.style.display = 'none';
-        }, 2000);
+        setTimeout(() => toast.style.display = 'none', 2000);
       });
     }
   </script>
