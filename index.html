@@ -262,6 +262,57 @@
       transform: translateY(-2px) scale(1.05);
     }
 
+    /* Option Cards */
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .option-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212, 175, 89, 0.1);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .option-card i {
+      font-size: 1.2rem;
+      color: var(--primary);
+      opacity: 0.7;
+    }
+
+    .option-card span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .option-card.active {
+      background: rgba(212, 175, 89, 0.1);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .option-card.active i {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .option-card.active span {
+      color: var(--primary);
+    }
+
     /* Color Chips Specific */
     .color-dot {
       width: 16px;
@@ -468,16 +519,28 @@
         </div>
         <div class="input-group">
           <label>Logomarca</label>
-          <div class="chips" id="logoChips">
-            <div class="chip active" onclick="selectChip(this)">Vou enviar a minha</div>
-            <div class="chip" onclick="selectChip(this)">Gerar com IA</div>
+          <div class="option-grid" id="logoOptions">
+            <div class="option-card active" onclick="selectOption(this, 'logo')">
+              <i class="fas fa-upload"></i>
+              <span>Vou enviar a minha</span>
+            </div>
+            <div class="option-card" onclick="selectOption(this, 'logo')">
+              <i class="fas fa-robot"></i>
+              <span>Gerar com IA</span>
+            </div>
           </div>
         </div>
         <div class="input-group">
           <label>Foto do Produto</label>
-          <div class="chips" id="photoChips">
-            <div class="chip active" onclick="selectChip(this)">Vou enviar a minha</div>
-            <div class="chip" onclick="selectChip(this)">Gerar com IA</div>
+          <div class="option-grid" id="photoOptions">
+            <div class="option-card active" onclick="selectOption(this, 'photo')">
+              <i class="fas fa-image"></i>
+              <span>Vou enviar a minha</span>
+            </div>
+            <div class="option-card" onclick="selectOption(this, 'photo')">
+              <i class="fas fa-magic"></i>
+              <span>Gerar com IA</span>
+            </div>
           </div>
         </div>
         <div class="input-group">
@@ -620,6 +683,12 @@
       el.classList.add('active');
     }
 
+    function selectOption(el, type) {
+      const parent = el.parentElement;
+      parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+
     function toggleColorChip(el) {
       const selected = document.querySelectorAll('#colorChips .chip.active');
       if (selected.length >= 3 && !el.classList.contains('active')) {
@@ -637,8 +706,8 @@
       const phone = document.getElementById('bizPhone').value || '';
       const insta = document.getElementById('bizInsta').value || '';
       const format = document.getElementById('artFormat').value;
-      const logoOption = document.querySelector('#logoChips .chip.active').innerText;
-      const photoOption = document.querySelector('#photoChips .chip.active').innerText;
+      const logoOption = document.querySelector('#logoOptions .option-card.active span').innerText;
+      const photoOption = document.querySelector('#photoOptions .option-card.active span').innerText;
       const style = document.querySelector('#styleChips .chip.active').innerText;
       
       const selectedColors = Array.from(document.querySelectorAll('#colorChips .chip.active'))
