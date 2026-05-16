@@ -378,11 +378,39 @@
       <div class="form-card">
         <div class="input-group">
           <label>Nome do Negócio</label>
-          <input type="text" id="bizName" placeholder="Ex: Burger King">
+          <input type="text" id="bizName" placeholder="Ex: Pizzaria da Nonna">
         </div>
         <div class="input-group">
-          <label>O que você quer anunciar?</label>
-          <textarea id="bizDesc" placeholder="Ex: Combo de hambúrguer artesanal com batata e refri por R$ 29,90"></textarea>
+          <label>Título da Promoção</label>
+          <input type="text" id="promoTitle" placeholder="Ex: Terça em Dobro">
+        </div>
+        <div class="input-group">
+          <label>Descrição do Produto</label>
+          <textarea id="bizDesc" placeholder="Ex: Pizza de Calabresa com borda recheada"></textarea>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div class="input-group">
+            <label>Valor (R$)</label>
+            <input type="text" id="promoValue" placeholder="Ex: 49,90">
+          </div>
+          <div class="input-group">
+            <label>Telefone</label>
+            <input type="tel" id="bizPhone" placeholder="(11) 99999-9999">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Logomarca</label>
+          <div class="chips" id="logoChips">
+            <div class="chip active" onclick="selectChip(this)">Vou enviar a minha</div>
+            <div class="chip" onclick="selectChip(this)">Gerar com IA</div>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Foto do Produto</label>
+          <div class="chips" id="photoChips">
+            <div class="chip active" onclick="selectChip(this)">Vou enviar a minha</div>
+            <div class="chip" onclick="selectChip(this)">Gerar com IA</div>
+          </div>
         </div>
         <div class="input-group">
           <label>Estilo Visual</label>
@@ -509,23 +537,34 @@
 
     function generatePrompt() {
       const name = document.getElementById('bizName').value || 'Meu Negócio';
+      const promo = document.getElementById('promoTitle').value || 'Oferta Especial';
       const desc = document.getElementById('bizDesc').value || 'Um produto incrível';
+      const value = document.getElementById('promoValue').value || '';
+      const phone = document.getElementById('bizPhone').value || '';
+      const logoOption = document.querySelector('#logoChips .chip.active').innerText;
+      const photoOption = document.querySelector('#photoChips .chip.active').innerText;
       const style = document.querySelector('#styleChips .chip.active').innerText;
 
       const prompt = `Atue como um Designer Sênior e Especialista em Copywriting para Social Media. 
 
 Crie uma estrutura completa de arte profissional para:
 NEGÓCIO: ${name}
+TÍTULO DA PROMOÇÃO: ${promo}
 PRODUTO/OFERTA: ${desc}
+VALOR: ${value ? 'R$ ' + value : 'Não informado'}
+CONTATO: ${phone}
+LOGOMARCA: ${logoOption}
+FOTO DO PRODUTO: ${photoOption}
 ESTILO VISUAL: ${style}
 
 Sua resposta deve conter:
-1. Título de Impacto (Headline)
-2. Descrição da Composição Visual (Cenário, Iluminação, Elementos)
-3. Paleta de Cores Sugerida
-4. Sugestão de Legenda para Instagram com CTA (Chamada para Ação)
+1. Título de Impacto (Headline) para a arte
+2. Descrição detalhada da Composição Visual (Cenário, Iluminação, Posicionamento dos Elementos)
+3. Como integrar a Logomarca e a Foto do Produto no layout
+4. Paleta de Cores Sugerida (Hex codes)
+5. Sugestão de Legenda para Instagram com CTA (Chamada para Ação)
 
-Foque em um design que gere desejo imediato e autoridade.`;
+Foque em um design que gere desejo imediato, autoridade e conversão.`;
 
       document.getElementById('promptResult').innerText = prompt;
       document.getElementById('resultArea').style.display = 'block';
