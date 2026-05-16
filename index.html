@@ -413,13 +413,30 @@
           </div>
         </div>
         <div class="input-group">
-          <label>Estilo Visual</label>
+          <label>Como deve ser a arte?</label>
           <div class="chips" id="styleChips">
-            <div class="chip active" onclick="selectChip(this)">Moderno</div>
-            <div class="chip" onclick="selectChip(this)">Minimalista</div>
-            <div class="chip" onclick="selectChip(this)">Rústico</div>
-            <div class="chip" onclick="selectChip(this)">Luxuoso</div>
-            <div class="chip" onclick="selectChip(this)">Divertido</div>
+            <div class="chip active" onclick="selectChip(this)">Chique e Elegante</div>
+            <div class="chip" onclick="selectChip(this)">Limpa e Simples</div>
+            <div class="chip" onclick="selectChip(this)">Estilo Madeira/Rústico</div>
+            <div class="chip" onclick="selectChip(this)">Colorida e Alegre</div>
+            <div class="chip" onclick="selectChip(this)">Séria e Profissional</div>
+            <div class="chip" onclick="selectChip(this)">Estilo Black/Escura</div>
+            <div class="chip" onclick="selectChip(this)">Moderna e Tecnológica</div>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Cores da sua marca (Escolha até 3)</label>
+          <div class="chips" id="colorChips">
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Dourado">Dourado</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Preto">Preto</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Branco">Branco</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Vermelho">Vermelho</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Azul">Azul</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Verde">Verde</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Amarelo">Amarelo</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Laranja">Laranja</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Rosa">Rosa</div>
+            <div class="chip" onclick="toggleColorChip(this)" data-color="Roxo">Roxo</div>
           </div>
         </div>
         
@@ -535,6 +552,15 @@
       el.classList.add('active');
     }
 
+    function toggleColorChip(el) {
+      const selected = document.querySelectorAll('#colorChips .chip.active');
+      if (selected.length >= 3 && !el.classList.contains('active')) {
+        alert('Escolha no máximo 3 cores.');
+        return;
+      }
+      el.classList.toggle('active');
+    }
+
     function generatePrompt() {
       const name = document.getElementById('bizName').value || 'Meu Negócio';
       const promo = document.getElementById('promoTitle').value || 'Oferta Especial';
@@ -544,6 +570,10 @@
       const logoOption = document.querySelector('#logoChips .chip.active').innerText;
       const photoOption = document.querySelector('#photoChips .chip.active').innerText;
       const style = document.querySelector('#styleChips .chip.active').innerText;
+      
+      const selectedColors = Array.from(document.querySelectorAll('#colorChips .chip.active'))
+        .map(c => c.getAttribute('data-color'));
+      const colorsText = selectedColors.length > 0 ? selectedColors.join(', ') : 'Cores que combinem com o estilo';
 
       const prompt = `Atue como um Designer Sênior e Especialista em Copywriting para Social Media. 
 
@@ -556,12 +586,13 @@ CONTATO: ${phone}
 LOGOMARCA: ${logoOption}
 FOTO DO PRODUTO: ${photoOption}
 ESTILO VISUAL: ${style}
+PALETA DE CORES: ${colorsText}
 
 Sua resposta deve conter:
 1. Título de Impacto (Headline) para a arte
 2. Descrição detalhada da Composição Visual (Cenário, Iluminação, Posicionamento dos Elementos)
 3. Como integrar a Logomarca e a Foto do Produto no layout
-4. Paleta de Cores Sugerida (Hex codes)
+4. Paleta de Cores Sugerida (Hex codes) baseada nas cores: ${colorsText}
 5. Sugestão de Legenda para Instagram com CTA (Chamada para Ação)
 
 Foque em um design que gere desejo imediato, autoridade e conversão.`;
