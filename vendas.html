@@ -4,18 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PromptStudio AI - Transforme seu Pequeno Negócio em uma Marca de Elite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #d4af59;
       --primary-dark: #b89648;
+      --primary-light: #f0cc7a;
       --bg: #050505;
-      --card-bg: #121212;
+      --bg-2: #0a0a0a;
+      --bg-3: #0f0f0f;
+      --card-bg: #111111;
+      --card-border: rgba(255,255,255,0.05);
       --text: #ffffff;
-      --text-dim: #a0a0a0;
+      --text-dim: #888888;
+      --text-muted: #555555;
       --accent: #e8c547;
       --success: #22c55e;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --radius-xl: 48px;
     }
 
     * {
@@ -36,20 +45,21 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
-    /* Header */
+    /* ─── HEADER ─── */
     header {
-      padding: 30px 0;
+      padding: 28px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
     }
 
     .logo {
       font-size: 1.5rem;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: -1px;
     }
 
@@ -57,9 +67,29 @@
       color: var(--primary);
     }
 
-    /* Hero Section */
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 175, 89, 0.1);
+      border: 1px solid rgba(212, 175, 89, 0.25);
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .header-cta:hover {
+      background: rgba(212, 175, 89, 0.2);
+      border-color: var(--primary);
+    }
+
+    /* ─── HERO ─── */
     .hero {
-      padding: 80px 0 120px 0;
+      padding: 100px 0 120px;
       text-align: center;
       position: relative;
     }
@@ -67,48 +97,69 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: -100px;
+      top: -80px;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(212, 175, 89, 0.1) 0%, rgba(5, 5, 5, 0) 70%);
-      z-index: -1;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(212, 175, 89, 0.08) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
     }
 
+    .hero > * { position: relative; z-index: 1; }
+
     .badge {
-      display: inline-block;
-      padding: 8px 16px;
-      background: rgba(212, 175, 89, 0.1);
-      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(212, 175, 89, 0.08);
+      border-radius: 50px;
       color: var(--primary);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(212, 175, 89, 0.2);
+      margin-bottom: 28px;
+      border: 1px solid rgba(212, 175, 89, 0.18);
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
     }
 
     h1 {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-size: clamp(2.6rem, 8vw, 4.8rem);
       font-weight: 900;
-      line-height: 1.1;
+      line-height: 1.05;
       letter-spacing: -3px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     h1 span {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%, var(--primary-light) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text-dim);
-      max-width: 700px;
-      margin: 0 auto 40px auto;
+      max-width: 640px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
     }
 
     .cta-button {
@@ -117,224 +168,94 @@
       gap: 12px;
       background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
       color: #000;
-      padding: 20px 40px;
+      padding: 20px 44px;
       border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 800;
+      font-size: 1.05rem;
+      font-weight: 900;
       text-decoration: none;
-      box-shadow: 0 20px 40px rgba(212, 175, 89, 0.2);
-      transition: all 0.3s;
+      box-shadow: 0 20px 50px rgba(212, 175, 89, 0.25);
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      letter-spacing: 0.3px;
     }
 
     .cta-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 30px 50px rgba(212, 175, 89, 0.3);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(212, 175, 89, 0.35);
     }
 
-    /* Pain Section */
+    .hero-sub {
+      font-size: 0.8rem;
+      margin-top: 18px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .hero-sub i { color: var(--success); font-size: 0.75rem; }
+
+    /* ─── PAIN SECTION ─── */
     .pain-section {
       padding: 100px 0;
-      background: #0a0a0a;
+      background: var(--bg-2);
       border-top: 1px solid rgba(255,255,255,0.03);
       border-bottom: 1px solid rgba(255,255,255,0.03);
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 64px;
     }
 
     .section-title h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
     }
 
     .section-title p {
       color: var(--text-dim);
-      font-size: 1.1rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      padding: 40px;
-      border-radius: 30px;
-      border: 1px solid rgba(255,255,255,0.03);
-      transition: all 0.3s;
-    }
-
-    .card:hover {
-      border-color: rgba(212, 175, 89, 0.3);
-      transform: translateY(-10px);
-    }
-
-    .card i {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 24px;
-    }
-
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 16px;
-    }
-
-    .card p {
-      color: var(--text-dim);
-      font-size: 0.95rem;
-    }
-
-    /* Solution Section */
-    .solution {
-      padding: 120px 0;
-    }
-
-    .solution-content {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-
-    .solution-text {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .solution-image {
-      flex: 1;
-      min-width: 300px;
-      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-      border-radius: 40px;
-      padding: 40px;
-      border: 1px solid rgba(212, 175, 89, 0.2);
-      position: relative;
-    }
-
-    .solution-image::after {
-      content: 'PREMIUM';
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--primary);
-      color: #000;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 900;
-    }
-
-    .feature-list {
-      list-style: none;
-      margin-top: 32px;
-    }
-
-    .feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .feature-list i {
-      color: var(--success);
-    }
-
-    /* Pricing Section */
-    .pricing {
-      padding: 100px 0;
-      text-align: center;
-    }
-
-    .price-card {
-      max-width: 500px;
+      font-size: 1.05rem;
+      max-width: 560px;
       margin: 0 auto;
-      background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
-      padding: 60px 40px;
-      border-radius: 40px;
-      border: 2px solid var(--primary);
-      position: relative;
-      overflow: hidden;
     }
 
-    .price-card::before {
-      content: 'OFERTA DE LANÇAMENTO';
-      position: absolute;
-      top: 30px;
-      right: -40px;
-      background: var(--primary);
-      color: #000;
-      padding: 10px 100px;
-      transform: rotate(45deg);
-      font-size: 0.7rem;
-      font-weight: 900;
-    }
-
-    .old-price {
-      text-decoration: line-through;
-      color: var(--text-dim);
-      font-size: 1.2rem;
-    }
-
-    .new-price {
-      font-size: 4rem;
-      font-weight: 900;
-      margin: 10px 0;
-      color: #fff;
-    }
-
-    .new-price span {
-      font-size: 1.5rem;
-      vertical-align: middle;
-    }
-
-    .price-info {
-      color: var(--primary);
-      font-weight: 800;
-      margin-bottom: 32px;
-      display: block;
-    }
-
-    /* Footer */
-    footer {
-      padding: 60px 0;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.03);
-    }
-
-    .social-link {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-weight: 700;
-      transition: color 0.3s;
-    }
-
-    .social-link:hover {
-      color: var(--primary);
-    }
-
-    /* Slider Styles */
+    /* ─── SLIDER ─── */
     .slider-container {
       width: 100%;
       overflow: hidden;
-      padding: 40px 0;
+      padding: 20px 0 40px;
       position: relative;
-      background: #080808;
+    }
+
+    .slider-container::before,
+    .slider-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .slider-container::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg-2), transparent);
+    }
+
+    .slider-container::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg-2), transparent);
     }
 
     .slider-track {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       animation: scroll 40s linear infinite;
-      width: calc(250px * 14);
+      width: calc(266px * 14);
     }
 
     .slider-track:hover {
@@ -344,52 +265,497 @@
     .slide {
       width: 250px;
       flex-shrink: 0;
-      border-radius: 20px;
+      border-radius: var(--radius-md);
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.05);
-      transition: transform 0.3s;
+      transition: transform 0.3s, border-color 0.3s;
     }
 
     .slide:hover {
-      transform: scale(1.05);
-      border-color: var(--primary);
+      transform: scale(1.04);
+      border-color: rgba(212, 175, 89, 0.4);
     }
 
     .slide img {
       width: 100%;
-      height: 350px;
+      height: 340px;
       object-fit: cover;
       display: block;
     }
 
     @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-250px * 7)); }
+      100% { transform: translateX(calc(-266px * 7)); }
     }
 
-    .nicho-tag {
-      display: inline-block;
-      padding: 10px 20px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 15px;
-      margin: 5px;
-      font-size: 0.9rem;
-      font-weight: 600;
+    /* ─── NICHOS ─── */
+    .nichos-section {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .nichos-section h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .nichos-section .nichos-sub {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-bottom: 48px;
+    }
+
+    .nichos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .nicho-category {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      text-align: left;
       transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
     }
 
-    .nicho-tag:hover {
-      background: rgba(212, 175, 89, 0.1);
-      border-color: var(--primary);
+    .nicho-category::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212,175,89,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .nicho-category:hover {
+      border-color: rgba(212, 175, 89, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .nicho-category:hover::before {
+      opacity: 1;
+    }
+
+    .nicho-category-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
       color: var(--primary);
-      transform: translateY(-3px);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nicho-category-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(212,175,89,0.2);
+    }
+
+    .nicho-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nicho-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.02);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nicho-item:hover {
+      background: rgba(212,175,89,0.08);
+      color: var(--primary-light);
+    }
+
+    .nicho-item .emoji {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      width: 24px;
+      text-align: center;
+    }
+
+    /* ─── CARDS DE BENEFÍCIOS ─── */
+    .benefits-section {
+      margin-top: 80px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 40px 36px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      transition: all 0.35s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover {
+      border-color: rgba(212, 175, 89, 0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(212,175,89,0.1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .card-icon i {
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .card p {
+      color: var(--text-dim);
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    /* ─── SOLUTION ─── */
+    .solution {
+      padding: 120px 0;
+    }
+
+    .solution-content {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+
+    .solution-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .solution-text h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    .solution-text h2 span {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .solution-text p {
+      color: var(--text-dim);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .solution-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+
+    .solution-image img {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(212,175,89,0.15);
+    }
+
+    .solution-image .premium-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--primary);
+      color: #000;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .feature-list li i {
+      color: var(--success);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── COMPARATIVO ─── */
+    .compare-section {
+      padding: 80px 0;
+      background: var(--bg-2);
+      border-top: 1px solid rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .compare-item {
+      text-align: center;
+      padding: 36px 24px;
+      border-radius: var(--radius-lg);
+    }
+
+    .compare-item.highlight {
+      background: rgba(212, 175, 89, 0.05);
+      border: 1px solid rgba(212,175,89,0.3);
+    }
+
+    .compare-item .big-num {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      letter-spacing: -2px;
+    }
+
+    .compare-item.highlight .big-num {
+      color: var(--primary);
+    }
+
+    .compare-item p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+
+    .compare-item.highlight p {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ─── PRICING ─── */
+    .pricing {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .price-card {
+      max-width: 480px;
+      margin: 0 auto;
+      background: linear-gradient(160deg, #161616 0%, #0a0a0a 100%);
+      padding: 60px 48px;
+      border-radius: var(--radius-xl);
+      border: 1.5px solid rgba(212,175,89,0.4);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,89,0.05);
+    }
+
+    .price-card::before {
+      content: 'OFERTA DE LANÇAMENTO';
+      position: absolute;
+      top: 28px;
+      right: -42px;
+      background: var(--primary);
+      color: #000;
+      padding: 10px 110px;
+      transform: rotate(45deg);
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .price-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,175,89,0.5), transparent);
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .new-price {
+      font-size: 4.5rem;
+      font-weight: 900;
+      margin: 8px 0 4px;
+      color: #fff;
+      letter-spacing: -3px;
+    }
+
+    .new-price span {
+      font-size: 1.6rem;
+      vertical-align: middle;
+      letter-spacing: 0;
+    }
+
+    .price-info {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 36px;
+      display: block;
+    }
+
+    .price-features {
+      list-style: none;
+      margin-bottom: 40px;
+      text-align: left;
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .price-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .price-features li i {
+      color: var(--success);
+      font-size: 0.85rem;
+    }
+
+    .secure-badge {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .secure-badge i { color: var(--success); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span { color: var(--primary); }
+
+    .social-link {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover { color: var(--primary); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nichos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
-      h1 { font-size: 3rem; }
+      h1 { font-size: 2.8rem; letter-spacing: -2px; }
       .solution-content { flex-direction: column; text-align: center; }
       .feature-list li { justify-content: center; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .compare-item.highlight { order: -1; }
+      .price-card { padding: 48px 28px; }
+    }
+
+    @media (max-width: 560px) {
+      .nichos-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-cta { display: none; }
     }
   </style>
 </head>
@@ -398,95 +764,147 @@
   <div class="container">
     <header>
       <div class="logo"><span>Prompt</span>Studio</div>
-      <a href="https://instagram.com/dhdesignerpro" target="_blank" class="social-link">@dhdesignerpro</a>
+      <a href="https://instagram.com/dhdesignerpro" target="_blank" class="header-cta">
+        <i class="fab fa-instagram"></i> @dhdesignerpro
+      </a>
     </header>
 
+    <!-- ─── HERO ─── -->
     <section class="hero">
       <div class="badge">A Inteligência Artificial chegou para você</div>
-      <h1>Crie suas <span>Artes Profissionais</span> com IA em Segundos</h1>
+      <h1>Crie suas <span>Artes Profissionais</span><br>com IA em Segundos</h1>
       <p>Você não precisa de um designer caro para ter artes de elite. O PromptStudio é a IA treinada por especialistas para transformar seu pequeno negócio em uma marca profissional de forma simples e rápida.</p>
       <a href="#comprar" class="cta-button">
         <i class="fas fa-rocket"></i> QUERO MEU ACESSO VITALÍCIO
       </a>
-      <p style="font-size: 0.8rem; margin-top: 20px; color: var(--text-dim);">Pagamento único. Sem mensalidades.</p>
+      <p class="hero-sub"><i class="fas fa-check-circle"></i> Pagamento único. Sem mensalidades.</p>
     </section>
+  </div>
 
-    <section class="pain-section">
+  <!-- ─── PAIN SECTION ─── -->
+  <section class="pain-section">
+    <div class="container">
       <div class="section-title">
         <h2>O Jogo Mudou. Você vai ficar para trás?</h2>
         <p>As IAs estão dominando, mas todo mundo está fazendo artes iguais e amadoras. É aqui que você se diferencia.</p>
       </div>
-      
-      <!-- Slider de Exemplos -->
-      <div class="slider-container">
-        <div class="slider-track">
-          <div class="slide"><img src="assets/exemplos/marmitex.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/art3.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/art5.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/art7.png" alt="Arte"></div>
-          <!-- Duplicate for infinite scroll -->
-          <div class="slide"><img src="assets/exemplos/marmitex.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/art3.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/art5.jpg" alt="Arte"></div>
-          <div class="slide"><img src="assets/exemplos/art7.png" alt="Arte"></div>
+    </div>
+
+    <!-- Slider de Exemplos -->
+    <div class="slider-container">
+      <div class="slider-track">
+        <div class="slide"><img src="assets/exemplos/marmitex.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/art3.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/art5.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/art7.png" alt="Arte"></div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="slide"><img src="assets/exemplos/marmitex.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/art3.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/art5.jpg" alt="Arte"></div>
+        <div class="slide"><img src="assets/exemplos/art7.png" alt="Arte"></div>
+      </div>
+    </div>
+
+    <!-- ─── NICHOS ─── -->
+    <div class="container">
+      <div class="nichos-section">
+        <h3>Perfeito para qualquer nicho</h3>
+        <p class="nichos-sub">Seja qual for o seu segmento, o PromptStudio gera artes sob medida para o seu negócio.</p>
+
+        <div class="nichos-grid">
+
+          <!-- Alimentação -->
+          <div class="nicho-category">
+            <div class="nicho-category-label">Alimentação</div>
+            <div class="nicho-items">
+              <div class="nicho-item"><span class="emoji">🍔</span> Hamburguerias</div>
+              <div class="nicho-item"><span class="emoji">🍕</span> Pizzarias</div>
+              <div class="nicho-item"><span class="emoji">🍱</span> Delivery de Comida</div>
+              <div class="nicho-item"><span class="emoji">🍱</span> Marmitarias</div>
+              <div class="nicho-item"><span class="emoji">🍦</span> Sorveterias & Açaí</div>
+            </div>
+          </div>
+
+          <!-- Saúde & Beleza -->
+          <div class="nicho-category">
+            <div class="nicho-category-label">Saúde & Beleza</div>
+            <div class="nicho-items">
+              <div class="nicho-item"><span class="emoji">💅</span> Salões de Beleza</div>
+              <div class="nicho-item"><span class="emoji">🏋️</span> Academias</div>
+              <div class="nicho-item"><span class="emoji">💆</span> Estéticas</div>
+              <div class="nicho-item"><span class="emoji">🧴</span> Cosméticos</div>
+            </div>
+          </div>
+
+          <!-- Comércio & Moda -->
+          <div class="nicho-category">
+            <div class="nicho-category-label">Comércio & Moda</div>
+            <div class="nicho-items">
+              <div class="nicho-item"><span class="emoji">👗</span> Lojas de Roupas</div>
+              <div class="nicho-item"><span class="emoji">🥩</span> Açougues</div>
+              <div class="nicho-item"><span class="emoji">🥦</span> Hortifruti</div>
+              <div class="nicho-item"><span class="emoji">🐶</span> Pet Shops</div>
+            </div>
+          </div>
+
+          <!-- Serviços -->
+          <div class="nicho-category">
+            <div class="nicho-category-label">Serviços</div>
+            <div class="nicho-items">
+              <div class="nicho-item"><span class="emoji">🛠️</span> Prestadores de Serviço</div>
+              <div class="nicho-item"><span class="emoji">📦</span> Pequenos Comércios</div>
+              <div class="nicho-item"><span class="emoji">🏪</span> Lojas em Geral</div>
+              <div class="nicho-item"><span class="emoji">📱</span> Negócios Digitais</div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="container" style="margin-top: 60px; text-align: center;">
-        <h3 style="margin-bottom: 30px; font-size: 1.5rem;">Perfeito para qualquer nicho:</h3>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; max-width: 900px; margin: 0 auto;">
-          <span class="nicho-tag">🍔 Hamburguerias</span>
-          <span class="nicho-tag">🍕 Pizzarias</span>
-          <span class="nicho-tag">🍱 Delivery de Comida</span>
-          <span class="nicho-tag">🍱 Marmitarias</span>
-          <span class="nicho-tag">🍦 Sorveterias & Açaí</span>
-          <span class="nicho-tag">🥩 Açougues & Casas de Carne</span>
-          <span class="nicho-tag">🥦 Hortifruti</span>
-          <span class="nicho-tag">💅 Salões de Beleza</span>
-          <span class="nicho-tag">🏋️ Academias</span>
-          <span class="nicho-tag">👗 Lojas de Roupas</span>
-          <span class="nicho-tag">🐶 Pet Shops</span>
-          <span class="nicho-tag">🛠️ Prestadores de Serviço</span>
-          <span class="nicho-tag">📦 Pequenos Comércios</span>
+      <!-- ─── BENEFÍCIOS ─── -->
+      <div class="benefits-section">
+        <div class="section-title" style="margin-top: 80px;">
+          <h2>Por que você precisa do PromptStudio?</h2>
+          <p>Três razões que vão mudar a forma como você cria artes.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
+            <h3>Economia Real</h3>
+            <p>Um designer cobra R$ 50, R$ 100 por uma única arte. Com o PromptStudio, você gera centenas de artes pelo preço de um lanche.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Velocidade Máxima</h3>
+            <p>Precisa de uma promoção para hoje? Não espere dias pelo designer. Gere o prompt, cole na IA e tenha sua arte pronta em 2 minutos.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-gem"></i></div>
+            <h3>Posicionamento de Elite</h3>
+            <p>Não importa se você trabalha em casa ou tem uma loja simples. Sua marca vai parecer uma grande franquia com artes modernas e únicas.</p>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="section-title" style="margin-top: 80px;">
-        <h2 style="font-size: 2rem;">Por que você precisa do PromptStudio?</h2>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <i class="fas fa-money-bill-wave"></i>
-          <h3>Economia Real</h3>
-          <p>Um designer cobra R$ 50, R$ 100 por uma única arte. Com o PromptStudio, você gera centenas de artes pelo preço de um lanche.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-bolt"></i>
-          <h3>Velocidade Máxima</h3>
-          <p>Precisa de uma promoção para hoje? Não espere dias pelo designer. Gere o prompt, cole na IA e tenha sua arte pronta em 2 minutos.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-gem"></i>
-          <h3>Posicionamento de Elite</h3>
-          <p>Não importa se você trabalha em casa ou tem uma loja simples. Sua marca vai parecer uma grande franquia com artes modernas e únicas.</p>
-        </div>
-      </div>
-    </section>
-
+  <!-- ─── SOLUTION ─── -->
+  <div class="container">
     <section class="solution">
       <div class="solution-content">
-        <div class="solution-image" style="padding: 0; overflow: hidden; border: none;">
-          <img src="assets/exemplos/feijoada.png" alt="Exemplo Feijoada" style="width: 100%; display: block; border-radius: 40px;">
+        <div class="solution-image">
+          <img src="assets/exemplos/feijoada.png" alt="Exemplo de arte gerada pelo PromptStudio">
+          <span class="premium-badge">PREMIUM</span>
         </div>
         <div class="solution-text">
           <div class="badge">Feito para quem não entende de IA</div>
-          <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px;">Você não precisa ser um <span>Expert em Prompts</span></h2>
+          <h2>Você não precisa ser um <span>Expert em Prompts</span></h2>
           <p>Escrever comandos para IA é difícil e frustrante. O PromptStudio faz o trabalho pesado por você. Você só preenche os dados do seu produto e nós geramos o "Prompt Mestre" que dá as ordens exatas para a IA criar algo incrível.</p>
           <ul class="feature-list">
             <li><i class="fas fa-check-circle"></i> Interface simples e intuitiva</li>
@@ -497,27 +915,30 @@
         </div>
       </div>
     </section>
+  </div>
 
-    <!-- Comparativo -->
-    <section style="padding: 80px 0; background: #0a0a0a;">
-      <div class="container">
-        <div class="grid-3">
-          <div style="text-align: center; padding: 30px;">
-            <div style="font-size: 3rem; font-weight: 800; color: var(--text-dim); margin-bottom: 10px;">48h</div>
-            <p style="color: var(--text-dim);">Esperando um designer freelancer</p>
-          </div>
-          <div style="text-align: center; padding: 30px; background: rgba(212, 175, 89, 0.05); border-radius: 30px; border: 1px solid var(--primary);">
-            <div style="font-size: 3rem; font-weight: 800; color: var(--primary); margin-bottom: 10px;">2 min</div>
-            <p style="color: var(--primary); font-weight: 700;">Com o PromptStudio AI</p>
-          </div>
-          <div style="text-align: center; padding: 30px;">
-            <div style="font-size: 3rem; font-weight: 800; color: var(--text-dim); margin-bottom: 10px;">R$ 150</div>
-            <p style="color: var(--text-dim);">Custo médio de um pack de artes</p>
-          </div>
+  <!-- ─── COMPARATIVO ─── -->
+  <section class="compare-section">
+    <div class="container">
+      <div class="compare-grid">
+        <div class="compare-item">
+          <div class="big-num">48h</div>
+          <p>Esperando um designer freelancer</p>
+        </div>
+        <div class="compare-item highlight">
+          <div class="big-num">2 min</div>
+          <p>Com o PromptStudio AI</p>
+        </div>
+        <div class="compare-item">
+          <div class="big-num">R$ 150</div>
+          <p>Custo médio de um pack de artes</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
+  <!-- ─── PRICING ─── -->
+  <div class="container">
     <section class="pricing" id="comprar">
       <div class="section-title">
         <h2>Aproveite o Lançamento</h2>
@@ -526,8 +947,8 @@
       <div class="price-card">
         <span class="old-price">De R$ 97,00</span>
         <div class="new-price"><span>R$</span> 27,00</div>
-        <span class="price-info">PAGAMENTO ÚNICO - ACESSO VITALÍCIO</span>
-        <ul class="feature-list" style="margin-bottom: 40px; text-align: left; max-width: 300px; margin-left: auto; margin-right: auto;">
+        <span class="price-info">PAGAMENTO ÚNICO — ACESSO VITALÍCIO</span>
+        <ul class="price-features">
           <li><i class="fas fa-check"></i> Gerador de Prompts Ilimitado</li>
           <li><i class="fas fa-check"></i> Guia de Uso Didático</li>
           <li><i class="fas fa-check"></i> Atualizações Gratuitas</li>
@@ -536,14 +957,16 @@
         <a href="#" class="cta-button" style="width: 100%; justify-content: center;">
           <i class="fas fa-shopping-cart"></i> COMPRAR AGORA
         </a>
-        <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-dim);">Compra 100% Segura via Hotmart/Kiwify</p>
+        <p class="secure-badge"><i class="fas fa-lock"></i> Compra 100% Segura via Hotmart/Kiwify</p>
       </div>
     </section>
 
     <footer>
-      <div class="logo" style="margin-bottom: 20px;"><span>Prompt</span>Studio</div>
-      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 10px;">Desenvolvido por @dhdesignerpro</p>
-      <p style="color: var(--text-dim); font-size: 0.8rem;">&copy; 2024 PromptStudio AI. Todos os direitos reservados.</p>
+      <div class="footer-logo"><span>Prompt</span>Studio</div>
+      <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 8px;">Desenvolvido por
+        <a href="https://instagram.com/dhdesignerpro" target="_blank" class="social-link">@dhdesignerpro</a>
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.78rem;">&copy; 2024 PromptStudio AI. Todos os direitos reservados.</p>
     </footer>
   </div>
 
