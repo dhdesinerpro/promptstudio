@@ -536,12 +536,12 @@
           <input type="text" id="bizName" placeholder="Ex: Pizzaria da Nonna">
         </div>
         <div class="input-group">
-          <label>Título da Promoção</label>
-          <input type="text" id="promoTitle" placeholder="Ex: Terça em Dobro">
+          <label>Título da Promoção (Opcional)</label>
+          <input type="text" id="promoTitle" placeholder="Ex: Promoção do Dia, Terça em Dobro">
         </div>
         <div class="input-group">
-          <label>Descrição do Produto</label>
-          <textarea id="bizDesc" placeholder="Ex: Pizza de Calabresa com borda recheada"></textarea>
+          <label>Produto ou Oferta</label>
+          <textarea id="bizDesc" placeholder="Ex: X-Bacon com carne, queijo, bacon e salada"></textarea>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
           <div class="input-group">
@@ -606,7 +606,7 @@
             <div class="chip" onclick="selectChip(this)" data-color="Dourado"><span class="color-dot" style="background: #d4af59;"></span>Dourado</div>
           </div>
         </div>
-        <button class="main-action-btn" onclick="showPage('step2')">Próximo Passo <i class="fas fa-arrow-right"></i></button>
+        <button class="main-action-btn" onclick="goToStep2()">Próximo Passo <i class="fas fa-arrow-right"></i></button>
       </div>
     </div>
 
@@ -626,14 +626,18 @@
           <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">💡 Dica: Se você não tiver uma foto profissional, escolha "Gerar com IA" e descreva o produto detalhadamente na etapa anterior.</p>
         </div>
 
+        <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.06);">
+          <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;"><strong style="color: #fff;">Importante:</strong> as imagens não são enviadas nesta tela. Se escolher <strong>“Vou enviar”</strong> para a logomarca e/ou foto do produto, envie esses arquivos depois, junto com o Prompt Mestre, no ChatGPT ou Gemini.</p>
+        </div>
+
         <div class="input-group">
           <label>Sua Logomarca</label>
           <div class="option-grid" id="logoOptions">
-            <div class="option-card" onclick="selectOption(this, 'logo')">
+            <div class="option-card active" onclick="selectOption(this, 'logo')">
               <i class="fas fa-upload"></i>
               <span>Vou enviar</span>
             </div>
-            <div class="option-card active" onclick="selectOption(this, 'logo')">
+            <div class="option-card" onclick="selectOption(this, 'logo')">
               <i class="fas fa-robot"></i>
               <span>Gerar com IA</span>
             </div>
@@ -686,7 +690,10 @@
           <i class="fas fa-check"></i>
         </div>
         <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;">Seu prompt está pronto!</h2>
-        <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 32px;">Agora é só copiar e colar na sua IA favorita para gerar sua arte premium.</p>
+        <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 18px;">Agora é só copiar e colar na sua IA favorita para gerar sua arte premium.</p>
+        <div style="background: rgba(212, 175, 89, 0.06); border: 1px solid rgba(212, 175, 89, 0.15); border-radius: 14px; padding: 14px; margin-bottom: 28px; text-align: left;">
+          <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.6;"><strong style="color: var(--primary);">Como usar:</strong> 1. Copie o prompt → 2. Abra o ChatGPT ou Gemini → 3. Cole o prompt e, se escolheu “Vou enviar”, anexe também sua logo e/ou foto do produto.</p>
+        </div>
 
         <!-- Hidden prompt storage -->
         <div id="promptResult" style="display: none;"></div>
@@ -817,6 +824,16 @@
       el.classList.add('active');
     }
 
+    function goToStep2() {
+      const name = document.getElementById('bizName').value.trim();
+      const product = document.getElementById('bizDesc').value.trim();
+      if (!name || !product) {
+        alert('Preencha o nome do negócio e o produto ou oferta para continuar.');
+        return;
+      }
+      showPage('step2');
+    }
+
     function prepareReview() {
       const selectedColors = Array.from(document.querySelectorAll('#colorChips .chip.active'))
         .map(c => c.getAttribute('data-color'));
@@ -863,24 +880,6 @@
 # DIREÇÃO CRIATIVA PREMIUM PARA ARTES DE SOCIAL MEDIA
 
 Atue como um Diretor de Arte Sênior especialista em publicidade premium para social media, branding e performance visual para Instagram, delivery, restaurantes, eventos e negócios locais.
-
-Seu objetivo é criar conceitos visuais altamente profissionais, modernos e estratégicos, com aparência de arte feita por um designer humano experiente — nunca com aparência genérica de IA.
-
-━━━━━━━━━━━━━━━━━━
-## INFORMAÇÕES DO PROJETO
-
-- NEGÓCIO: ${name}
-- TÍTULO DA PROMOÇÃO: ${promo}
-- PRODUTO/OFERTA: ${desc}
-- VALOR: ${value ? 'R$ ' + value : 'Não informado'}
-- CONTATO: ${phone}
-- INSTAGRAM: ${insta}
-- LOGOMARCA: ${logoOption}
-- FOTO DO PRODUTO: ${photoOption}
-- FORMATO: ${format}
-- ESTILO VISUAL: ${style}
-- COR DE FUNDO PREDOMINANTE: ${bgColor}
-- PALETA DE CORES BASE: ${colorsText}
 
 Seu objetivo é criar conceitos visuais altamente profissionais, modernos e estratégicos, com aparência de arte feita por um designer humano experiente — nunca com aparência genérica de IA.
 
